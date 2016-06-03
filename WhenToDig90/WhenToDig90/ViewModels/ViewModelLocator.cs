@@ -8,6 +8,9 @@ namespace WhenToDig90.ViewModels
         static ViewModelLocator()
     {
         ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+        var navigationService = this.CreateNavigationService();
+        SimpleIoc.Default.Register<INavigationService>(() => navigationService);
+        
         SimpleIoc.Default.Register<MainViewModel>();
     }
  
@@ -25,4 +28,14 @@ namespace WhenToDig90.ViewModels
         }
     }
     }
+    
+    private INavigationService CreateNavigationService()
+{
+    var navigationService = new NavigationService();
+    navigationService.Configure("Calendar", typeof(Calendar));
+    // navigationService.Configure("key1", typeof(OtherPage1));
+    // navigationService.Configure("key2", typeof(OtherPage2));
+ 
+    return navigationService;
+}
 }
