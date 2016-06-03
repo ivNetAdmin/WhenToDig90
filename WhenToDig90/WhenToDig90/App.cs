@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using WhenToDig90.ViewModels;
+using WhenToDig90.Views;
 using Xamarin.Forms;
 
 namespace WhenToDig90
