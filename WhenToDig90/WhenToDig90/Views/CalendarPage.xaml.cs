@@ -1,4 +1,6 @@
 ﻿
+using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace WhenToDig90.Views
@@ -22,6 +24,8 @@ namespace WhenToDig90.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            var calendarGrid = this.FindByName<Grid>("CalendarGrid");
             BuildCalendar(calendarGrid);
         }
         
@@ -48,7 +52,7 @@ namespace WhenToDig90.Views
 
             for (var r = 0; r < rowCount; r++)
             {
-               // grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                 BuildCalendarCells(grid, _weekDays, dates, r);
             }
         }
