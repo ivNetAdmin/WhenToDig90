@@ -1,7 +1,7 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
-namespace WhenToDig90.ViewModel
+namespace WhenToDig90.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
