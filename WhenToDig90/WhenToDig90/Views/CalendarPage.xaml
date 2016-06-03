@@ -11,6 +11,29 @@
   </ContentPage.ToolbarItems>
   
   <ContentPage.Content>
-   <Grid x:Name="CalendarGrid" />
+    <StackLayout>
+      <StackLayout.Children>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+          </Grid.ColumnDefinitions>
+          <Button Text="<<" Grid.Row="0" Grid.Column="0" />
+          <Button Text="<" Grid.Row="0" Grid.Column="1" />
+          <Label Text="Month" Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" />
+          <Button Text=">" Grid.Row="0" Grid.Column="5" />
+          <Button Text=">>" Grid.Row="0" Grid.Column="6" />
+        </Grid>
+        <Grid x:Name="CalendarGrid" />
+      </StackLayout.Children>
+   </StackLayout>
   </ContentPage.Content>
 </ContentPage>
