@@ -18,6 +18,9 @@ namespace WhenToDig90
 
         public App()
         {
+            //() => nav
+            SimpleIoc.Default.Register<IJobService>();
+            
             var nav = new NavigationService();
             nav.Configure(Locator.CalendarPage, typeof(CalendarPage));
             nav.Configure(Locator.JobPage, typeof(JobPage));
