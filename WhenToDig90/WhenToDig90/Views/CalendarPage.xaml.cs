@@ -31,7 +31,7 @@ namespace WhenToDig90.Views
             BuildCalendar(calendarGrid);
         }
         
-        private Grid BuildCalendarNavigationBar(Grid grid)
+        private void BuildCalendarNavigationBar(Grid grid)
         {
             grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
@@ -74,7 +74,7 @@ namespace WhenToDig90.Views
             //((Button)grid.Children[grid.Children.Count - 1]).Clicked += CalendarNavOnButtonClicked;
         }
 
-        private Grid BuildCalendarHeaderBar(Grid grid)
+        private void BuildCalendarHeaderBar(Grid grid)
         {
             grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
@@ -88,7 +88,7 @@ namespace WhenToDig90.Views
                     BackgroundColor = Color.Black,
                     HorizontalTextAlignment = TextAlignment.Center,
                     VerticalTextAlignment = TextAlignment.Center,
-                }, wd, 0);
+                }, wd, 1);
             }
         }
         
