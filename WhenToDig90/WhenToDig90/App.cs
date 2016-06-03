@@ -24,7 +24,7 @@ namespace WhenToDig90
 
         public static Page GetMainPage()
         {
-            return new MyPage();
+            return new Calendar();
         }
         protected override void OnStart()
         {
