@@ -8,11 +8,12 @@ using Xamarin.Forms;
 
 namespace WhenToDig90.Views
 {
-    public partial class Calendar : ContentPage
+    public partial class FirstPage : ContentPage
     {
-        public Calendar()
+        public FirstPage()
         {
             InitializeComponent();
+            BindingContext = App.Locator.Main;
         }
     }
 }
