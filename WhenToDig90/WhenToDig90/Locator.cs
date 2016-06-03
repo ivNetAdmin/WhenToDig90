@@ -14,12 +14,12 @@ namespace WhenToDig90
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             // ViewModels
-            SimpleIoc.Default.Register<FirstViewModel>();
+            SimpleIoc.Default.Register<CalendarViewModel>();
             SimpleIoc.Default.Register<SecondViewModel>();
             SimpleIoc.Default.Register<ThirdViewModel>();
         }
 
-        public const string FirstPage = "FirstPage";
+        public const string CalendarPage = "CalendarPage";
         public const string SecondPage = "SecondPage";
         public const string ThirdPage = "ThirdPage";
 
@@ -29,11 +29,11 @@ namespace WhenToDig90
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
             "CA1822:MarkMembersAsStatic",
             Justification = "This non-static member is needed for data binding purposes.")]
-        public FirstViewModel Main
+        public CalendarViewModel Calendar
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<FirstViewModel>();
+                return ServiceLocator.Current.GetInstance<CalendarViewModel>();
             }
         }
 

@@ -19,12 +19,12 @@ namespace WhenToDig90
         public App()
         {
             var nav = new NavigationService();
-            nav.Configure(Locator.FirstPage, typeof(FirstPage));
+            nav.Configure(Locator.CalendarPage, typeof(CalendarPage));
             nav.Configure(Locator.SecondPage, typeof(SecondPage));
             nav.Configure(Locator.ThirdPage, typeof(ThirdPage));
             SimpleIoc.Default.Register<INavigationService>(() => nav);
 
-            var firstPage = new NavigationPage(new FirstPage());
+            var firstPage = new NavigationPage(new CalendarPage());
 
             nav.Initialize(firstPage);
 

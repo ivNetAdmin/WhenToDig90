@@ -8,11 +8,11 @@ using Xamarin.Forms;
 
 namespace WhenToDig90.ViewModels
 {
-    public class FirstViewModel : ViewModelBase
+    public class CalendarViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
     
-        public FirstViewModel(INavigationService navigationService)
+        public CalendarViewModel(INavigationService navigationService)
         {
             if (navigationService == null) throw new ArgumentNullException("navigationService");
             _navigationService = navigationService;
