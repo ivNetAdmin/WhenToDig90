@@ -4,6 +4,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Windows.Input;
+using WhenToDig90.Services.Interfaces;
 using Xamarin.Forms;
 
 namespace WhenToDig90.ViewModels
@@ -11,11 +12,15 @@ namespace WhenToDig90.ViewModels
     public class CalendarViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
-    
-        public CalendarViewModel(INavigationService navigationService)
+        private readonly IJobService _jobService;
+
+        public CalendarViewModel(INavigationService navigationService, IJobService jobService)
         {
             if (navigationService == null) throw new ArgumentNullException("navigationService");
             _navigationService = navigationService;
+
+            if (jobService == null) throw new ArgumentNullException("jobService");
+            _jobService = jobService;
 
             JobNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.JobPage); });
             ReviewNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.ReviewPage); });
