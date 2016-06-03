@@ -13,6 +13,7 @@ namespace WhenToDig90.Views
         public PlantPage()
         {
             InitializeComponent();
+            BindingContext = App.Locator.Plant;
         }
     }
 }
