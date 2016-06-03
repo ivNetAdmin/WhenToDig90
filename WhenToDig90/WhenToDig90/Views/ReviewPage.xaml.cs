@@ -8,10 +8,7 @@ namespace WhenToDig90.Views
         public ReviewPage(string parameter)
         {
             InitializeComponent();
-            var viewModel = App.Locator.Review;
-            BindingContext = viewModel;
-
-            viewModel.ParameterText = string.IsNullOrEmpty(parameter) ? "No parameter set" : parameter;
+            BindingContext = App.Locator.Review;
         }
     }
 }
