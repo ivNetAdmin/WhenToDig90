@@ -9,6 +9,7 @@ namespace WhenToDig90.Views
         {
             InitializeComponent();
             BindingContext = App.Locator.Review;
+            NavigationPage.SetHasBackButton(this, false);
         }
     }
 }

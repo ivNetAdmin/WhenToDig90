@@ -9,6 +9,7 @@ namespace WhenToDig90.Views
         {
             InitializeComponent();
             BindingContext = App.Locator.Job;
+            NavigationPage.SetHasBackButton(this, false);
         }
 
         //protected override void OnAppearing()
