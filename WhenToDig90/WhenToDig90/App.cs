@@ -22,6 +22,8 @@ namespace WhenToDig90
             nav.Configure(Locator.CalendarPage, typeof(CalendarPage));
             nav.Configure(Locator.JobPage, typeof(JobPage));
             nav.Configure(Locator.ReviewPage, typeof(ReviewPage));
+            nav.Configure(Locator.PlantPage, typeof(PlantPage));
+            
             SimpleIoc.Default.Register<INavigationService>(() => nav);
 
             var firstPage = new NavigationPage(new CalendarPage());
@@ -31,7 +33,6 @@ namespace WhenToDig90
             MainPage = firstPage;
         }
 
-      
         protected override void OnStart()
         {
             // Handle when your app starts  
