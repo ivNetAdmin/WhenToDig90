@@ -21,8 +21,8 @@ namespace WhenToDig90.ViewModels
 
         public ImageSource CalendarIcon{ get { return ImageSource.FromFile("calendar.png"); } }
         public ImageSource JobIcon{ get { return ImageSource.FromFile("job_low.png"); } }
-        public ImageSource JobIcon{ get { return ImageSource.FromFile("review_low.png"); } }
-        public ImageSource JobIcon{ get { return ImageSource.FromFile("plant_low.png"); } }
+        public ImageSource ReviewIcon{ get { return ImageSource.FromFile("review_low.png"); } }
+        public ImageSource PlantIcon{ get { return ImageSource.FromFile("plant_low.png"); } }
         
         public ICommand NavigationCommand { get; set; } 
     }
