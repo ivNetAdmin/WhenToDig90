@@ -1,6 +1,9 @@
+
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
+using System;
+using System.Windows.Input;
 
 namespace WhenToDig90.ViewModels
 {

@@ -1,3 +1,5 @@
+using Xamarin.Forms;
+
 namespace WhenToDig90.Views
 {
     public partial class ThirdPage : ContentPage

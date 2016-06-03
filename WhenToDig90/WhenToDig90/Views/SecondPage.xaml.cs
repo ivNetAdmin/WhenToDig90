@@ -1,3 +1,8 @@
+using GalaSoft.MvvmLight.Views;
+using Microsoft.Practices.ServiceLocation;
+using System.Diagnostics;
+using Xamarin.Forms;
+
 namespace WhenToDig90.Views
 {
     public partial class SecondPage : ContentPage

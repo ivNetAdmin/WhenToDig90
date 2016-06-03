@@ -1,3 +1,10 @@
+using GalaSoft.MvvmLight.Views;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using Xamarin.Forms;
+
 namespace WhenToDig90.Services
 {
     public class NavigationService : INavigationService
