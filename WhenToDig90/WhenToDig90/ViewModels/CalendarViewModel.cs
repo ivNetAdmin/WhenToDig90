@@ -13,6 +13,7 @@ namespace WhenToDig90.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IJobService _jobService;
+        private DateTime _currentCallendarDate;
 
         public CalendarViewModel(INavigationService navigationService, IJobService jobService)
         {
@@ -26,10 +27,12 @@ namespace WhenToDig90.ViewModels
             ReviewNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.ReviewPage); });
             PlantNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.PlantPage); });
             
-            LastYearCommand = new RelayCommand(() => { CalendarNavOnButtonClicked });
-            LastMonthCommand = new RelayCommand(() => { CalendarNavOnButtonClicked });
-            NextMonthCommand = new RelayCommand(() => { CalendarNavOnButtonClicked });
-            NextYearCommand = new RelayCommand(() => { CalendarNavOnButtonClicked });
+            LastYearCommand = new RelayCommand(() => { CalendarNavOnButtonClicked("<<"); });
+            LastMonthCommand = new RelayCommand(() => { CalendarNavOnButtonClicked("<"); });
+            NextMonthCommand = new RelayCommand(() => { CalendarNavOnButtonClicked(">"); });
+            NextYearCommand = new RelayCommand(() => { CalendarNavOnButtonClicked(">>"); });
+
+            _currentCallendarDate = DateTime.Now;
         }
 
         public ImageSource CalendarIcon{ get { return ImageSource.FromFile("calendar.png"); } }
@@ -40,10 +43,20 @@ namespace WhenToDig90.ViewModels
         public ICommand JobNavigationCommand { get; set; }
         public ICommand ReviewNavigationCommand { get; set; }
         public ICommand PlantNavigationCommand { get; set; }
-        
-        private void CalendarNavOnButtonClicked(object sender, EventArgs e)
+
+        public ICommand LastYearCommand { get; set; }
+        public ICommand LastMonthCommand { get; set; }
+        public ICommand NextMonthCommand { get; set; }
+        public ICommand NextYearCommand { get; set; }
+
+        public DateTime CurrentDate {
+            get { return _currentCallendarDate; }
+            set { _currentCallendarDate = value; }
+        }
+
+        private void CalendarNavOnButtonClicked(string action)
         {
-            switch (((Button)sender).Text)
+            switch (action)
             {
                 case "<<":
                     _currentCallendarDate = _currentCallendarDate.AddYears(-1);

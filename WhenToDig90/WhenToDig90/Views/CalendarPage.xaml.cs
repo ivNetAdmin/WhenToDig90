@@ -16,9 +16,10 @@ namespace WhenToDig90.Views
             NavigationPage.SetHasBackButton(this, false);
             
             BindingContext = App.Locator.Calendar;
-            
+            _currentCallendarDate = App.Locator.Calendar.CurrentDate;
+
             _weekDays = new[] { "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su" };
-            _currentCallendarDate = DateTime.Now;
+           
         }
 
         protected override void OnAppearing()
