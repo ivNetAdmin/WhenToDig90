@@ -2,8 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WhenToDig90.Views.ReviewPage">
-  <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-    <Label Text="{Binding ParameterText}"  />
-    <Button Text="Go back" Command="{Binding NavigateCommand}" />
-  </StackLayout>
+  
+   <ContentPage.ToolbarItems>
+    <ToolbarItem Icon="{Binding CalendarIcon}" Command="{Binding CalendarNavigationCommand}" />
+    <ToolbarItem Icon="{Binding JobIcon}" Command="{Binding JobNavigationCommand}" />
+    <ToolbarItem Icon="{Binding ReviewIcon}" />
+    <ToolbarItem Icon="{Binding PlantIcon}" Command="{Binding PlantNavigationCommand}" />
+  </ContentPage.ToolbarItems>
+  
+  <ContentPage.Content>
+    <Label Text="Review" VerticalOptions="Center" HorizontalOptions="Center" />
+  </ContentPage.Content>
 </ContentPage>
