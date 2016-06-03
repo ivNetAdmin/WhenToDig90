@@ -11,6 +11,6 @@
   </ContentPage.ToolbarItems>
   
   <ContentPage.Content>
-    <Button Text="Navigate to Job page" Command="{Binding NavigationCommand}" VerticalOptions="Center" HorizontalOptions="Center" />
+    <Label Text="Calendar" VerticalOptions="Center" HorizontalOptions="Center" />
   </ContentPage.Content>
 </ContentPage>
