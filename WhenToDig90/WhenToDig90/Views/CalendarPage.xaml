@@ -5,7 +5,7 @@
   
   <ContentPage.ToolbarItems>
     <ToolbarItem Icon="{Binding CalendarIcon}" />
-    <ToolbarItem Icon="{Binding JobIcon}" />
+    <ToolbarItem Icon="{Binding JobIcon}" Command="{Binding JobNavigationCommand}"/>
     <ToolbarItem Icon="{Binding ReviewIcon}" />
     <ToolbarItem Icon="{Binding PlantIcon}" />
   </ContentPage.ToolbarItems>

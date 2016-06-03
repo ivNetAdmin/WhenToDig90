@@ -18,6 +18,7 @@ namespace WhenToDig90.ViewModels
             _navigationService = navigationService;
 
             NavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.SecondPage); });
+            JobNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.SecondPage); });
         }
 
         public ImageSource CalendarIcon{ get { return ImageSource.FromFile("calendar.png"); } }
@@ -25,6 +26,7 @@ namespace WhenToDig90.ViewModels
         public ImageSource ReviewIcon{ get { return ImageSource.FromFile("review_low.png"); } }
         public ImageSource PlantIcon{ get { return ImageSource.FromFile("plant_low.png"); } }
         
-        public ICommand NavigationCommand { get; set; } 
+        public ICommand NavigationCommand { get; set; }
+        public ICommand JobNavigationCommand { get; set; }
     }
 }
