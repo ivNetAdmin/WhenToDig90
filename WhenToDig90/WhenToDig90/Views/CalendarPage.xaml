@@ -28,11 +28,11 @@
             <ColumnDefinition Width="Auto" />
           </Grid.ColumnDefinitions>-->
           
-          <Button Text="&lt;&lt;" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center"/>
-          <Button Text="&lt;" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center"/>
+          <Button Text="&lt;&lt;" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" Command="{Binding LastYearCommand}"/>
+          <Button Text="&lt;" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" Command="{Binding LastMonthCommand}"/>
           <Label Text="Month" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-          <Button Text="&gt;" Grid.Row="0" Grid.Column="5" HorizontalOptions="Center"/>
-          <Button Text="&gt;&gt;" Grid.Row="0" Grid.Column="6" HorizontalOptions="Center"/>
+          <Button Text="&gt;" Grid.Row="0" Grid.Column="5" HorizontalOptions="Center" Command="{Binding NextMonthCommand}"/>
+          <Button Text="&gt;&gt;" Grid.Row="0" Grid.Column="6" HorizontalOptions="Center" Command="{Binding NextYearCommand}"/>
 
           <Label Text="Mo" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" TextColor="Aqua"/>
           <Label Text="Tu" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" TextColor="Aqua"/>
