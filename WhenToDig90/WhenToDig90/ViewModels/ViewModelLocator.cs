@@ -7,15 +7,20 @@ namespace WhenToDig90.ViewModels
 {
     public class ViewModelLocator
     {
-        static ViewModelLocator()
+        public ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
-            var navigationService = this.CreateNavigationService();
-            SimpleIoc.Default.Register<INavigationService>(() => navigationService);
-
-            SimpleIoc.Default.Register<MainViewModel>();
+            
+          // ViewModels
+            SimpleIoc.Default.Register<FirstViewModel>();
+            SimpleIoc.Default.Register<SecondViewModel>();
+            SimpleIoc.Default.Register<ThirdViewModel>();
         }
 
+        public const string FirstPage = "FirstPage";
+        public const string SecondPage = "SecondPage";
+        public const string ThirdPage = "ThirdPage";
+        
         /// <summary>
         /// Gets the Main property.
         /// </summary>
@@ -26,18 +31,37 @@ namespace WhenToDig90.ViewModels
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
+                return ServiceLocator.Current.GetInstance<FirstViewModel>();
             }
         }
     }
 
-    private INavigationService CreateNavigationService()
-    {
-        var navigationService = new NavigationService();
-        navigationService.Configure("Calendar", typeof(Calendar));
-        // navigationService.Configure("key1", typeof(OtherPage1));
-        // navigationService.Configure("key2", typeof(OtherPage2));
+   /// <summary>
+        /// Gets the Second property.
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+            "CA1822:MarkMembersAsStatic",
+            Justification = "This non-static member is needed for data binding purposes.")]
+        public SecondViewModel Second
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<SecondViewModel>();
+            }
+        }
 
-        return navigationService;
-    }
+        /// <summary>
+        /// Gets the third property.
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+            "CA1822:MarkMembersAsStatic",
+            Justification = "This non-static member is needed for data binding purposes.")]
+        public ThirdViewModel Third
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ThirdViewModel>();
+            }
+        }
+   
 }
