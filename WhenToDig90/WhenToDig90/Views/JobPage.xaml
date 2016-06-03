@@ -2,8 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WhenToDig90.Views.JobPage">
-  <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-    <Entry Placeholder="Please enter a parameter" Text="{Binding Parameter}" />
-    <Button Text="Navigate to Review page" Command="{Binding NavigationCommand}" />
-  </StackLayout>
-</ContentPage>  
+  
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Icon="{Binding CalendarIcon}" />
+    <ToolbarItem Icon="{Binding JobIcon}" Command="{Binding JobNavigationCommand}"/>
+    <ToolbarItem Icon="{Binding ReviewIcon}" />
+    <ToolbarItem Icon="{Binding PlantIcon}" />
+  </ContentPage.ToolbarItems>
+  
+  <ContentPage.Content>
+    <Label Text="Calendar" VerticalOptions="Center" HorizontalOptions="Center" />
+  </ContentPage.Content>
+</ContentPage>
