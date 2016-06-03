@@ -4,6 +4,7 @@
              x:Class="WhenToDig90.Views.FirstPage">
   
   <ContentPage.ToolbarItems>
+    <ToolbarItem Icon="{Binding CalendarIcon}" />
     <ToolbarItem x:Name="Cancel" Text="Cancel" ></ToolbarItem>  
     <ToolbarItem x:Name="Save" Text="Save" ></ToolbarItem>  
   </ContentPage.ToolbarItems>
