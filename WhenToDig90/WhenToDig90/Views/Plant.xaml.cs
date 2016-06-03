@@ -8,9 +8,9 @@ using Xamarin.Forms;
 
 namespace WhenToDig90.Views
 {
-    public partial class Plant : ContentPage
+    public partial class PlantPage : ContentPage
     {
-        public Plant()
+        public PlantPage()
         {
             InitializeComponent();
         }
