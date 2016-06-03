@@ -1,3 +1,4 @@
+﻿
 using Xamarin.Forms;
 
 namespace WhenToDig90.Views

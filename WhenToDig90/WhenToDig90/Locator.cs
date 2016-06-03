@@ -1,3 +1,7 @@
+using GalaSoft.MvvmLight.Ioc;
+using Microsoft.Practices.ServiceLocation;
+using WhenToDig90.ViewModels;
+
 namespace WhenToDig90
 {
     public class Locator

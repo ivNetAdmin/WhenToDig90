@@ -1,7 +1,10 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WhenToDig90.Services;
 using WhenToDig90.ViewModels;
 using WhenToDig90.Views;
 using Xamarin.Forms;
@@ -28,10 +31,7 @@ namespace WhenToDig90
             MainPage = firstPage;
         }
 
-        public static Page GetMainPage()
-        {
-            return new Calendar();
-        }
+      
         protected override void OnStart()
         {
             // Handle when your app starts  

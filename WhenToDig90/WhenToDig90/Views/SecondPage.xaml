@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WhenToDig90.Views.SecondPage">
-  <Entry Placeholder="Please enter a parameter" Text="{Binding Paramter}" VerticalOptions="Center" HorizontalOptions="Center" />
-  <Button Text="Navigate to second page" Command="{Binding NavigateCommand}" VerticalOptions="Center" HorizontalOptions="Center" />
-</ContentPage>
+  <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+    <Entry Placeholder="Please enter a parameter" Text="{Binding Parameter}" />
+    <Button Text="Navigate to third page" Command="{Binding NavigationCommand}" />
+  </StackLayout>
+</ContentPage>  

@@ -1,6 +1,7 @@
-using GalaSoft.MvvmLight.Views;
+﻿using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
 using System.Diagnostics;
+
 using Xamarin.Forms;
 
 namespace WhenToDig90.Views
