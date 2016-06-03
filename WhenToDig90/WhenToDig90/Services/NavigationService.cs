@@ -87,6 +87,7 @@ namespace WhenToDig90.Services
                     }
     
                     var page = constructor.Invoke(parameters) as Page;
+             
                     _navigation.PushAsync(page);
                 }
                 else

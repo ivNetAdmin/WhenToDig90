@@ -59,6 +59,20 @@ namespace WhenToDig90
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
             "CA1822:MarkMembersAsStatic",
             Justification = "This non-static member is needed for data binding purposes.")]
+        public ReviewViewModel Review
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ReviewViewModel>();
+            }
+        }
+
+        /// <summary>
+        /// Gets the Review property.
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+            "CA1822:MarkMembersAsStatic",
+            Justification = "This non-static member is needed for data binding purposes.")]
         public PlantViewModel Plant
         {
             get

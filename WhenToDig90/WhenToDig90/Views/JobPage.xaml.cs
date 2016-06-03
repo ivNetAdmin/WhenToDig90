@@ -1,7 +1,4 @@
-﻿using GalaSoft.MvvmLight.Views;
-using Microsoft.Practices.ServiceLocation;
-using System.Diagnostics;
-
+﻿
 using Xamarin.Forms;
 
 namespace WhenToDig90.Views
@@ -14,9 +11,9 @@ namespace WhenToDig90.Views
             BindingContext = App.Locator.Job;
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-        }
+        //protected override void OnAppearing()
+        //{
+        //    base.OnAppearing();
+        //}
     }
 }

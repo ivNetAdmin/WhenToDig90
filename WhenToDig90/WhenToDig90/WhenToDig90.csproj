@@ -50,6 +50,7 @@
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModels\CalendarViewModel.cs" />
     <Compile Include="ViewModels\JobViewModel.cs" />
+    <Compile Include="ViewModels\PlantReviewModel.cs" />
     <Compile Include="ViewModels\ReviewViewModel.cs" />
     <Compile Include="Views\CalendarPage.xaml.cs">
       <DependentUpon>CalendarPage.xaml</DependentUpon>
@@ -57,8 +58,8 @@
     <Compile Include="Views\JobPage.xaml.cs">
       <DependentUpon>JobPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Plant.xaml.cs">
-      <DependentUpon>Plant.xaml</DependentUpon>
+    <Compile Include="Views\PlantPage.xaml.cs">
+      <DependentUpon>PlantPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ReviewPage.xaml.cs">
       <DependentUpon>ReviewPage.xaml</DependentUpon>
@@ -127,7 +128,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Plant.xaml">
+    <EmbeddedResource Include="Views\PlantPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
