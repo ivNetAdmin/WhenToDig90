@@ -10,6 +10,14 @@ namespace WhenToDig90.Views
             InitializeComponent();
             BindingContext = App.Locator.Calendar;
             NavigationPage.SetHasBackButton(this, false);
-        }      
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            var calendarGrid = this.FindByName<Grid>("CalendarGrid");
+            calendarGrid.Children.Add(new Label { Text = "Hello mum" },0,0);
+        }
     }
 }
