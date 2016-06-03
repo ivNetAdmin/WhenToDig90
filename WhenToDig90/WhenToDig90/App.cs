@@ -10,17 +10,22 @@ namespace WhenToDig90
 {
     public class App : Application
     {
+       private static Locator _locator;
+        public static Locator Locator { get { return _locator ?? (_locator = new Locator()); } }
+
         public App()
         {
-            MainPage = new NavigationPage(GetMainPage());
-        }
-        private static ViewModelLocator _locator;
-        public static ViewModelLocator Locator
-        {
-            get
-            {
-                return _locator ?? (_locator = new ViewModelLocator());
-            }
+            var nav = new NavigationService();
+            nav.Configure(Locator.FirstPage, typeof(FirstPage));
+            nav.Configure(Locator.SecondPage, typeof(SecondPage));
+            nav.Configure(Locator.ThirdPage, typeof(ThirdPage));
+            SimpleIoc.Default.Register<INavigationService>(() => nav);
+
+            var firstPage = new NavigationPage(new FirstPage());
+
+            nav.Initialize(firstPage);
+
+            MainPage = firstPage;
         }
 
         public static Page GetMainPage()
