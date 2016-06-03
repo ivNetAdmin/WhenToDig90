@@ -11,15 +11,6 @@
   </ContentPage.ToolbarItems>
   
   <ContentPage.Content>
-   <Grid x:Name="CalendarGrid">
-    <Grid.RowDefinitions>
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-    </Grid.RowDefinitions>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="*" />
-      <ColumnDefinition Width="*" />
-    </Grid.ColumnDefinitions>
-  </Grid>
+   <Grid x:Name="CalendarGrid" />
   </ContentPage.Content>
 </ContentPage>
