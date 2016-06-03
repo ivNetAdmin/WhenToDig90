@@ -26,8 +26,8 @@ namespace WhenToDig90.Views
             base.OnAppearing();
 
             var calendarGrid = this.FindByName<Grid>("CalendarGrid");
-            BuildCalendarNavigationBar(calendarGrid);
-            BuildCalendarHeaderBar(calendarGrid);
+            //BuildCalendarNavigationBar(calendarGrid);
+            //BuildCalendarHeaderBar(calendarGrid);
             BuildCalendar(calendarGrid);
         }
         
