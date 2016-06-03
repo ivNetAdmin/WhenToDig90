@@ -16,6 +16,7 @@
         <Grid>
           <Grid.RowDefinitions>
             <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
           </Grid.RowDefinitions>
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -26,11 +27,20 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
           </Grid.ColumnDefinitions>
+          
           <Button Text="<<" Grid.Row="0" Grid.Column="0" />
           <Button Text="<" Grid.Row="0" Grid.Column="1" />
           <Label Text="Month" Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" />
           <Button Text=">" Grid.Row="0" Grid.Column="5" />
           <Button Text=">>" Grid.Row="0" Grid.Column="6" />
+
+          <Label Text="Mo" Grid.Row="1" Grid.Column="0" />
+          <Label Text="Tu" Grid.Row="1" Grid.Column="1" />
+          <Label Text="We" Grid.Row="1" Grid.Column="2" />
+          <Label Text="Th" Grid.Row="1" Grid.Column="3" />
+          <Label Text="Fr" Grid.Row="1" Grid.Column="4" />
+          <Label Text="Sa" Grid.Row="1" Grid.Column="5" />
+          <Label Text="Su" Grid.Row="1" Grid.Column="6" />
         </Grid>
         <Grid x:Name="CalendarGrid" />
       </StackLayout.Children>
