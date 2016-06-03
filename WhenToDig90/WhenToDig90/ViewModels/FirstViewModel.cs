@@ -4,6 +4,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace WhenToDig90.ViewModels
 {
