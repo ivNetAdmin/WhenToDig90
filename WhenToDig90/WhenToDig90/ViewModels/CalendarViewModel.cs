@@ -17,8 +17,8 @@ namespace WhenToDig90.ViewModels
             if (navigationService == null) throw new ArgumentNullException("navigationService");
             _navigationService = navigationService;
 
-            NavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.SecondPage); });
-            JobNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.SecondPage); });
+            NavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.JobPage); });
+            JobNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.JobPage); });
         }
 
         public ImageSource CalendarIcon{ get { return ImageSource.FromFile("calendar.png"); } }

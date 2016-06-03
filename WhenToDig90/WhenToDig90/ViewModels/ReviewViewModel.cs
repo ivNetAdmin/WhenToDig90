@@ -6,12 +6,12 @@ using System.Windows.Input;
 
 namespace WhenToDig90.ViewModels
 {
-    public class ThirdViewModel:ViewModelBase
+    public class ReviewViewModel:ViewModelBase
     {
         private readonly INavigationService _navigationService;
         private string _parameterText;
 
-        public ThirdViewModel(INavigationService navigationService)
+        public ReviewViewModel(INavigationService navigationService)
         {
             if (navigationService == null) throw new ArgumentNullException("navigationService");
             _navigationService = navigationService;

@@ -15,16 +15,16 @@ namespace WhenToDig90
 
             // ViewModels
             SimpleIoc.Default.Register<CalendarViewModel>();
-            SimpleIoc.Default.Register<SecondViewModel>();
-            SimpleIoc.Default.Register<ThirdViewModel>();
+            SimpleIoc.Default.Register<JobViewModel>();
+            SimpleIoc.Default.Register<ReviewViewModel>();
         }
 
         public const string CalendarPage = "CalendarPage";
-        public const string SecondPage = "SecondPage";
-        public const string ThirdPage = "ThirdPage";
+        public const string JobPage = "JobPage";
+        public const string ReviewPage = "ReviewPage";
 
         /// <summary>
-        /// Gets the Main property.
+        /// Gets the Calendar property.
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
             "CA1822:MarkMembersAsStatic",
@@ -38,30 +38,30 @@ namespace WhenToDig90
         }
 
         /// <summary>
-        /// Gets the Second property.
+        /// Gets the Job property.
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
             "CA1822:MarkMembersAsStatic",
             Justification = "This non-static member is needed for data binding purposes.")]
-        public SecondViewModel Second
+        public JobViewModel Job
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<SecondViewModel>();
+                return ServiceLocator.Current.GetInstance<JobViewModel>();
             }
         }
 
         /// <summary>
-        /// Gets the third property.
+        /// Gets the Review property.
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
             "CA1822:MarkMembersAsStatic",
             Justification = "This non-static member is needed for data binding purposes.")]
-        public ThirdViewModel Third
+        public ReviewViewModel Review
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<ThirdViewModel>();
+                return ServiceLocator.Current.GetInstance<ReviewViewModel>();
             }
         }
     }

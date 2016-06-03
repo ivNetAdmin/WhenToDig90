@@ -6,12 +6,12 @@ using Xamarin.Forms;
 
 namespace WhenToDig90.Views
 {
-    public partial class SecondPage : ContentPage
+    public partial class JobPage : ContentPage
     {
-        public SecondPage()
+        public JobPage()
         {
             InitializeComponent();
-            BindingContext = App.Locator.Second;
+            BindingContext = App.Locator.Job;
         }
 
         protected override void OnAppearing()

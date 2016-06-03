@@ -20,8 +20,8 @@ namespace WhenToDig90
         {
             var nav = new NavigationService();
             nav.Configure(Locator.CalendarPage, typeof(CalendarPage));
-            nav.Configure(Locator.SecondPage, typeof(SecondPage));
-            nav.Configure(Locator.ThirdPage, typeof(ThirdPage));
+            nav.Configure(Locator.JobPage, typeof(JobPage));
+            nav.Configure(Locator.ReviewPage, typeof(ReviewPage));
             SimpleIoc.Default.Register<INavigationService>(() => nav);
 
             var firstPage = new NavigationPage(new CalendarPage());
