@@ -26,70 +26,7 @@ namespace WhenToDig90.Views
             base.OnAppearing();
 
             var calendarGrid = this.FindByName<Grid>("CalendarGrid");
-            //BuildCalendarNavigationBar(calendarGrid);
-            //BuildCalendarHeaderBar(calendarGrid);
             BuildCalendar(calendarGrid);
-        }
-        
-        private void BuildCalendarNavigationBar(Grid grid)
-        {
-            grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-
-            var month = _currentCallendarDate.ToString("MMM yyyy");
-
-            grid.Children.Add(new Button
-            {
-                Text = "<<",
-            }, 0, 0);
-            //((Button)grid.Children[grid.Children.Count - 1]).Clicked += CalendarNavOnButtonClicked;
-
-            grid.Children.Add(new Button
-            {
-                Text = "<"
-            }, 1, 0);
-            //((Button)grid.Children[grid.Children.Count - 1]).Clicked += CalendarNavOnButtonClicked;
-
-            grid.Children.Add(new Label
-            {
-                Text = month,
-                TextColor = Color.Silver,
-                BackgroundColor = Color.Black,
-                HorizontalTextAlignment = TextAlignment.Center,
-                VerticalTextAlignment = TextAlignment.Center,
-                HeightRequest = 40
-            }, 2, 0);
-
-            Grid.SetColumnSpan(grid.Children[grid.Children.Count - 1], 3);
-
-            grid.Children.Add(new Button
-            {
-                Text = ">"
-            }, 5, 0);
-            //((Button)grid.Children[grid.Children.Count - 1]).Clicked += CalendarNavOnButtonClicked;
-
-            grid.Children.Add(new Button
-            {
-                Text = ">>"
-            },6, 0);
-            //((Button)grid.Children[grid.Children.Count - 1]).Clicked += CalendarNavOnButtonClicked;
-        }
-
-        private void BuildCalendarHeaderBar(Grid grid)
-        {
-            grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-
-            var month = _currentCallendarDate.ToString("MMM yyyy");
-            for (var wd = 0; wd < _weekDays.Length; wd++)
-            {
-                grid.Children.Add(new Label
-                {
-                    Text = _weekDays[wd],
-                    TextColor = Color.Aqua,
-                    BackgroundColor = Color.Black,
-                    HorizontalTextAlignment = TextAlignment.Center,
-                    VerticalTextAlignment = TextAlignment.Center,
-                }, wd, 1);
-            }
         }
         
         private void BuildCalendar(Grid grid)
