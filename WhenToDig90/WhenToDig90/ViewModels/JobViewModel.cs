@@ -10,10 +10,15 @@ namespace WhenToDig90.ViewModels
     public class JobViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
-        public JobViewModel(INavigationService navigationService)
+        private readonly IJobService _jobService;
+        
+        public JobViewModel(INavigationService navigationService, IJobService jobService)
         {
             if (navigationService == null) throw new ArgumentNullException("navigationService");
+            if (jobService == null) throw new ArgumentNullException("jobService");
+            
             _navigationService = navigationService;
+            _jobService = jobService;
 
             CalendarNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.CalendarPage); });
             ReviewNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.ReviewPage); });
