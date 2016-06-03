@@ -17,11 +17,13 @@ namespace WhenToDig90
             SimpleIoc.Default.Register<CalendarViewModel>();
             SimpleIoc.Default.Register<JobViewModel>();
             SimpleIoc.Default.Register<ReviewViewModel>();
+            SimpleIoc.Default.Register<PlantViewModel>();
         }
 
         public const string CalendarPage = "CalendarPage";
         public const string JobPage = "JobPage";
         public const string ReviewPage = "ReviewPage";
+        public const string PlantPage = "PlantPage";
 
         /// <summary>
         /// Gets the Calendar property.
@@ -57,11 +59,11 @@ namespace WhenToDig90
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
             "CA1822:MarkMembersAsStatic",
             Justification = "This non-static member is needed for data binding purposes.")]
-        public ReviewViewModel Review
+        public PlantViewModel Plant
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<ReviewViewModel>();
+                return ServiceLocator.Current.GetInstance<PlantViewModel>();
             }
         }
     }
