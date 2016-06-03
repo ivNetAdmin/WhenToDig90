@@ -17,8 +17,9 @@ namespace WhenToDig90.ViewModels
             if (navigationService == null) throw new ArgumentNullException("navigationService");
             _navigationService = navigationService;
 
-            NavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.JobPage); });
             JobNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.JobPage); });
+            ReviewNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.ReviewPage); });
+            PlantNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.PlantPage); });
         }
 
         public ImageSource CalendarIcon{ get { return ImageSource.FromFile("calendar.png"); } }
@@ -26,7 +27,8 @@ namespace WhenToDig90.ViewModels
         public ImageSource ReviewIcon{ get { return ImageSource.FromFile("review_low.png"); } }
         public ImageSource PlantIcon{ get { return ImageSource.FromFile("plant_low.png"); } }
         
-        public ICommand NavigationCommand { get; set; }
         public ICommand JobNavigationCommand { get; set; }
+        public ICommand ReviewNavigationCommand { get; set; }
+        public ICommand PlantNavigationCommand { get; set; }
     }
 }
