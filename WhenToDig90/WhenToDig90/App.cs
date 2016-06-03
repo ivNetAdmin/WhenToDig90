@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using WhenToDig90.Services;
+using WhenToDig90.Services.Interfaces;
 using WhenToDig90.ViewModels;
 using WhenToDig90.Views;
 using Xamarin.Forms;
@@ -18,9 +19,10 @@ namespace WhenToDig90
 
         public App()
         {
-            //() => nav
-            SimpleIoc.Default.Register<IJobService>();
-            
+
+            var js = new JobService();
+            SimpleIoc.Default.Register<IJobService>(() => js);  
+
             var nav = new NavigationService();
             nav.Configure(Locator.CalendarPage, typeof(CalendarPage));
             nav.Configure(Locator.JobPage, typeof(JobPage));
