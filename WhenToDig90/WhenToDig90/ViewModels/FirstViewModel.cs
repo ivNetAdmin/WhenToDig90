@@ -9,9 +9,9 @@ namespace WhenToDig90.ViewModels
 {
     public class FirstViewModel : ViewModelBase
     {
-    private readonly INavigationService _navigationService;
+        private readonly INavigationService _navigationService;
     
-    public FirstViewModel(INavigationService navigationService)
+        public FirstViewModel(INavigationService navigationService)
         {
             if (navigationService == null) throw new ArgumentNullException("navigationService");
             _navigationService = navigationService;
@@ -19,6 +19,8 @@ namespace WhenToDig90.ViewModels
             NavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.SecondPage); });
         }
 
+        public ImageSource CalendarIcon{ get { return ImageSource.FromFile("calendar.png"); } }
+        
         public ICommand NavigationCommand { get; set; } 
     }
 }
