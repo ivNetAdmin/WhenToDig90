@@ -36,7 +36,7 @@
            -->
           <Button Text="&lt;&lt;" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" Clicked="CalendarClicked"/>
           <Button Text="&lt;" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" Clicked="CalendarClicked"/>
-          <Label Text="{Binding CurrentMonthYear-}" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+          <Label Text="{Binding CurrentMonthYear}" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
           <Button Text="&gt;" Grid.Row="0" Grid.Column="5" HorizontalOptions="Center" Clicked="CalendarClicked"/>
           <Button Text="&gt;&gt;" Grid.Row="0" Grid.Column="6" HorizontalOptions="Center" Clicked="CalendarClicked"/>
