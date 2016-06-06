@@ -42,8 +42,8 @@ namespace WhenToDig90.ViewModels
         {
             get { return _currentCallendarDate; }
             set {
-                //_currentCallendarDate = value;
-                //OnPropertyChanged();
+                _currentCallendarDate = value;
+                 RaisePropertyChanged (() => CurrentDate);
             }
         }
 
