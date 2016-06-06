@@ -1,47 +1,86 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using WhenToDig90.ViewModels;
 using Xamarin.Forms;
 
 namespace WhenToDig90.Views
 {
     public partial class CalendarPage : ContentPage
     {
-        private DateTime _currentCallendarDate;
         private string[] _weekDays;
-        
+
         public CalendarPage()
         {
             InitializeComponent();
             NavigationPage.SetHasBackButton(this, false);
             
-            BindingContext = App.Locator.Calendar;
-            _currentCallendarDate = App.Locator.Calendar.CurrentDate;
-
             _weekDays = new[] { "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su" };
+
+            BindingContext = App.Locator.Calendar;
            
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            var calendarGrid = this.FindByName<Grid>("CalendarGrid");
-            BuildCalendar(calendarGrid);
+            ShowCalendar();
         }
-        
-        private void BuildCalendar(Grid grid)
+
+        public void CalendarClicked(object sender, EventArgs e)
         {
-            grid.VerticalOptions = LayoutOptions.Fill;
-            
-            var month = _currentCallendarDate.ToString("MMM yyyy");
+            var currentCallendarDate = ((CalendarViewModel)BindingContext).CurrentDate;
+            var action = ((Button)sender).Text;
+
+            switch (action)
+            {
+                case "<<":
+                    ((CalendarViewModel)BindingContext).CurrentDate = currentCallendarDate.AddYears(-1);
+                    break;
+                case ">>":
+                    ((CalendarViewModel)BindingContext).CurrentDate = currentCallendarDate.AddYears(1);
+                    break;
+                case "<":
+                    ((CalendarViewModel)BindingContext).CurrentDate = currentCallendarDate.AddMonths(-1);
+                    break;
+                case ">":
+                    ((CalendarViewModel)BindingContext).CurrentDate = currentCallendarDate.AddMonths(1);
+                    break;
+            }
+            ShowCalendar();
+        }
+
+        private void ShowCalendar()
+        {
+            var calendarGrid = this.FindByName<Grid>("CalendarGrid");
+            calendarGrid.Children.Clear();
+            //  var grid = ((CalendarViewModel)BindingContext).CalendarGrid;
+
+            var grid = BuildCalendar();
+
+            foreach (var child in grid.Children)
+            {
+                calendarGrid.Children.Add(child);
+            }
+        }
+
+        private Grid BuildCalendar()
+        {
+            var grid = new Grid
+            {
+                VerticalOptions = LayoutOptions.Fill
+            };
+
+            var currentCallendarDate = ((CalendarViewModel)BindingContext).CurrentDate;
+
+            var month = currentCallendarDate.ToString("MMM yyyy");
             var fill = new int[] { 6, 0, 1, 2, 3, 4, 5 };
-            
-            var firstDayofMonth = new DateTime(_currentCallendarDate.Year, _currentCallendarDate.Month, 1).DayOfWeek;
-            var calendarStartDate = new DateTime(_currentCallendarDate.Year, _currentCallendarDate.Month, 1)
+
+            var firstDayofMonth = new DateTime(currentCallendarDate.Year, currentCallendarDate.Month, 1).DayOfWeek;
+            var calendarStartDate = new DateTime(currentCallendarDate.Year, currentCallendarDate.Month, 1)
                 .AddDays(-1 * (fill[(int)firstDayofMonth]));
 
-            var days = DateTime.DaysInMonth(_currentCallendarDate.Year, _currentCallendarDate.Month);
+            var days = DateTime.DaysInMonth(currentCallendarDate.Year, currentCallendarDate.Month);
 
             var rowCount = days + fill[(int)firstDayofMonth] > 35 ? 6 : 5;
 
@@ -56,15 +95,17 @@ namespace WhenToDig90.Views
                 grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                 BuildCalendarCells(grid, _weekDays, dates, r);
             }
+
+            return grid;
         }
-        
+
         private void BuildCalendarCells(
-            Grid grid, string[] weekDays, 
+            Grid grid, string[] weekDays,
             List<DateTime> dates, int r)
         {
-            bool lowlight = r == 0 ? true : false;            
+            bool lowlight = r == 0 ? true : false;
             for (var wd = 0; wd < weekDays.Length; wd++)
-            {                               
+            {
                 var dateIndex = (r) * weekDays.Length + wd;
                 var dateStr = dateIndex < dates.Count ? Convert.ToString(dates[dateIndex].Day.ToString("D2")) : string.Empty;
                 var today = ((DateTime)dates[dateIndex]).ToString("ddMMyyyy") == DateTime.Now.ToString("ddMMyyyy");
@@ -89,7 +130,7 @@ namespace WhenToDig90.Views
 
                 var backgroundImage = new Image()
                 {
-                //    Source = taskImage,
+                    //    Source = taskImage,
                     IsOpaque = true,
                     Opacity = 1.0,
                 };
@@ -119,7 +160,7 @@ namespace WhenToDig90.Views
                      Constraint.Constant(0));
 
                 grid.Children.Add(relativeLayout, wd, r);
-               
+
             }
         }
     }
