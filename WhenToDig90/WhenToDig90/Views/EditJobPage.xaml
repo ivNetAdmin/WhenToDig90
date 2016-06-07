@@ -8,21 +8,9 @@
       <StackLayout.Children>
         <TableView Intent="Form">
           <TableView.Root>
-            <TableSection Title="Test">     
-                <EntryCell Label="EntryCell"></EntryCell>
-                <TextCell Text="Test"></TextCell>
-                <ViewCell>
-                    <ViewCell.View>
-                        <StackLayout Orientation="Horizontal" >
-                        <BoxView Color="Red"></BoxView>
-                        <StackLayout>
-                            <Label Text="News Item 1"></Label>
-                            <Label Text="News URL 1"></Label>
-                        </StackLayout>
-                        <BoxView x:Name="boxView" Color="Blue" ></BoxView>
-                        </StackLayout>      
-                    </ViewCell.View>
-                </ViewCell>
+            <TableSection Title="Test">
+              <DatePicker/>
+                <EntryCell Label="Job" Placeholder="Enter job description"></EntryCell>
             </TableSection>
         </TableView.Root>
         </TableView>
