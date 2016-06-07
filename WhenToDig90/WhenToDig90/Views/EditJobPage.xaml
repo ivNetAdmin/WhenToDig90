@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             x:Class="WhenToDig90.Views.EditJobPage">
+             x:Class="WhenToDig90.Views.EditJobPage"
+             xmlns:custom="clr-namespace:WhenToDig90.Controls;assembly=WhenToDig90">
 
   <ContentPage.Content>
     <StackLayout>
@@ -16,7 +17,16 @@
           
           <Label Text="Job" Grid.Row="1" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>
           <Entry Placeholder="Enter Job Description"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="6"/>
-
+          
+          <Label Text="Type" Grid.Row="2" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>
+           <custom:BindablePicker
+                      Grid.Row="2"
+                        Grid.Column="1"
+                      Grid.ColumnSpan="6"
+                        ItemsSource="{Binding ContactTypes}"
+                        HorizontalOptions="FillAndExpand"
+                        HeightRequest="34"
+                        SelectedItem="{Binding CustomerContact.ContactType}" />
         </Grid>
         <Grid>
           <Button Text="Save" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start"/>

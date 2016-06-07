@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Controls\BindablePicker.cs" />
     <Compile Include="Data\Entities\BaseEntity.cs" />
     <Compile Include="Data\Entities\Frost.cs" />
     <Compile Include="Data\Entities\Job.cs" />

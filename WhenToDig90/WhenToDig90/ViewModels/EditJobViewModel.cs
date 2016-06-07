@@ -22,8 +22,13 @@ namespace WhenToDig90.ViewModels
             _jobService = jobService;
 
            CancelCommand = new RelayCommand(() => { _navigationService.GoBack(); });
+
+            ContactTypes = new[] { "Email", "Landline", "Mobile" };
         }
 
         public ICommand CancelCommand { get; set; }
+
+        public string[] ContactTypes { get; set; }
+
     }
 }
