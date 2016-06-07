@@ -8,7 +8,7 @@
       <StackLayout.Children>
         <Grid>
           <Button Text="Save" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start"/>
-          <Button Text="Cancel" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End" Command="{Binding CancelbCommand}"/>
+          <Button Text="Cancel" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End" Command="{Binding CancelCommand}"/>
         </Grid>
         </StackLayout.Children>
       </StackLayout>
