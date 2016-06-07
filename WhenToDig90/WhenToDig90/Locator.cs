@@ -18,12 +18,16 @@ namespace WhenToDig90
             SimpleIoc.Default.Register<JobViewModel>();
             SimpleIoc.Default.Register<ReviewViewModel>();
             SimpleIoc.Default.Register<PlantViewModel>();
+
+            SimpleIoc.Default.Register<EditJobViewModel>();
         }
 
         public const string CalendarPage = "CalendarPage";
         public const string JobPage = "JobPage";
         public const string ReviewPage = "ReviewPage";
         public const string PlantPage = "PlantPage";
+
+        public const string EditJobPage = "EditJobPage";
 
         /// <summary>
         /// Gets the Calendar property.
@@ -78,6 +82,20 @@ namespace WhenToDig90
             get
             {
                 return ServiceLocator.Current.GetInstance<PlantViewModel>();
+            }
+        }
+
+        /// <summary>
+        /// Gets the EditJob property.
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+            "CA1822:MarkMembersAsStatic",
+            Justification = "This non-static member is needed for data binding purposes.")]
+        public EditJobViewModel EditJob
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<EditJobViewModel>();
             }
         }
     }

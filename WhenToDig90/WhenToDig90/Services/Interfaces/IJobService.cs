@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using WhenToDig90.Data.Entities;
@@ -10,5 +11,6 @@ namespace WhenToDig90.Services.Interfaces
         Task Add(string name);
 
         Task<IList<Job>> GetAll();
+        Task<IList<Job>> GetJobsByMonth(DateTime date);
     }
 }

@@ -51,5 +51,15 @@ namespace WhenToDig90.Services
                 return await _repository.Get();
             }
         }
+
+        public async Task<IList<Job>> GetJobsByMonth(DateTime date)
+        {
+            using (await Locker.LockAsync())
+            {
+                var startDate = new DateTime(date.Year, date.Month, 1);
+                var endDate = startDate.AddMonths(1);
+                return await _repository.Get(predicate: x => x.Date >= startDate && x.Date < endDate, orderBy: x => x.Date);
+            }
+        }
     }
 }

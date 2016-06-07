@@ -11,45 +11,29 @@
   </ContentPage.ToolbarItems>
   
   <ContentPage.Content>
-    <StackLayout Spacing="5" Padding="10" VerticalOptions="Start">
+    <StackLayout>
       <StackLayout.Children>
-        <Grid VerticalOptions="Start">
-          <!--<Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-          </Grid.RowDefinitions>
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-          </Grid.ColumnDefinitions>-->
-
-          <!-- 
-           Command="{Binding LastYearCommand}"
-            Command="{Binding LastMonthCommand}"
-             Command="{Binding NextMonthCommand}"
-             Command="{Binding NextYearCommand}"
-           -->
+        <Grid>      
           <Button Text="&lt;&lt;" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" Clicked="CalendarClicked"/>
           <Button Text="&lt;" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" Clicked="CalendarClicked"/>
           <Label Text="{Binding CurrentMonthYear}" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-
           <Button Text="&gt;" Grid.Row="0" Grid.Column="5" HorizontalOptions="Center" Clicked="CalendarClicked"/>
           <Button Text="&gt;&gt;" Grid.Row="0" Grid.Column="6" HorizontalOptions="Center" Clicked="CalendarClicked"/>
-
-          <Label Text="Mo" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" TextColor="Aqua"/>
-          <Label Text="Tu" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" TextColor="Aqua"/>
-          <Label Text="We" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" TextColor="Aqua"/>
-          <Label Text="Th" Grid.Row="1" Grid.Column="3" HorizontalOptions="Center" TextColor="Aqua"/>
-          <Label Text="Fr" Grid.Row="1" Grid.Column="4" HorizontalOptions="Center" TextColor="Aqua"/>
-          <Label Text="Sa" Grid.Row="1" Grid.Column="5" HorizontalOptions="Center" TextColor="Aqua"/>
-          <Label Text="Su" Grid.Row="1" Grid.Column="6" HorizontalOptions="Center"/>
+        </Grid>
+        <Grid>
+          <Label Text="Mo" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" TextColor="Aqua"/>
+          <Label Text="Tu" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" TextColor="Aqua"/>
+          <Label Text="We" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" TextColor="Aqua"/>
+          <Label Text="Th" Grid.Row="0" Grid.Column="3" HorizontalOptions="Center" TextColor="Aqua"/>
+          <Label Text="Fr" Grid.Row="0" Grid.Column="4" HorizontalOptions="Center" TextColor="Aqua"/>
+          <Label Text="Sa" Grid.Row="0" Grid.Column="5" HorizontalOptions="Center" TextColor="Aqua"/>
+          <Label Text="Su" Grid.Row="0" Grid.Column="6" HorizontalOptions="Center"/>
         </Grid>        
-        <Grid x:Name="CalendarGrid" VerticalOptions="Start" />
+        <Grid x:Name="CalendarGrid" Padding="0, 0, 0, 2"/>
+        <Grid>
+          <Button Text="New" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" Command="{Binding NewJobCommand}"/>
+          <Button Text="Edit" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End"  Command="{Binding EditJobCommand}"/>
+        </Grid>
       </StackLayout.Children>
    </StackLayout>
   </ContentPage.Content>
