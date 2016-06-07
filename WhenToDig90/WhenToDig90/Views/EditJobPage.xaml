@@ -1,37 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              x:Class="WhenToDig90.Views.EditJobPage">
 
   <ContentPage.Content>
     <StackLayout>
       <StackLayout.Children>
-        <TableView Intent="Form">
-          <TableView.Root>
-            <TableSection Title="Test">
-              
-              <DatePicker VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}">
-               <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
-               <DatePicker.MinimumDate>
-                  <sys:DateTime x:FactoryMethod="Parse">
-                     <x:Arguments>
-                        <x:String>Jan 1 2000</x:String>
-                     </x:Arguments>
-                  </sys:DateTime>
-               </DatePicker.MinimumDate>
-               <DatePicker.MaximumDate>
-                  <sys:DateTime x:FactoryMethod="Parse">
-                     <x:Arguments>
-                        <x:String>Dec 31 2050</x:String>
-                     </x:Arguments>
-                  </sys:DateTime>
-               </DatePicker.MaximumDate>
-            </DatePicker>
-            
-                <EntryCell Label="Job" Placeholder="Enter job description"></EntryCell>
-            </TableSection>
-        </TableView.Root>
-        </TableView>
+        <Grid>
+          
+          <Label Text="Date" Grid.Row="0" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>
+          <DatePicker VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="6">
+            <DatePicker.Format>dd MMM yyyy</DatePicker.Format>
+          </DatePicker>
+          
+          <Label Text="Job" Grid.Row="1" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>
+          <Entry Placeholder="Enter Job Description"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="6"/>
+
+        </Grid>
         <Grid>
           <Button Text="Save" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start"/>
           <Button Text="Cancel" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End" Command="{Binding CancelCommand}"/>
