@@ -7,15 +7,24 @@
     <StackLayout>
       <StackLayout.Children>
         <TableView Intent="Form">
-          <TableRoot>
-            <TableSection Title="Job Form">
-              <ViewCell>
-                <StackLayout Orientation="Horizontal">
-                  <Entry Label ="Description" Placeholder="Job Description" />
-                </StackLayout>
-              </ViewCell>
+          <TableView.Root>
+            <TableSection Title="Test">     
+                <EntryCell Label="EntryCell"></EntryCell>
+                <TextCell Text="Test"></TextCell>
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Orientation="Horizontal" >
+                        <BoxView Color="Red"></BoxView>
+                        <StackLayout>
+                            <Label Text="News Item 1"></Label>
+                            <Label Text="News URL 1"></Label>
+                        </StackLayout>
+                        <BoxView x:Name="boxView" Color="Blue" ></BoxView>
+                        </StackLayout>      
+                    </ViewCell.View>
+                </ViewCell>
             </TableSection>
-          </TableRoot>
+        </TableView.Root>
         </TableView>
         <Grid>
           <Button Text="Save" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start"/>
