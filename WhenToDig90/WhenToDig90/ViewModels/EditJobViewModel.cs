@@ -9,14 +9,18 @@ namespace WhenToDig90.ViewModels
 {
     public class EditJobViewModel : ViewModelBase
     {
+        private readonly INavigationService _navigationService;
         private readonly IJobService _jobService;
 
-        public EditJobViewModel(IJobService jobService)
+        public EditJobViewModel(INavigationService navigationService, IJobService jobService)
         {          
+            if (navigationService == null) throw new ArgumentNullException("navigationService");
+            _navigationService = navigationService;
+            
             if (jobService == null) throw new ArgumentNullException("jobService");
             _jobService = jobService;
 
-           CancelCommand = new RelayCommand(() => { });
+           CancelCommand = new RelayCommand(() => { _navigationService.GioBack(); });
         }
 
         public ICommand CancelCommand { get; set; }
