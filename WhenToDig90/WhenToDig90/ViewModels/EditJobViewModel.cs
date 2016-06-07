@@ -1,6 +1,7 @@
 ﻿
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 using System;
 using System.Windows.Input;
 using WhenToDig90.Services.Interfaces;
@@ -20,7 +21,7 @@ namespace WhenToDig90.ViewModels
             if (jobService == null) throw new ArgumentNullException("jobService");
             _jobService = jobService;
 
-           CancelCommand = new RelayCommand(() => { _navigationService.GioBack(); });
+           CancelCommand = new RelayCommand(() => { _navigationService.GoBack(); });
         }
 
         public ICommand CancelCommand { get; set; }
