@@ -3,12 +3,12 @@ using Xamarin.Forms;
 
 namespace WhenToDig90.Views
 {
-    public partial class EditJobPage : ContentPage
+    public partial class JobEditPage : ContentPage
     {
-        public EditJobPage()
+        public JobEditPage()
         {
             InitializeComponent();
-            BindingContext = App.Locator.EditJob;
+            BindingContext = App.Locator.JobEdit;
         }
     }
 }

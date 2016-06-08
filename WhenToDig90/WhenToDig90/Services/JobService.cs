@@ -62,7 +62,7 @@ namespace WhenToDig90.Services
             }
         }
 
-        public async Task<Job> Save(DateTime jobDate, string jobType, string description, string plantName, string notes)
+        public async Task<int> Save(DateTime jobDate, string jobType, string description, string plantName, string notes)
         {
             var job = new Job
             {

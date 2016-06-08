@@ -32,8 +32,8 @@ namespace WhenToDig90.ViewModels
             ReviewNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.ReviewPage); });
             PlantNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.PlantPage); });
 
-            NewJobCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.EditJobPage); });
-            EditJobCommand = new RelayCommand(() => { });
+            NewJobCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.JobEditPage); });
+            JobEditCommand = new RelayCommand(() => { });
 
             _currentCallendarDate = DateTime.Now;
 
@@ -63,7 +63,7 @@ namespace WhenToDig90.ViewModels
         public ICommand PlantNavigationCommand { get; set; }
 
         public ICommand NewJobCommand { get; set; }
-        public ICommand EditJobCommand { get; set; }
+        public ICommand JobEditCommand { get; set; }
 
         //public ICommand LastYearCommand { get; set; }
         //public ICommand LastMonthCommand { get; set; }

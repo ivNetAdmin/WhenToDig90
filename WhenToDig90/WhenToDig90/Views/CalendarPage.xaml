@@ -32,7 +32,7 @@
         <Grid x:Name="CalendarGrid" Padding="0, 0, 0, 2"/>
         <Grid>
           <Button Text="New" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" Command="{Binding NewJobCommand}"/>
-          <Button Text="Edit" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End"  Command="{Binding EditJobCommand}"/>
+          <Button Text="Edit" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End"  Command="{Binding JobEditCommand}"/>
         </Grid>
       </StackLayout.Children>
    </StackLayout>

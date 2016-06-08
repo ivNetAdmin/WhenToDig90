@@ -8,12 +8,12 @@ using WhenToDig90.Services.Interfaces;
 
 namespace WhenToDig90.ViewModels
 {
-    public class EditJobViewModel : ViewModelBase
+    public class JobEditViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
         private readonly IJobService _jobService;
 
-        public EditJobViewModel(INavigationService navigationService, IJobService jobService)
+        public JobEditViewModel(INavigationService navigationService, IJobService jobService)
         {
             if (navigationService == null) throw new ArgumentNullException("navigationService");
             _navigationService = navigationService;

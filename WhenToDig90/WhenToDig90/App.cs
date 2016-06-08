@@ -29,7 +29,7 @@ namespace WhenToDig90
             nav.Configure(Locator.ReviewPage, typeof(ReviewPage));
             nav.Configure(Locator.PlantPage, typeof(PlantPage));
 
-            nav.Configure(Locator.EditJobPage, typeof(EditJobPage));
+            nav.Configure(Locator.JobEditPage, typeof(JobEditPage));
 
             SimpleIoc.Default.Register<INavigationService>(() => nav);
 
