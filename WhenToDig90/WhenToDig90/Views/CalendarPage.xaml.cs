@@ -18,8 +18,6 @@ namespace WhenToDig90.Views
             _weekDays = new[] { "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su" };
 
             BindingContext = App.Locator.Calendar;
-            
-            listView.ItemsSource = new [] { "a", "b", "c" };
            
         }
 
