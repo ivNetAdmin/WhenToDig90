@@ -61,5 +61,19 @@ namespace WhenToDig90.Services
                 return await _repository.Get(predicate: x => x.Date >= startDate && x.Date < endDate, orderBy: x => x.Date);
             }
         }
+
+        public async Task<Job> Save(DateTime jobDate, string jobType, string description, string plantName, string notes)
+        {
+            var job = new Job
+            {
+                Date = jobDate,
+                Type = 1,
+                Description = description,
+                Plant = plantName,
+                Notes = notes
+            };
+
+            return await _repository.Insert(job);
+        }
     }
 }

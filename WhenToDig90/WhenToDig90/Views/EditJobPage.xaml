@@ -11,25 +11,39 @@
         <Grid>
           
           <Label Text="Date" Grid.Row="0" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>
-          <DatePicker VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="6">
+          <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding JobDate}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="6">
             <DatePicker.Format>dd MMM yyyy</DatePicker.Format>
           </DatePicker>
           
           <Label Text="Job" Grid.Row="1" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>
-          <Entry Placeholder="Enter Job Description"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="6"/>
+          <Entry Placeholder="Enter Job Description"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="6" Text="{Binding Description}"/>
           
           <Label Text="Type" Grid.Row="2" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>
-           <custom:BindablePicker
-                      Grid.Row="2"
-                        Grid.Column="1"
-                      Grid.ColumnSpan="6"
-                        ItemsSource="{Binding ContactTypes}"
-                        HorizontalOptions="FillAndExpand"
-                        HeightRequest="34"
-                        SelectedItem="{Binding CustomerContact.ContactType}" />
+          <custom:BindablePicker
+            Grid.Row="2"
+            Grid.Column="1"
+            Grid.ColumnSpan="6"
+            ItemsSource="{Binding JobTypes}"
+            HorizontalOptions="FillAndExpand"
+            HeightRequest="34"
+            SelectedItem="{Binding JobType}" />
+          
+        <Label Text="Plant" Grid.Row="3" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>
+        <custom:BindablePicker
+          Grid.Row="3"
+          Grid.Column="1"
+          Grid.ColumnSpan="6"
+          ItemsSource="{Binding Plants}"
+          HorizontalOptions="FillAndExpand"
+          HeightRequest="34"
+          SelectedItem="{Binding PlantName}" />
+        
+        <Label Text="Notes" Grid.Row="4" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>
+        <Editor Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="6" Grid.RowSpan ="2" Text="{Binding Notes}"/>
+        
         </Grid>
         <Grid>
-          <Button Text="Save" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start"/>
+          <Button Text="Save" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" Command="{Binding SaveCommand}"/>
           <Button Text="Cancel" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End" Command="{Binding CancelCommand}"/>
         </Grid>
         </StackLayout.Children>
