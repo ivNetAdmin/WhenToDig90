@@ -34,18 +34,14 @@
           <Button Text="New" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" Command="{Binding NewJobCommand}"/>
           <Button Text="Edit" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End"  Command="{Binding JobEditCommand}"/>
         </Grid>
-       
-        <ListView ItemsSource="{x:Static local:NamedColor.All}">
-	    <ListView.ItemTemplate>
-	      <DataTemplate>
-	        <ViewCell>
-	          <ViewCell.View>
-	            <Label Text="{Binding FriendlyName}" />
-	          </ViewCell.View>
-	        </ViewCell>
-	      </DataTemplate>
-	    </ListView.ItemTemplate>
-	  </ListView>
+
+	<ListView x:Name="myListView" ItemsSource="{Binding Jobs}">
+	   <ListView.ItemTemplate>
+              <DataTemplate>
+                 <TextCell Text="{Binding Description}" />
+              </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
 		
       </StackLayout.Children>
    </StackLayout>
