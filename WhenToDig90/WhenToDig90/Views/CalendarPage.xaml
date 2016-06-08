@@ -35,10 +35,10 @@
           <Button Text="Edit" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End"  Command="{Binding JobEditCommand}"/>
         </Grid>
 
-	<ListView x:Name="myListView" ItemsSource="{Binding Jobs}">
+	<ListView ItemsSource="{Binding Jobs}">
 	   <ListView.ItemTemplate>
               <DataTemplate>
-                 <TextCell Text="{Binding Description}" />
+                 <TextCell Text="Cakes" />
               </DataTemplate>
           </ListView.ItemTemplate>
         </ListView>
