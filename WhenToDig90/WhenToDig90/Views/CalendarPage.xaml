@@ -35,7 +35,7 @@
           <Button Text="Edit" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End"  Command="{Binding JobEditCommand}"/>
         </Grid>
        
-        <ListView x:Name="listView" >
+        <ListView x:Name="listView" ItemsSource="{Binding Jobs}">
       		<ListView.ItemTemplate>
       			<DataTemplate>
       				<ViewCell>
