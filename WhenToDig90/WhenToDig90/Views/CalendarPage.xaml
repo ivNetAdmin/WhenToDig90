@@ -34,6 +34,9 @@
           <Button Text="New" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" Command="{Binding NewJobCommand}"/>
           <Button Text="Edit" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End"  Command="{Binding JobEditCommand}"/>
         </Grid>
+        <ListView ItemsSource="{Binding Jobs}" 
+          SelectedItem="{Binding objItemSelected}" x:Name="lst" 
+            RowHeight="35" HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
       </StackLayout.Children>
    </StackLayout>
   </ContentPage.Content>
