@@ -35,19 +35,17 @@
           <Button Text="Edit" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End"  Command="{Binding JobEditCommand}"/>
         </Grid>
        
-        <ListView x:Name="listView" ItemsSource="{Binding Jobs}">
-      		<ListView.ItemTemplate>
-      			<DataTemplate>
-      				<ViewCell>
-      					<StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
-      						<StackLayout Padding="5,0,0,0" VerticalOptions="StartAndExpand" Orientation="Vertical">
-      							<Label Text="Hello mum" VerticalTextAlignment="Center" FontSize="Medium" />
-      						</StackLayout>
-      					</StackLayout>
-      				</ViewCell>
-      			</DataTemplate>
-      		</ListView.ItemTemplate>
-      	</ListView>
+        <ListView ItemsSource="{x:Static local:NamedColor.All}">
+	    <ListView.ItemTemplate>
+	      <DataTemplate>
+	        <ViewCell>
+	          <ViewCell.View>
+	            <Label Text="{Binding FriendlyName}" />
+	          </ViewCell.View>
+	        </ViewCell>
+	      </DataTemplate>
+	    </ListView.ItemTemplate>
+	  </ListView>
 		
       </StackLayout.Children>
    </StackLayout>
