@@ -23,8 +23,10 @@ namespace WhenToDig90.ViewModels
 
             CancelCommand = new RelayCommand(() => { _navigationService.GoBack(); });
 
-            SaveCommand = new RelayCommand(() => {
-                var job =_jobService.Save(JobDate, JobType, Description, PlantName, Notes);             
+            SaveCommand = new RelayCommand(() =>
+            {
+                _jobService.Save(JobDate, JobType, Description, PlantName, Notes);
+                _navigationService.GoBack();
             });
 
             JobTypes = new[] { "Cultivate", "Sow", "Harvest" };
