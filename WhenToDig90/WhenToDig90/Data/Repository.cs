@@ -29,7 +29,7 @@ namespace WhenToDig90.Data
 
         public async Task<List<T>> Get()
         {
-            return await _connection.Table<T>().ToListAsync();
+            return await _connection.Table<T>().ToListAsync().ConfigureAwait(false);
         }
 
         public async Task<List<T>> Get<TValue>(Expression<Func<T, bool>> predicate = null, Expression<Func<T, TValue>> orderBy = null)
@@ -45,17 +45,17 @@ namespace WhenToDig90.Data
                 query = query.OrderBy<TValue>(orderBy);
             }
 
-            return await query.ToListAsync();
+            return await query.ToListAsync().ConfigureAwait(false);
         }
 
         public async Task<T> Get(int id)
         {
-            return await _connection.FindAsync<T>(id);
+            return await _connection.FindAsync<T>(id).ConfigureAwait(false);
         }
 
         public async Task<T> Get(Expression<Func<T, bool>> predicate)
         {
-            return await _connection.FindAsync<T>(predicate);
+            return await _connection.FindAsync<T>(predicate).ConfigureAwait(false);
         }
 
         public async Task<int> Insert(T entity)

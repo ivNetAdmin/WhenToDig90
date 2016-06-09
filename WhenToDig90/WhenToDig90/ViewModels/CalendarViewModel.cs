@@ -4,6 +4,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using WhenToDig90.Data.Entities;
@@ -18,7 +19,7 @@ namespace WhenToDig90.ViewModels
         private readonly IJobService _jobService;
         private DateTime _currentCallendarDate;
         private string[] _months = new [] { "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
-        private Task<IList<Job>> _jobs;
+        private IList<Job> _jobs;
 
         public CalendarViewModel(INavigationService navigationService, IJobService jobService)
         {
@@ -37,21 +38,38 @@ namespace WhenToDig90.ViewModels
 
             _currentCallendarDate = DateTime.Now;
 
-            _jobs = jobService.GetJobsByMonth(_currentCallendarDate);
-      }
+            _jobService.GetJobsByMonth((item, error) =>
+            {
+                if (error != null)
+                {
+                    return;
+                }
+                _jobs = item.Result;
+            }, _currentCallendarDate);
 
+            //_jobService.GetAll((item, error) =>
+            //{
+            //    if (error != null)
+            //    {
+            //        return;
+            //    }
+            //    _jobs = item.Result;
+            //});
+        }
+
+       
         public DateTime CurrentDate
         {
             get { return _currentCallendarDate; }
             set {
                 _currentCallendarDate = value;
-                _jobs = _jobService.GetJobsByMonth(_currentCallendarDate);
+                //_jobs = _jobService.GetJobsByMonth(_currentCallendarDate).Result;
                 RaisePropertyChanged (() => CurrentMonthYear);
             }
         }
 
         public string CurrentMonthYear { get { return string.Format("{0} {1}",_months[_currentCallendarDate.Month - 1], _currentCallendarDate.Year); } }
-        public IList<Job> Jobs { get { return _jobs.Result; } }
+        public IList<Job> Jobs { get { return _jobs; } }
 
         public ImageSource CalendarIcon{ get { return ImageSource.FromFile("calendar.png"); } }
         public ImageSource JobIcon{ get { return ImageSource.FromFile("job_low.png"); } }
@@ -64,11 +82,5 @@ namespace WhenToDig90.ViewModels
 
         public ICommand NewJobCommand { get; set; }
         public ICommand JobEditCommand { get; set; }
-
-        //public ICommand LastYearCommand { get; set; }
-        //public ICommand LastMonthCommand { get; set; }
-        //public ICommand NextMonthCommand { get; set; }
-        //public ICommand NextYearCommand { get; set; }
-
     }
 }
