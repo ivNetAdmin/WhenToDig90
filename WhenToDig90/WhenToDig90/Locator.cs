@@ -28,7 +28,7 @@ namespace WhenToDig90
         public const string PlantPage = "PlantPage";
 
         public const string JobEditPage = "JobEditPage";
-
+     
         /// <summary>
         /// Gets the Calendar property.
         /// </summary>

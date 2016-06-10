@@ -1,6 +1,7 @@
 ﻿
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Windows.Input;
@@ -26,6 +27,7 @@ namespace WhenToDig90.ViewModels
             SaveCommand = new RelayCommand(() =>
             {
                 _jobService.Save(JobDate, JobType, Description, PlantName, Notes);
+                Messenger.Default.Send(new GenericMessage<string>("cakes"));
                 _navigationService.GoBack();
             });
 
@@ -34,6 +36,8 @@ namespace WhenToDig90.ViewModels
             Plants = new[] { "Carrot", "Pea", "Bean" };
 
             JobDate = DateTime.Now;
+
+           // MessengerInstance.Send<NotificationMessage>(new NotificationMessage("notification message"));
         }
 
         public ICommand CancelCommand { get; set; }

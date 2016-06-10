@@ -30,7 +30,7 @@ namespace WhenToDig90
             nav.Configure(Locator.PlantPage, typeof(PlantPage));
 
             nav.Configure(Locator.JobEditPage, typeof(JobEditPage));
-
+      
             SimpleIoc.Default.Register<INavigationService>(() => nav);
 
             var firstPage = new NavigationPage(new CalendarPage());

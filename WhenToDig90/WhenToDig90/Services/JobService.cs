@@ -59,7 +59,7 @@ namespace WhenToDig90.Services
             var job = new Job
             {
                 Date = jobDate,
-                Type = 1,
+                Type = jobType,
                 Description = description,
                 Plant = plantName,
                 Notes = notes

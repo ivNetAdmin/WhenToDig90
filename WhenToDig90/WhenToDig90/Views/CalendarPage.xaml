@@ -13,7 +13,7 @@
   <ContentPage.Content>
     <StackLayout>
       <StackLayout.Children>
-        <Grid>      
+        <Grid>
           <Button Text="&lt;&lt;" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" Clicked="CalendarClicked"/>
           <Button Text="&lt;" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" Clicked="CalendarClicked"/>
           <Label Text="{Binding CurrentMonthYear}" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
@@ -28,7 +28,7 @@
           <Label Text="Fr" Grid.Row="0" Grid.Column="4" HorizontalOptions="Center" TextColor="Aqua"/>
           <Label Text="Sa" Grid.Row="0" Grid.Column="5" HorizontalOptions="Center" TextColor="Aqua"/>
           <Label Text="Su" Grid.Row="0" Grid.Column="6" HorizontalOptions="Center"/>
-        </Grid>        
+        </Grid>
         <Grid x:Name="CalendarGrid" Padding="0, 0, 0, 2"/>
         <Grid>
           <Button Text="New" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" Command="{Binding NewJobCommand}"/>
@@ -38,7 +38,11 @@
         <ListView ItemsSource="{Binding Path=Jobs}">
           <ListView.ItemTemplate>
             <DataTemplate>
-              <TextCell Text="Cakes" />
+              
+              <TextCell Text="{Binding Path=ShortDate}" />
+              <!--<TextCell Text="{Binding Path=Description}" />
+                <TextCell Text="{Binding Path=Type}" />-->
+             
             </DataTemplate>
           </ListView.ItemTemplate>
         </ListView>
