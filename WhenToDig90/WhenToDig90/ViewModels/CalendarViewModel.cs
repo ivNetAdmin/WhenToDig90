@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using WhenToDig90.Data.Entities;
+using WhenToDig90.Messages;
 using WhenToDig90.Services.Interfaces;
 using Xamarin.Forms;
 
@@ -24,7 +25,7 @@ namespace WhenToDig90.ViewModels
         public CalendarViewModel(INavigationService navigationService, IJobService jobService)
         {
             try
-            {
+            {              
                 if (navigationService == null) throw new ArgumentNullException("navigationService");
                 _navigationService = navigationService;
 
@@ -46,12 +47,21 @@ namespace WhenToDig90.ViewModels
 
                 GetJobsByMonth();
 
-                Messenger.Default.Register<GenericMessage<string>>(this, (message) =>
+                //DeleteAllJobs();
+               
+                //Messenger.Default.Register<GenericMessage<string>>(this, (message) =>
+                //{
+                //    GetJobsByMonth();
+                //    RaisePropertyChanged(() => Jobs);
+                //});
+
+                Messenger.Default.Register<EntityAdded<Job>>(this, (message) =>
                 {
                     GetJobsByMonth();
                     RaisePropertyChanged(() => Jobs);
                 });
 
+             
             }
             catch(Exception)
             {
@@ -118,6 +128,17 @@ namespace WhenToDig90.ViewModels
                 _jobs = item.Result;
             }, _currentCallendarDate);
         }
+
+
+        private void DeleteAllJobs()
+        {
+            foreach(var job in _jobs)
+            {
+                _jobService.Delete(job.ID);
+            }
+
+        }
+
     }
 }
 

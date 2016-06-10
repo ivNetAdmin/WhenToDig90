@@ -16,8 +16,16 @@ namespace WhenToDig90.Data.Entities
         public string ShortDate {
             get {
                 return Date.ToString("dd/MM");
+            }            
+        }
+
+        [Ignore]
+        public string TypeImage
+        {
+            get
+            {
+                return string.Format("{0}.png", this.Type.ToLowerInvariant());
             }
-            private set { }
         }
 
         public Job() { }

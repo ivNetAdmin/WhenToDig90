@@ -6,7 +6,7 @@
              xmlns:custom="clr-namespace:WhenToDig90.Controls;assembly=WhenToDig90">
 
   <ContentPage.Content>
-    <StackLayout>
+    <StackLayout Padding="10" Spacing="5">
       <StackLayout.Children>
         <Grid>
           
@@ -46,6 +46,9 @@
           <Button Text="Save" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" Command="{Binding SaveCommand}"/>
           <Button Text="Cancel" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End" Command="{Binding CancelCommand}"/>
         </Grid>
+
+        <Label TextColor ="Red" Text="{Binding Message}" Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"/>
+        
         </StackLayout.Children>
       </StackLayout>
     </ContentPage.Content>

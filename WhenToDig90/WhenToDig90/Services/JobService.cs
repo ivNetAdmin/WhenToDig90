@@ -44,6 +44,14 @@ namespace WhenToDig90.Services
             }
         }
 
+        public async Task Delete(int id)
+        {         
+            using (await Locker.LockAsync())
+            {                
+                await _repository.Delete(await _repository.Get(id));
+            }
+        }
+
         public async Task<IList<Job>> GetJobsByMonth(DateTime date)
         {
             using (await Locker.LockAsync())
@@ -75,7 +83,7 @@ namespace WhenToDig90.Services
         //        return await _repository.Get();
         //    }
         //}
-
+     
         public void GetAll(Action<Task<List<Job>>, Exception> callback)
         {
             var item = _repository.Get();
@@ -89,5 +97,6 @@ namespace WhenToDig90.Services
             var item = _repository.Get(predicate: x => x.Date >= startDate && x.Date < endDate, orderBy: x => x.Date);
             callback(item, null);
         }
+       
     }
 }

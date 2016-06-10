@@ -11,7 +11,7 @@
   </ContentPage.ToolbarItems>
   
   <ContentPage.Content>
-    <StackLayout>
+    <StackLayout Padding="10" Spacing="5">
       <StackLayout.Children>
         <Grid>
           <Button Text="&lt;&lt;" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" Clicked="CalendarClicked"/>
@@ -38,10 +38,16 @@
         <ListView ItemsSource="{Binding Path=Jobs}">
           <ListView.ItemTemplate>
             <DataTemplate>
-              
-              <TextCell Text="{Binding Path=ShortDate}" />
-              <!--<TextCell Text="{Binding Path=Description}" />
-                <TextCell Text="{Binding Path=Type}" />-->
+             
+                <ViewCell>
+                  <ViewCell.View>
+                    <StackLayout Orientation="Horizontal">
+                      <Image Source="{Binding Path=TypeImage}" />
+                      <Label Text="{Binding Path=ShortDate}" HorizontalOptions="End" VerticalOptions="Center" />
+                      <Label Text="{Binding Path=Description}" HorizontalOptions="Start" VerticalOptions="Center" />
+                    </StackLayout>
+                  </ViewCell.View>
+                </ViewCell>          
              
             </DataTemplate>
           </ListView.ItemTemplate>

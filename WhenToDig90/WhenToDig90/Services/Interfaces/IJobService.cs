@@ -10,11 +10,13 @@ namespace WhenToDig90.Services.Interfaces
     {
         Task Add(string name);
 
-        void GetAll(Action<Task<List<Job>>, Exception> callback);
+        Task Delete(int id);
 
+        void GetAll(Action<Task<List<Job>>, Exception> callback);
         void GetJobsByMonth(Action<Task<List<Job>>, Exception> callback, DateTime date);
 
-        Task<IList<Job>> GetJobsByMonth(DateTime date);
+      //  Task<IList<Job>> GetJobsByMonth(DateTime date);
         Task<int> Save(DateTime jobDate, string jobType, string description, string plantName, string notes);
+    
     }
 }
