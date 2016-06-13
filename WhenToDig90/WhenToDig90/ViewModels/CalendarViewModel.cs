@@ -37,7 +37,19 @@ namespace WhenToDig90.ViewModels
                 PlantNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.PlantPage); });
 
                 NewJobCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.JobEditPage); });
-                JobEditCommand = new RelayCommand(() => { });
+                JobEditCommand = new RelayCommand(() => {
+
+                    EntityEdit<Job> editMessage = new EntityEdit<Job>();                    
+                    Messenger.Default.Send(editMessage);
+
+                    _navigationService.NavigateTo(Locator.JobEditPage);
+
+                });
+
+                JobListTappedGesture = new RelayCommand(() =>
+                {
+                    var cakes = "";
+                });
 
                 //LoadedCommand = new RelayCommand(() => { var Cakes = ""; });
 
@@ -113,6 +125,7 @@ namespace WhenToDig90.ViewModels
         public ICommand NewJobCommand { get; set; }
         public ICommand JobEditCommand { get; set; }
 
+        public ICommand JobListTappedGesture { get; set; }
         //public ICommand LoadedCommand { get; set; }
 
 

@@ -39,7 +39,7 @@ namespace WhenToDig90.ViewModels
 
                 if (string.IsNullOrEmpty(Description) || string.IsNullOrEmpty(JobType))
                 {
-                    Message = "Yopu must enter a job description...";
+                    Message = "You must enter a job description...";
                 }
                 else
                 {
@@ -61,7 +61,12 @@ namespace WhenToDig90.ViewModels
 
             JobDate = DateTime.Now;
 
-           // MessengerInstance.Send<NotificationMessage>(new NotificationMessage("notification message"));
+            Messenger.Default.Register<EntityEdit<Job>>(this, (message) =>
+            {
+                var cakes = "";
+            });
+
+            // MessengerInstance.Send<NotificationMessage>(new NotificationMessage("notification message"));
         }
 
         //public ICommand TestDialogServiceCommand { get; set; }

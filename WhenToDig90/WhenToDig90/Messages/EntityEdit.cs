@@ -1,13 +1,13 @@
 ﻿
 namespace WhenToDig90.Messages
 {
-    public interface IEntityAdded<T> where T : class
+    public interface IEntityEdit<T> where T : class
     {
         string Message();
         void UpdateMessage(string message);
     }
 
-    public class EntityAdded<T> : IEntityAdded<T> where T : class
+    public class EntityEdit<T> : IEntityEdit<T> where T : class
     {
         private string _message = "Entity Added";
         public string Message()

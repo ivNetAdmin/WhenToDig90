@@ -40,9 +40,18 @@
             <DataTemplate>
              
                 <ViewCell>
+                  <!--<View.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="{Binding JobListTappedGesture}"/>
+                  </View.GestureRecognizers>-->
                   <ViewCell.View>
                     <StackLayout Orientation="Horizontal">
-                      <Image Source="{Binding Path=TypeImage}" />
+                      <Image Source="{Binding Path=TypeImage}" >
+                        <Image.GestureRecognizers>
+                          <TapGestureRecognizer
+                                  Tapped="JobListTappedGesture"
+                                  NumberOfTapsRequired="2" />
+                        </Image.GestureRecognizers>
+                      </Image>
                       <Label Text="{Binding Path=ShortDate}" HorizontalOptions="End" VerticalOptions="Center" />
                       <Label Text="{Binding Path=Description}" HorizontalOptions="Start" VerticalOptions="Center" />
                     </StackLayout>
