@@ -58,10 +58,10 @@ namespace WhenToDig90.ViewModels
                 });
 
              
-            }
-            catch(Exception)
+            }catch(Exception ex)
             {
-                
+                Message = ex.Message;
+                RaisePropertyChanged(() => Message);
             }
         }
         
@@ -88,18 +88,6 @@ namespace WhenToDig90.ViewModels
                 RaisePropertyChanged(() => Jobs);
             }
         }
-
-        //protected new IMessenger MessengerInstance
-        //{
-        //    get
-        //    {
-        //        return this._messengerInstance ?? Messenger.Default;
-        //    }
-        //    set
-        //    {
-        //        this._messengerInstance = value;
-        //    }
-        //}
 
         public string CurrentMonthYear { get { return string.Format("{0} {1}",_months[_currentCallendarDate.Month - 1], _currentCallendarDate.Year); } }
         public IList<Job> Jobs { get { return _jobs; } }        
@@ -130,18 +118,13 @@ namespace WhenToDig90.ViewModels
                 if (_jobItemSelected != value)
                 {
                     _jobItemSelected = value;
-                  //  EntityEdit<Job> editMessage = new EntityEdit<Job>();
-                    //editMessage.Value = value.ID;
-                    //Messenger.Default.Send<EntityEdit<Job>>(editMessage);
-
-                    //_navigationService.NavigateTo(Locator.JobEditPage);
-                  //  RaisePropertyChanged(() => JobItemSelected);
                 }
             }
         }
 
         private void GetJobsByMonth()
         {
+            try{
             _jobService.GetJobsByMonth((item, error) =>
             {
                 if (error != null)
@@ -150,27 +133,25 @@ namespace WhenToDig90.ViewModels
                 }
                 _jobs = item.Result;
             }, _currentCallendarDate);
+            }catch(Exception ex)
+            {
+                Message = ex.Message;
+                RaisePropertyChanged(() => Message);
+            }
         }
-
 
         private void DeleteAllJobs()
         {
+            try{
             foreach(var job in _jobs)
             {
                 _jobService.Delete(job.ID);
             }
-
+            }catch(Exception ex)
+            {
+                Message = ex.Message;
+                RaisePropertyChanged(() => Message);
+            }
         }
-
     }
 }
-
-
-//_jobService.GetAll((item, error) =>
-//{
-//    if (error != null)
-//    {
-//        return;
-//    }
-//    _jobs = item.Result;
-//});
