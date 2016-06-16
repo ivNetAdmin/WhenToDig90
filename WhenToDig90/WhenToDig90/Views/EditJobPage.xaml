@@ -8,7 +8,7 @@
   <ContentPage.Content>
     <StackLayout Padding="10" Spacing="5">
       <StackLayout.Children>
-        <Label Text="{Binding ErrorMessage}" HorizontalOptions="Center" VerticalOptions="Center"/>
+        
         <Grid>
           
           <Label Text="Date" Grid.Row="0" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>

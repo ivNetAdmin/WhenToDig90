@@ -129,16 +129,16 @@ namespace WhenToDig90.ViewModels
             }
         }
 
-        private string _errorMessage;
-        public string ErrorMessage
-        {
-            get { return _errorMessage; }
-            set
-            {
-                _errorMessage = value;
-                RaisePropertyChanged(() => ErrorMessage);
-            }
-        }
+        //private string _errorMessage;
+        //public string ErrorMessage
+        //{
+        //    get { return _errorMessage; }
+        //    set
+        //    {
+        //        _errorMessage = value;
+        //        RaisePropertyChanged(() => ErrorMessage);
+        //    }
+        //}
         
         internal static void ReceiveMessage(EntityEdit<Job> message)
         {
@@ -164,16 +164,17 @@ namespace WhenToDig90.ViewModels
         public void OnAppearing()
         {
             try{
-            var currentJob = _jobService.Get(_currentJobId);
+               var currentJob = _jobService.Get(_currentJobId).Result;
             // this.Description = currentJob.Result.Description;
             //if (currentJob != null)
             //{
-                _description = currentJob.Result.Description;
+                _description = currentJob.Description;
                 RaisePropertyChanged(() => Description);
             //}
             }catch(Exception ex)
             {
-                ErrorMessage = ex.Message;
+                Message = ex.Message;
+                RaisePropertyChanged(() => Message);
             }
         }
     }
