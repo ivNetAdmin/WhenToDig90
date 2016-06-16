@@ -108,7 +108,7 @@ namespace WhenToDig90.ViewModels
 
         public void OnAppearing()
         {
-            
+
             _jobService.Get((item, error) =>
             {
                 if (error != null)
@@ -117,25 +117,25 @@ namespace WhenToDig90.ViewModels
                     RaisePropertyChanged(() => Message);
                     return;
                 }
-                currentJob = item.Result;
-                
+                var currentJob = item.Result;
+
                 if (currentJob != null)
-            {
-                Description = currentJob.Description;
+                {
+                    Description = currentJob.Description;
 
-                RaisePropertyChanged(() => Description);
-            }
-            
+                    RaisePropertyChanged(() => Description);
+                }
+
             }, _currentJobId);
-            
-           // var currentJob = _jobService.Get(_currentJobId).Result;
-           // if (currentJob != null)
-           // {
-           //     Description = currentJob.Description;
 
-           //     RaisePropertyChanged(() => Description);
+            // var currentJob = _jobService.Get(_currentJobId).Result;
+            // if (currentJob != null)
+            // {
+            //     Description = currentJob.Description;
+
+            //     RaisePropertyChanged(() => Description);
             //}
-           
+
         }
     }
 }

@@ -52,15 +52,15 @@ namespace WhenToDig90.Services
             }
         }
 
-        public async Task<IList<Job>> GetJobsByMonth(DateTime date)
-        {
-            using (await Locker.LockAsync())
-            {
-                var startDate = new DateTime(date.Year, date.Month, 1);
-                var endDate = startDate.AddMonths(1);
-                return await _repository.Get(predicate: x => x.Date >= startDate && x.Date < endDate, orderBy: x => x.Date);
-            }
-        }
+        //public async Task<IList<Job>> GetJobsByMonth(DateTime date)
+        //{
+        //    using (await Locker.LockAsync())
+        //    {
+        //        var startDate = new DateTime(date.Year, date.Month, 1);
+        //        var endDate = startDate.AddMonths(1);
+        //        return await _repository.Get(predicate: x => x.Date >= startDate && x.Date < endDate, orderBy: x => x.Date);
+        //    }
+        //}
 
         public async Task<int> Save(DateTime jobDate, string jobType, string description, string plantName, string notes)
         {
@@ -75,15 +75,7 @@ namespace WhenToDig90.Services
 
             return await _repository.Insert(job);
         }
-
-        //public async Task<IList<Job>> GetAll()
-        //{
-        //    using (await Locker.LockAsync())
-        //    {
-        //        return await _repository.Get();
-        //    }
-        //}
-     
+  
         public void GetAll(Action<Task<List<Job>>, Exception> callback)
         {
             var item = _repository.Get();
@@ -98,12 +90,10 @@ namespace WhenToDig90.Services
             callback(item, null);
         }
 
-        public async Task<Job> Get(int id)
+        public void Get(Action<Task<Job>, Exception> callback, int id)
         {
-            using (await Locker.LockAsync())
-            {
-               return await _repository.Get(id);
-            }
+            var item = _repository.Get(id);
+            callback(item, null);
         }
     }
 }
