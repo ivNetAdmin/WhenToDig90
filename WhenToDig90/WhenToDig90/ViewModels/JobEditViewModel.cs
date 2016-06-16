@@ -71,13 +71,41 @@ namespace WhenToDig90.ViewModels
 
         public string[] Plants { get; set; }
         
-        public string JobType { get; set; }
+        private string _jobType;
+        public string JobType
+        {
+            get { return _jobType; }
+            set
+            {
+                _jobType = value;
+                RaisePropertyChanged(() => JobType);
+            }
+        }
 
-        public DateTime JobDate { get; set; }
+        private DateTime _jobDate;
+        public DateTime JobDate
+        {
+            get { return _jobDate; }
+            set
+            {
+                _jobDate = value;
+                RaisePropertyChanged(() => JobDate);
+            }
+        }
 
-        public string PlantName { get; set; }
+        private string _plantName;
+        public string PlantName
+        {
+            get { return _plantName; }
+            set
+            {
+                _plantName = value;
+                RaisePropertyChanged(() => PlantName);
+            }
+        }
 
-       private string _description;
+
+        private string _description;
         public string Description
         {
             get { return _description; }
@@ -88,7 +116,16 @@ namespace WhenToDig90.ViewModels
             }
         }
 
-        public string Notes { get; set; }
+        private string _notes;
+        public string Notes
+        {
+            get { return _notes; }
+            set
+            {
+                _notes = value;
+                RaisePropertyChanged(() => Notes);
+            }
+        }
 
         private string _message;
         public string Message
@@ -122,8 +159,21 @@ namespace WhenToDig90.ViewModels
                 if (currentJob != null)
                 {
                     Description = currentJob.Description;
-
                     RaisePropertyChanged(() => Description);
+
+                    PlantName = currentJob.Plant;
+                    RaisePropertyChanged(() => PlantName);
+
+                    JobType = currentJob.Type;
+                    RaisePropertyChanged(() => JobType);
+
+                    JobDate = currentJob.Date;
+                    RaisePropertyChanged(() => JobDate);
+
+                    Notes = currentJob.Notes;
+                    RaisePropertyChanged(() => Notes);
+
+
                 }
 
             }, _currentJobId);
