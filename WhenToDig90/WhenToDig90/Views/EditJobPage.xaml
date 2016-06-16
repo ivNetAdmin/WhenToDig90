@@ -48,7 +48,7 @@
           <Button Text="Cancel" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End" Command="{Binding CancelCommand}"/>
         </Grid>
 
-        <Label TextColor ="Red" Text="{Binding Message}" Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <Label TextColor ="Red" Text="{Binding Message}" HorizontalOptions="Center" VerticalOptions="Center"/>	
         
         </StackLayout.Children>
       </StackLayout>
