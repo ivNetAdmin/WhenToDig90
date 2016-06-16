@@ -61,7 +61,7 @@
             </DataTemplate>
           </ListView.ItemTemplate>
         </ListView>
-		
+	<Label TextColor ="Red" Text="{Binding Message}" HorizontalOptions="Center" VerticalOptions="Center"/>	
       </StackLayout.Children>
    </StackLayout>
   </ContentPage.Content>
