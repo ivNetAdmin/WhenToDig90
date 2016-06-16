@@ -41,9 +41,10 @@ namespace WhenToDig90.ViewModels
                 JobEditCommand = new RelayCommand(() => {
 
                     EntityEdit<Job> editMessage = new EntityEdit<Job>();
-                    editMessage.Value = value.ID;
+                    editMessage.Value = _jobItemSelected.ID;
                     Messenger.Default.Send<EntityEdit<Job>>(editMessage);
-                    
+
+                    _navigationService.NavigateTo(Locator.JobEditPage);
                 });
 
                 //JobListTappedGesture = new RelayCommand(() =>

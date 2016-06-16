@@ -16,24 +16,19 @@ namespace WhenToDig90.Views
             //base.Appearing += (object sender, EventArgs e) => {
             //    lifecycleHandler.OnAppearing();
             //};
-        }              
+        }
+
+        protected override void OnAppearing()
+        {
+            Context.OnAppearing();
+            base.OnAppearing();
+        }
+
+        private IPageLifeCycleEvents Context
+        {
+            get { return (IPageLifeCycleEvents)BindingContext; }
+        }
     }
     
-    protected override void OnAppearing()
-    {
-     Context.OnViewAppearing();
-    base.OnAppearing();
-   }
-
-    protected override void OnAppearing()
-  {
-    Context.OnViewAppearing();
-    base.OnAppearing();
-  }
-
-
-   private IPageLifeCycleEvents Context
-  {
-    get { return (IPageLifeCycleEvents)BindingContext; }
-  }
+   
 }
