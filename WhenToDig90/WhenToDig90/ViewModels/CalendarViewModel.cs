@@ -60,7 +60,7 @@ namespace WhenToDig90.ViewModels
 
                 GetJobsByMonth();
 
-                //DeleteAllJobs();
+                DeleteAllJobs();
                
                 //Messenger.Default.Register<GenericMessage<string>>(this, (message) =>
                 //{

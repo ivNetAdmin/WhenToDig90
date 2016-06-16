@@ -154,9 +154,11 @@ namespace WhenToDig90.ViewModels
         {
             var currentJob = _jobService.Get(_currentJobId);
             // this.Description = currentJob.Result.Description;
-
-            _description = currentJob.Result.Description;
-            RaisePropertyChanged(() => Description);
+            if (currentJob != null)
+            {
+                _description = currentJob.Result.Description;
+                RaisePropertyChanged(() => Description);
+            }
         }
     }
 }
