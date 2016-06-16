@@ -106,9 +106,6 @@ namespace WhenToDig90.ViewModels
         public ICommand NewJobCommand { get; set; }
         public ICommand JobEditCommand { get; set; }
 
-        //public ICommand JobListTappedGesture { get; set; }
-        //public ICommand LoadedCommand { get; set; }
-
         public Job JobItemSelected
         {
             get
@@ -126,33 +123,24 @@ namespace WhenToDig90.ViewModels
 
         private void GetJobsByMonth()
         {
-            try{
             _jobService.GetJobsByMonth((item, error) =>
             {
                 if (error != null)
                 {
+                    Message = error.Message;
+                    RaisePropertyChanged(() => Message);
                     return;
                 }
                 _jobs = item.Result;
             }, _currentCallendarDate);
-            }catch(Exception ex)
-            {
-                Message = ex.Message;
-                RaisePropertyChanged(() => Message);
-            }
         }
 
         private void DeleteAllJobs()
         {
-            try{
+          
             foreach(var job in _jobs)
             {
                 _jobService.Delete(job.ID);
-            }
-            }catch(Exception ex)
-            {
-                Message = ex.Message;
-                RaisePropertyChanged(() => Message);
             }
         }
     }
