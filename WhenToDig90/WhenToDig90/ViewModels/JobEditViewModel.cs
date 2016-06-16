@@ -113,6 +113,7 @@ namespace WhenToDig90.ViewModels
             if (currentJob != null)
             {
                 Description = currentJob.Description;
+
                 RaisePropertyChanged(() => Description);
             }
             //}catch(Exception ex)
