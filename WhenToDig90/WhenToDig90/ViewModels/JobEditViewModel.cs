@@ -11,11 +11,12 @@ using WhenToDig90.Services.Interfaces;
 
 namespace WhenToDig90.ViewModels
 {
-    public class JobEditViewModel : ViewModelBase
+    public class JobEditViewModel : ViewModelBase, IPageLifeCycleEvents
     {
         private readonly INavigationService _navigationService;
         private readonly IJobService _jobService;
-        private string _message;
+        
+        private static int _currentJobId;
         //private IDialogService _dialogService;
 
         //private string _jobType;
@@ -50,6 +51,11 @@ namespace WhenToDig90.ViewModels
                 }
             });
 
+            //Messenger.Default.Register<EntityEdit<Job>>(this, (message) =>
+            //{
+            //    ReceiveMessage(message);
+            //});
+
             //TestDialogServiceCommand = new RelayCommand(async () => {
             //    await _dialogService.ShowMessage("hello mum", "Title");
             //});
@@ -60,15 +66,17 @@ namespace WhenToDig90.ViewModels
             Plants = new[] { "Carrot", "Pea", "Bean" };
 
             JobDate = DateTime.Now;
+            //var cakes = _currentJobId;
 
-            Messenger.Default.Register<EntityEdit<Job>>(this, (message) =>
-            {
-                var cakes = "";
-            });
+           // var currentJob = _jobService.Get(_currentJobId);
+           //// this.Description = currentJob.Result.Description;
+
+           // _description = currentJob.Result.Description;
+           // RaisePropertyChanged(() => Description);
 
             // MessengerInstance.Send<NotificationMessage>(new NotificationMessage("notification message"));
         }
-
+      
         //public ICommand TestDialogServiceCommand { get; set; }
 
         public ICommand CancelCommand { get; set; }
@@ -95,10 +103,22 @@ namespace WhenToDig90.ViewModels
 
         public string PlantName { get; set; }
 
-        public string Description { get; set; }
+        //public string Description { get; set; }
+
+        private string _description;
+        public string Description
+        {
+            get { return _description; }
+            set
+            {
+                _description = value;
+                RaisePropertyChanged(() => Description);
+            }
+        }
 
         public string Notes { get; set; }
-     
+
+        private string _message;
         public string Message
         {
             get { return _message; }
@@ -109,5 +129,34 @@ namespace WhenToDig90.ViewModels
             }
         }
 
+        internal static void ReceiveMessage(EntityEdit<Job> message)
+        {
+
+            //var job = _jobService.GetAll();
+
+            //_description = message.Value.ToString();
+            //RaisePropertyChanged(() => Description);
+            _currentJobId = message.Value;
+        }
+
+
+        //private object ReceiveMessage(EntityEdit<Job> message)
+        //{
+
+        //    _description = message.Value.ToString();
+        //    RaisePropertyChanged(() => Description);
+
+        //    _currentJobId = message.Value;
+        //    return null;
+        //}
+
+        public void OnAppearing()
+        {
+            var currentJob = _jobService.Get(_currentJobId);
+            // this.Description = currentJob.Result.Description;
+
+            _description = currentJob.Result.Description;
+            RaisePropertyChanged(() => Description);
+        }
     }
 }

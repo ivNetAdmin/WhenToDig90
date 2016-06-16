@@ -55,6 +55,7 @@
     <Compile Include="Services\JobService.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModels\CalendarViewModel.cs" />
+    <Compile Include="ViewModels\IPageLifeCycleEvents.cs" />
     <Compile Include="ViewModels\JobEditViewModel.cs" />
     <Compile Include="ViewModels\JobViewModel.cs" />
     <Compile Include="ViewModels\PlantReviewModel.cs" />

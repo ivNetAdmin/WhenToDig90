@@ -3,21 +3,21 @@ namespace WhenToDig90.Messages
 {
     public interface IEntityEdit<T> where T : class
     {
-        string Message();
-        void UpdateMessage(string message);
+        int Value { get; set; }
     }
 
     public class EntityEdit<T> : IEntityEdit<T> where T : class
     {
-        private string _message = "Entity Added";
-        public string Message()
-        {
-            return _message;
-        }
+        public int Value { get; set; }
+        //private string _message = "Entity Added";
+        //public string Message()
+        //{
+        //    return _message;
+        //}
 
-        public void UpdateMessage(string message)
-        {
-            _message = message;
-        }
+        //public void UpdateMessage(string message)
+        //{
+        //    _message = message;
+        //}
     }
 }

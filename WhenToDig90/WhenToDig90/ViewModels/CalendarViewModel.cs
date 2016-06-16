@@ -21,6 +21,7 @@ namespace WhenToDig90.ViewModels
         private DateTime _currentCallendarDate;
         private string[] _months = new [] { "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
         private IList<Job> _jobs;
+        private Job _jobItemSelected;
 
         public CalendarViewModel(INavigationService navigationService, IJobService jobService)
         {
@@ -46,10 +47,10 @@ namespace WhenToDig90.ViewModels
 
                 });
 
-                JobListTappedGesture = new RelayCommand(() =>
-                {
-                    var cakes = "";
-                });
+                //JobListTappedGesture = new RelayCommand(() =>
+                //{
+                //    var cakes = "";
+                //});
 
                 //LoadedCommand = new RelayCommand(() => { var Cakes = ""; });
 
@@ -111,7 +112,7 @@ namespace WhenToDig90.ViewModels
         //}
 
         public string CurrentMonthYear { get { return string.Format("{0} {1}",_months[_currentCallendarDate.Month - 1], _currentCallendarDate.Year); } }
-        public IList<Job> Jobs { get { return _jobs; } }
+        public IList<Job> Jobs { get { return _jobs; } }        
 
         public ImageSource CalendarIcon{ get { return ImageSource.FromFile("calendar.png"); } }
         public ImageSource JobIcon{ get { return ImageSource.FromFile("job_low.png"); } }
@@ -125,10 +126,29 @@ namespace WhenToDig90.ViewModels
         public ICommand NewJobCommand { get; set; }
         public ICommand JobEditCommand { get; set; }
 
-        public ICommand JobListTappedGesture { get; set; }
+        //public ICommand JobListTappedGesture { get; set; }
         //public ICommand LoadedCommand { get; set; }
 
+        public Job JobItemSelected
+        {
+            get
+            {
+                return _jobItemSelected;
+            }
+            set
+            {
+                if (_jobItemSelected != value)
+                {
+                    _jobItemSelected = value;
+                    EntityEdit<Job> editMessage = new EntityEdit<Job>();
+                    editMessage.Value = value.ID;
+                    Messenger.Default.Send<EntityEdit<Job>>(editMessage);
 
+                    _navigationService.NavigateTo(Locator.JobEditPage);
+                  //  RaisePropertyChanged(() => JobItemSelected);
+                }
+            }
+        }
 
         private void GetJobsByMonth()
         {

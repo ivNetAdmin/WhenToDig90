@@ -35,7 +35,7 @@
           <Button Text="Edit" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End"  Command="{Binding JobEditCommand}"/>
         </Grid>
 
-        <ListView ItemsSource="{Binding Path=Jobs}">
+        <ListView ItemsSource="{Binding Path=Jobs}" SelectedItem="{Binding Path=JobItemSelected}">
           <ListView.ItemTemplate>
             <DataTemplate>
              
@@ -45,13 +45,13 @@
                   </View.GestureRecognizers>-->
                   <ViewCell.View>
                     <StackLayout Orientation="Horizontal">
-                      <Image Source="{Binding Path=TypeImage}" >
-                        <Image.GestureRecognizers>
+                      <Image Source="{Binding Path=TypeImage}" />
+                        <!--<Image.GestureRecognizers>
                           <TapGestureRecognizer
-                                  Tapped="JobListTappedGesture"
+                                  Tapped="{Binding JobListTappedGesture}"
                                   NumberOfTapsRequired="2" />
                         </Image.GestureRecognizers>
-                      </Image>
+                      </Image>-->
                       <Label Text="{Binding Path=ShortDate}" HorizontalOptions="End" VerticalOptions="Center" />
                       <Label Text="{Binding Path=Description}" HorizontalOptions="Start" VerticalOptions="Center" />
                     </StackLayout>

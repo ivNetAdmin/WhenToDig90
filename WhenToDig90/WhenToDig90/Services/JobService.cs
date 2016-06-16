@@ -97,6 +97,13 @@ namespace WhenToDig90.Services
             var item = _repository.Get(predicate: x => x.Date >= startDate && x.Date < endDate, orderBy: x => x.Date);
             callback(item, null);
         }
-       
+
+        public async Task<Job> Get(int id)
+        {
+            using (await Locker.LockAsync())
+            {
+               return await _repository.Get(id);
+            }
+        }
     }
 }

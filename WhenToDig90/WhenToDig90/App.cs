@@ -1,9 +1,12 @@
 ﻿using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WhenToDig90.Data.Entities;
+using WhenToDig90.Messages;
 using WhenToDig90.Services;
 using WhenToDig90.Services.Interfaces;
 using WhenToDig90.ViewModels;
@@ -32,6 +35,11 @@ namespace WhenToDig90
             nav.Configure(Locator.JobEditPage, typeof(JobEditPage));
       
             SimpleIoc.Default.Register<INavigationService>(() => nav);
+
+            Messenger.Default.Register<EntityEdit<Job>>(this, (message) =>
+            {
+                JobEditViewModel.ReceiveMessage(message);
+            });
 
             var firstPage = new NavigationPage(new CalendarPage());
 
