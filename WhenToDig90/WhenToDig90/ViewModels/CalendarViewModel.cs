@@ -17,8 +17,6 @@ namespace WhenToDig90.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IJobService _jobService;
-      //  private IMessenger _messengerInstance;
-        private DateTime _currentCallendarDate;
         private string[] _months = new [] { "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
         private IList<Job> _jobs;
         private Job _jobItemSelected;
@@ -47,27 +45,12 @@ namespace WhenToDig90.ViewModels
                     _navigationService.NavigateTo(Locator.JobEditPage);
                 });
 
-                //JobListTappedGesture = new RelayCommand(() =>
-                //{
-                //    var cakes = "";
-                //});
-
-                //LoadedCommand = new RelayCommand(() => { var Cakes = ""; });
-
                 _currentCallendarDate = DateTime.Now;
-
-                //  MessengerInstance.Register<NotificationMessage<string>>(this, NotifyMe);               
 
                 GetJobsByMonth();
 
-                DeleteAllJobs();
+                //DeleteAllJobs();
                
-                //Messenger.Default.Register<GenericMessage<string>>(this, (message) =>
-                //{
-                //    GetJobsByMonth();
-                //    RaisePropertyChanged(() => Jobs);
-                //});
-
                 Messenger.Default.Register<EntityAdded<Job>>(this, (message) =>
                 {
                     GetJobsByMonth();
@@ -81,12 +64,19 @@ namespace WhenToDig90.ViewModels
                 
             }
         }
-
-        //private void NotifyMe(NotificationMessage<string> obj)
-        //{
-        //    var cakes = obj;
-        //}
-
+        
+        private string _message;
+        public string Message
+        {
+            get { return _message; }
+            set
+            {
+                _message = value;
+                RaisePropertyChanged(() => Message);
+            }
+        }
+        
+        private DateTime _currentCallendarDate;
         public DateTime CurrentDate
         {
             get { return _currentCallendarDate; }
