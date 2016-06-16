@@ -40,11 +40,10 @@ namespace WhenToDig90.ViewModels
                 NewJobCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.JobEditPage); });
                 JobEditCommand = new RelayCommand(() => {
 
-                    EntityEdit<Job> editMessage = new EntityEdit<Job>();                    
-                    Messenger.Default.Send(editMessage);
-
-                    _navigationService.NavigateTo(Locator.JobEditPage);
-
+                    EntityEdit<Job> editMessage = new EntityEdit<Job>();
+                    editMessage.Value = value.ID;
+                    Messenger.Default.Send<EntityEdit<Job>>(editMessage);
+                    
                 });
 
                 //JobListTappedGesture = new RelayCommand(() =>
@@ -140,11 +139,11 @@ namespace WhenToDig90.ViewModels
                 if (_jobItemSelected != value)
                 {
                     _jobItemSelected = value;
-                    EntityEdit<Job> editMessage = new EntityEdit<Job>();
-                    editMessage.Value = value.ID;
-                    Messenger.Default.Send<EntityEdit<Job>>(editMessage);
+                  //  EntityEdit<Job> editMessage = new EntityEdit<Job>();
+                    //editMessage.Value = value.ID;
+                    //Messenger.Default.Send<EntityEdit<Job>>(editMessage);
 
-                    _navigationService.NavigateTo(Locator.JobEditPage);
+                    //_navigationService.NavigateTo(Locator.JobEditPage);
                   //  RaisePropertyChanged(() => JobItemSelected);
                 }
             }
