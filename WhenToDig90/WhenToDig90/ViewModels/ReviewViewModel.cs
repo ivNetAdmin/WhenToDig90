@@ -13,12 +13,18 @@ namespace WhenToDig90.ViewModels
 
         public ReviewViewModel(INavigationService navigationService)
         {
+            try{
             if (navigationService == null) throw new ArgumentNullException("navigationService");
             _navigationService = navigationService;
 
             CalendarNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.CalendarPage); });
             JobNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.JobPage); });
             PlantNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.PlantPage); });
+            }catch(Exception ex)
+            {
+                Message = ex.Message;
+                RaisePropertyChanged(() => Message);
+            }
         }
 
         public ImageSource CalendarIcon { get { return ImageSource.FromFile("calendar_low.png"); } }
@@ -29,5 +35,16 @@ namespace WhenToDig90.ViewModels
         public ICommand CalendarNavigationCommand { get; set; }
         public ICommand JobNavigationCommand { get; set; }
         public ICommand PlantNavigationCommand { get; set; }
+        
+        private string _message;
+        public string Message
+        {
+            get { return _message; }
+            set
+            {
+                _message = value;
+                RaisePropertyChanged(() => Message);
+            }
+        }
     }
 }
