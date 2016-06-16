@@ -18,8 +18,6 @@ namespace WhenToDig90.Views
             _weekDays = new[] { "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su" };
 
             BindingContext = App.Locator.Calendar;
-
-           
         }
 
         protected override void OnAppearing()
@@ -55,8 +53,7 @@ namespace WhenToDig90.Views
         {
             var calendarGrid = this.FindByName<Grid>("CalendarGrid");
             calendarGrid.Children.Clear();
-            //  var grid = ((CalendarViewModel)BindingContext).CalendarGrid;
-
+        
             var grid = BuildCalendar();
 
             foreach (var child in grid.Children)
@@ -110,8 +107,7 @@ namespace WhenToDig90.Views
                 var dateIndex = (r) * weekDays.Length + wd;
                 var dateStr = dateIndex < dates.Count ? Convert.ToString(dates[dateIndex].Day.ToString("D2")) : string.Empty;
                 var today = ((DateTime)dates[dateIndex]).ToString("ddMMyyyy") == DateTime.Now.ToString("ddMMyyyy");
-                //var taskImage = GetTaskImage(dates[dateIndex]);
-
+    
                 if (dateStr == "01")
                 {
                     if (lowlight == true)
@@ -131,8 +127,7 @@ namespace WhenToDig90.Views
 
                 var backgroundImage = new Image()
                 {
-                    //    Source = taskImage,
-                    IsOpaque = true,
+                     IsOpaque = true,
                     Opacity = 1.0,
                 };
 
@@ -142,11 +137,6 @@ namespace WhenToDig90.Views
                     TextColor = lowlight == true ? Color.FromRgb(51, 51, 51) : today ? Color.Aqua : Color.Silver,
                     BackgroundColor = Color.Black//,
                 };
-
-                //label.GestureRecognizers.Add(new TapGestureRecognizer
-                //{
-                //    Command = new Command(() => OnLabelClicked(dates[dateIndex])),
-                //});
 
                 relativeLayout.Children.Add(
                     backgroundImage,
