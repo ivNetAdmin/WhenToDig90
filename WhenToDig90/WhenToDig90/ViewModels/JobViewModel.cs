@@ -15,6 +15,7 @@ namespace WhenToDig90.ViewModels
         
         public JobViewModel(INavigationService navigationService, IJobService jobService)
         {
+            try{
             if (navigationService == null) throw new ArgumentNullException("navigationService");
             if (jobService == null) throw new ArgumentNullException("jobService");
             
@@ -24,6 +25,11 @@ namespace WhenToDig90.ViewModels
             CalendarNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.CalendarPage); });
             ReviewNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.ReviewPage); });
             PlantNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.PlantPage); });
+            }catch(Exception ex)
+            {
+                Message = ex.Message;
+                RaisePropertyChanged(() => Message);
+            }
         }
 
         public ImageSource CalendarIcon { get { return ImageSource.FromFile("calendar_low.png"); } }
@@ -34,5 +40,16 @@ namespace WhenToDig90.ViewModels
         public ICommand CalendarNavigationCommand { get; set; }
         public ICommand ReviewNavigationCommand { get; set; }
         public ICommand PlantNavigationCommand { get; set; }
+        
+        private string _message;
+        public string Message
+        {
+            get { return _message; }
+            set
+            {
+                _message = value;
+                RaisePropertyChanged(() => Message);
+            }
+        }
     }
 }
