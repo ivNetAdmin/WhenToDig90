@@ -15,14 +15,11 @@ namespace WhenToDig90.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IJobService _jobService;
-        
         private static int _currentJobId;
-        //private IDialogService _dialogService;
-
-        //private string _jobType;
-
+   
         public JobEditViewModel(INavigationService navigationService, IJobService jobService)
         {
+            try{
             if (navigationService == null) throw new ArgumentNullException("navigationService");
             _navigationService = navigationService;
 
@@ -37,28 +34,20 @@ namespace WhenToDig90.ViewModels
             SaveCommand = new RelayCommand(() =>
             {
                 Message = string.Empty;
+                RaisePropertyChanged(() => Message)
 
                 if (string.IsNullOrEmpty(Description) || string.IsNullOrEmpty(JobType))
                 {
                     Message = "You must enter a job description...";
+                    RaisePropertyChanged(() => Message)
                 }
                 else
                 {
                     _jobService.Save(JobDate, JobType, Description, PlantName, Notes);
-                    //Messenger.Default.Send(new GenericMessage<string>("cakes"));
                     Messenger.Default.Send(new EntityAdded<Job>());
                     _navigationService.GoBack();
                 }
             });
-
-            //Messenger.Default.Register<EntityEdit<Job>>(this, (message) =>
-            //{
-            //    ReceiveMessage(message);
-            //});
-
-            //TestDialogServiceCommand = new RelayCommand(async () => {
-            //    await _dialogService.ShowMessage("hello mum", "Title");
-            //});
 
             JobTypes = new[] { "Cultivate", "Sow", "Harvest" };
             JobType = "Cultivate";
@@ -66,19 +55,14 @@ namespace WhenToDig90.ViewModels
             Plants = new[] { "Carrot", "Pea", "Bean" };
 
             JobDate = DateTime.Now;
-            //var cakes = _currentJobId;
-
-           // var currentJob = _jobService.Get(_currentJobId);
-           //// this.Description = currentJob.Result.Description;
-
-           // _description = currentJob.Result.Description;
-           // RaisePropertyChanged(() => Description);
-
-            // MessengerInstance.Send<NotificationMessage>(new NotificationMessage("notification message"));
+            
+            }catch(Exception ex)
+            {
+                Message = ex.Message;
+                RaisePropertyChanged(() => Message);
+            }
         }
       
-        //public ICommand TestDialogServiceCommand { get; set; }
-
         public ICommand CancelCommand { get; set; }
 
         public ICommand SaveCommand { get; set; }
@@ -89,23 +73,11 @@ namespace WhenToDig90.ViewModels
         
         public string JobType { get; set; }
 
-        //public string JobType
-        //{
-        //    get { return _jobType; }
-        //    set
-        //    {
-        //        _jobType = value;
-        //       // RaisePropertyChanged(() => JobType);
-        //    }
-        //}
-
         public DateTime JobDate { get; set; }
 
         public string PlantName { get; set; }
 
-        //public string Description { get; set; }
-
-        private string _description;
+       private string _description;
         public string Description
         {
             get { return _description; }
@@ -129,48 +101,20 @@ namespace WhenToDig90.ViewModels
             }
         }
 
-        //private string _errorMessage;
-        //public string ErrorMessage
-        //{
-        //    get { return _errorMessage; }
-        //    set
-        //    {
-        //        _errorMessage = value;
-        //        RaisePropertyChanged(() => ErrorMessage);
-        //    }
-        //}
-        
         internal static void ReceiveMessage(EntityEdit<Job> message)
         {
-
-            //var job = _jobService.GetAll();
-
-            //_description = message.Value.ToString();
-            //RaisePropertyChanged(() => Description);
             _currentJobId = message.Value;
         }
-
-
-        //private object ReceiveMessage(EntityEdit<Job> message)
-        //{
-
-        //    _description = message.Value.ToString();
-        //    RaisePropertyChanged(() => Description);
-
-        //    _currentJobId = message.Value;
-        //    return null;
-        //}
 
         public void OnAppearing()
         {
             try{
-               var currentJob = _jobService.Get(_currentJobId).Result;
-            // this.Description = currentJob.Result.Description;
-            //if (currentJob != null)
-            //{
-                _description = currentJob.Description;
+            var currentJob = _jobService.Get(_currentJobId).Result;
+            if (currentJob != null)
+            {
+                Description = currentJob.Description;
                 RaisePropertyChanged(() => Description);
-            //}
+            }
             }catch(Exception ex)
             {
                 Message = ex.Message;
