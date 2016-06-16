@@ -35,7 +35,9 @@ namespace WhenToDig90.ViewModels
                 ReviewNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.ReviewPage); });
                 PlantNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.PlantPage); });
 
-                NewJobCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.JobEditPage); });
+                NewJobCommand = new RelayCommand(() => {
+                    _navigationService.NavigateTo(Locator.JobEditPage);
+                });
                 JobEditCommand = new RelayCommand(() => {
 
                     EntityEdit<Job> editMessage = new EntityEdit<Job>();

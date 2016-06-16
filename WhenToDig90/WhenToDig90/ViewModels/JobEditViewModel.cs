@@ -34,12 +34,12 @@ namespace WhenToDig90.ViewModels
             SaveCommand = new RelayCommand(() =>
             {
                 Message = string.Empty;
-                RaisePropertyChanged(() => Message)
+                RaisePropertyChanged(() => Message);
 
                 if (string.IsNullOrEmpty(Description) || string.IsNullOrEmpty(JobType))
                 {
                     Message = "You must enter a job description...";
-                    RaisePropertyChanged(() => Message)
+                    RaisePropertyChanged(() => Message);
                 }
                 else
                 {
@@ -108,18 +108,18 @@ namespace WhenToDig90.ViewModels
 
         public void OnAppearing()
         {
-            try{
+            //try{
             var currentJob = _jobService.Get(_currentJobId).Result;
             if (currentJob != null)
             {
                 Description = currentJob.Description;
                 RaisePropertyChanged(() => Description);
             }
-            }catch(Exception ex)
-            {
-                Message = ex.Message;
-                RaisePropertyChanged(() => Message);
-            }
+            //}catch(Exception ex)
+            //{
+            //    Message = ex.Message;
+            //    RaisePropertyChanged(() => Message);
+            //}
         }
     }
 }
