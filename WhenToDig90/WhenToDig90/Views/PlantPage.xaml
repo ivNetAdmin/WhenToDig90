@@ -12,5 +12,6 @@
 
   <ContentPage.Content>
     <Label Text="Plant" VerticalOptions="Center" HorizontalOptions="Center" />
+    <Label TextColor ="Red" Text="{Binding Message}" HorizontalOptions="Center" VerticalOptions="Center"/>	
   </ContentPage.Content>
 </ContentPage>
