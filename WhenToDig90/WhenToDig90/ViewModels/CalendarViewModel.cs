@@ -48,12 +48,9 @@ namespace WhenToDig90.ViewModels
                 });
 
                 DeleteJobCommand = new RelayCommand<int>(id => {
-                    var cakes = id;
-                    //EntityEdit<Job> editMessage = new EntityEdit<Job>();
-                    //editMessage.Value = _jobItemSelected.ID;
-                    //Messenger.Default.Send<EntityEdit<Job>>(editMessage);
-
-                    //_navigationService.NavigateTo(Locator.JobEditPage);
+                    _jobService.Delete(id);
+                    GetJobsByMonth();
+                    //RaisePropertyChanged(() => Jobs);
                 });
 
                 
@@ -102,7 +99,7 @@ namespace WhenToDig90.ViewModels
                 RaisePropertyChanged (() => CurrentMonthYear);
 
                 GetJobsByMonth();
-                RaisePropertyChanged(() => Jobs);
+                //RaisePropertyChanged(() => Jobs);
             }
         }
 
@@ -141,7 +138,7 @@ namespace WhenToDig90.ViewModels
             //Messenger.Default.Register<EntityAdded<Job>>(this, (message) =>
             //{
                 GetJobsByMonth();
-                RaisePropertyChanged(() => Jobs);
+                //RaisePropertyChanged(() => Jobs);
             //});
         }
 
@@ -157,6 +154,7 @@ namespace WhenToDig90.ViewModels
                     return;
                 }
                 Jobs = item.Result;
+                RaisePropertyChanged(() => Jobs);
             }, _currentCallendarDate);
         }
 
