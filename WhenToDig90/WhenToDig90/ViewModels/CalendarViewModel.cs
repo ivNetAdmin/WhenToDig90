@@ -50,14 +50,9 @@ namespace WhenToDig90.ViewModels
                 DeleteJobCommand = new RelayCommand<int>(id => {
                     _jobService.Delete(id);
                     GetJobsByMonth();
-                    //RaisePropertyChanged(() => Jobs);
                 });
 
-                
-
                 _currentCallendarDate = DateTime.Now;
-
-                //GetJobsByMonth();
 
                 //DeleteAllJobs();
                               
@@ -138,7 +133,6 @@ namespace WhenToDig90.ViewModels
            GetJobsByMonth();
         }
 
-
         private void GetJobsByMonth()
         {
             _jobService.GetJobsByMonth((item, error) =>
@@ -156,7 +150,6 @@ namespace WhenToDig90.ViewModels
 
         private void DeleteAllJobs()
         {
-          
             foreach(var job in _jobs)
             {
                 _jobService.Delete(job.ID);
