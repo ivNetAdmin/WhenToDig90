@@ -43,8 +43,8 @@ namespace WhenToDig90.ViewModels
                 }
                 else
                 {
-                    _jobService.Save(JobDate, JobType, Description, PlantName, Notes);
-                    Messenger.Default.Send(new EntityAdded<Job>());
+                    _jobService.Save(_currentJobId, JobDate, JobType, Description, PlantName, Notes);
+                    //Messenger.Default.Send(new EntityAdded<Job>());
                     _navigationService.GoBack();
                 }
             });
@@ -172,20 +172,9 @@ namespace WhenToDig90.ViewModels
 
                     Notes = currentJob.Notes;
                     RaisePropertyChanged(() => Notes);
-
-
                 }
 
             }, _currentJobId);
-
-            // var currentJob = _jobService.Get(_currentJobId).Result;
-            // if (currentJob != null)
-            // {
-            //     Description = currentJob.Description;
-
-            //     RaisePropertyChanged(() => Description);
-            //}
-
         }
     }
 }

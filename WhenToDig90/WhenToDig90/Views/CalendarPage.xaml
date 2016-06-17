@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WhenToDig90.Views.CalendarPage">
+             x:Class="WhenToDig90.Views.CalendarPage"
+             x:Name ="CalendarPage">
   
   <ContentPage.ToolbarItems>
     <ToolbarItem Icon="{Binding CalendarIcon}" />
@@ -16,7 +17,8 @@
         <Grid>
           <Button Text="&lt;&lt;" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" Clicked="CalendarClicked"/>
           <Button Text="&lt;" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" Clicked="CalendarClicked"/>
-          <Label Text="{Binding CurrentMonthYear}" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+          <Label Text="{Binding CurrentMonthYear}" Grid.Row="0" Grid.Column="2" 
+                 Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
           <Button Text="&gt;" Grid.Row="0" Grid.Column="5" HorizontalOptions="Center" Clicked="CalendarClicked"/>
           <Button Text="&gt;&gt;" Grid.Row="0" Grid.Column="6" HorizontalOptions="Center" Clicked="CalendarClicked"/>
         </Grid>
@@ -31,37 +33,31 @@
         </Grid>
         <Grid x:Name="CalendarGrid" Padding="0, 0, 0, 2"/>
         <Grid>
-          <Button Text="New" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" Command="{Binding NewJobCommand}"/>
-          <Button Text="Edit" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End"  Command="{Binding JobEditCommand}"/>
+          <Button Text="New" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" 
+                  Command="{Binding NewJobCommand}"/>
+          <Button Text="Edit" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End"  
+                  Command="{Binding EditJobCommand}"/>
         </Grid>
 
         <ListView ItemsSource="{Binding Path=Jobs}" SelectedItem="{Binding Path=JobItemSelected}">
           <ListView.ItemTemplate>
             <DataTemplate>
-             
                 <ViewCell>
-                  <!--<View.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="{Binding JobListTappedGesture}"/>
-                  </View.GestureRecognizers>-->
-                  <ViewCell.View>
+                   <ViewCell.View>
                     <StackLayout Orientation="Horizontal">
-                      <Image Source="{Binding Path=TypeImage}" />
-                        <!--<Image.GestureRecognizers>
-                          <TapGestureRecognizer
-                                  Tapped="{Binding JobListTappedGesture}"
-                                  NumberOfTapsRequired="2" />
-                        </Image.GestureRecognizers>
-                      </Image>-->
+                      <Image Source="{Binding Path=TypeImage}" HorizontalOptions="Start" VerticalOptions="Center"/>
                       <Label Text="{Binding Path=ShortDate}" HorizontalOptions="End" VerticalOptions="Center" />
-                      <Label Text="{Binding Path=Description}" HorizontalOptions="Start" VerticalOptions="Center" />
+                      <Label Text="{Binding Path=Description}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                      <Button Text="X" TextColor="Red" HorizontalOptions="End" VerticalOptions="Center"
+                              Command="{Binding Path=BindingContext.DeleteJobCommand, Source={x:Reference Name=CalendarPage}}"
+                              CommandParameter="{Binding Path=ID}"/>
                     </StackLayout>
                   </ViewCell.View>
                 </ViewCell>          
-             
             </DataTemplate>
           </ListView.ItemTemplate>
         </ListView>
-	<Label TextColor ="Red" Text="{Binding Message}" HorizontalOptions="Center" VerticalOptions="Center"/>	
+	      <Label TextColor ="Red" Text="{Binding Message}" HorizontalOptions="Center" VerticalOptions="Center"/>	
       </StackLayout.Children>
    </StackLayout>
   </ContentPage.Content>

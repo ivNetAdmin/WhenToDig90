@@ -52,28 +52,32 @@ namespace WhenToDig90.Services
             }
         }
 
-        //public async Task<IList<Job>> GetJobsByMonth(DateTime date)
-        //{
-        //    using (await Locker.LockAsync())
-        //    {
-        //        var startDate = new DateTime(date.Year, date.Month, 1);
-        //        var endDate = startDate.AddMonths(1);
-        //        return await _repository.Get(predicate: x => x.Date >= startDate && x.Date < endDate, orderBy: x => x.Date);
-        //    }
-        //}
-
-        public async Task<int> Save(DateTime jobDate, string jobType, string description, string plantName, string notes)
+        public async Task<int> Save(int jobId, DateTime jobDate, string jobType, string description, string plantName, string notes)
         {
-            var job = new Job
+            if (jobId > 0)
             {
-                Date = jobDate,
-                Type = jobType,
-                Description = description,
-                Plant = plantName,
-                Notes = notes
-            };
+                var job = await _repository.Get(jobId);
+                job.Date = jobDate;
+                job.Type = jobType;
+                job.Description = description;
+                job.Plant = plantName;
+                job.Notes = notes;
 
-            return await _repository.Insert(job);
+                return await _repository.Update(job);
+            }
+            else
+            {
+                var job = new Job
+                {
+                    Date = jobDate,
+                    Type = jobType,
+                    Description = description,
+                    Plant = plantName,
+                    Notes = notes
+                };
+
+                return await _repository.Insert(job);
+            }
         }
   
         public void GetAll(Action<Task<List<Job>>, Exception> callback)

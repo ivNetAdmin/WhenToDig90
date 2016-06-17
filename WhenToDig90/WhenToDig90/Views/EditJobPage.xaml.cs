@@ -29,6 +29,4 @@ namespace WhenToDig90.Views
             get { return (IPageLifeCycleEvents)BindingContext; }
         }
     }
-    
-   
 }

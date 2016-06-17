@@ -13,7 +13,7 @@ using Xamarin.Forms;
 
 namespace WhenToDig90.ViewModels
 {
-    public class CalendarViewModel : ViewModelBase
+    public class CalendarViewModel : ViewModelBase, IPageLifeCycleEvents
     {
         private readonly INavigationService _navigationService;
         private readonly IJobService _jobService;
@@ -38,7 +38,7 @@ namespace WhenToDig90.ViewModels
                 NewJobCommand = new RelayCommand(() => {
                     _navigationService.NavigateTo(Locator.JobEditPage);
                 });
-                JobEditCommand = new RelayCommand(() => {
+                EditJobCommand = new RelayCommand(() => {
 
                     EntityEdit<Job> editMessage = new EntityEdit<Job>();
                     editMessage.Value = _jobItemSelected.ID;
@@ -47,18 +47,23 @@ namespace WhenToDig90.ViewModels
                     _navigationService.NavigateTo(Locator.JobEditPage);
                 });
 
-                _currentCallendarDate = DateTime.Now;
+                DeleteJobCommand = new RelayCommand<int>(id => {
+                    var cakes = id;
+                    //EntityEdit<Job> editMessage = new EntityEdit<Job>();
+                    //editMessage.Value = _jobItemSelected.ID;
+                    //Messenger.Default.Send<EntityEdit<Job>>(editMessage);
 
-                GetJobsByMonth();
-
-                //DeleteAllJobs();
-               
-                Messenger.Default.Register<EntityAdded<Job>>(this, (message) =>
-                {
-                    GetJobsByMonth();
-                    RaisePropertyChanged(() => Jobs);
+                    //_navigationService.NavigateTo(Locator.JobEditPage);
                 });
 
+                
+
+                _currentCallendarDate = DateTime.Now;
+
+                //GetJobsByMonth();
+
+                //DeleteAllJobs();
+                              
              
             }catch(Exception ex)
             {
@@ -77,7 +82,17 @@ namespace WhenToDig90.ViewModels
                 RaisePropertyChanged(() => Message);
             }
         }
-        
+
+        public IList<Job> Jobs
+        {
+            get { return _jobs; }
+            set
+            {
+                _jobs = value;
+                RaisePropertyChanged(() => Jobs);
+            }
+        }
+
         private DateTime _currentCallendarDate;
         public DateTime CurrentDate
         {
@@ -92,19 +107,19 @@ namespace WhenToDig90.ViewModels
         }
 
         public string CurrentMonthYear { get { return string.Format("{0} {1}",_months[_currentCallendarDate.Month - 1], _currentCallendarDate.Year); } }
-        public IList<Job> Jobs { get { return _jobs; } }        
 
         public ImageSource CalendarIcon{ get { return ImageSource.FromFile("calendar.png"); } }
         public ImageSource JobIcon{ get { return ImageSource.FromFile("job_low.png"); } }
         public ImageSource ReviewIcon{ get { return ImageSource.FromFile("review_low.png"); } }
         public ImageSource PlantIcon{ get { return ImageSource.FromFile("plant_low.png"); } }
-        
+
         public ICommand JobNavigationCommand { get; set; }
         public ICommand ReviewNavigationCommand { get; set; }
         public ICommand PlantNavigationCommand { get; set; }
 
         public ICommand NewJobCommand { get; set; }
-        public ICommand JobEditCommand { get; set; }
+        public ICommand EditJobCommand { get; set; }
+        public ICommand DeleteJobCommand { get; set; }
 
         public Job JobItemSelected
         {
@@ -121,6 +136,16 @@ namespace WhenToDig90.ViewModels
             }
         }
 
+        public void OnAppearing()
+        {
+            //Messenger.Default.Register<EntityAdded<Job>>(this, (message) =>
+            //{
+                GetJobsByMonth();
+                RaisePropertyChanged(() => Jobs);
+            //});
+        }
+
+
         private void GetJobsByMonth()
         {
             _jobService.GetJobsByMonth((item, error) =>
@@ -131,7 +156,7 @@ namespace WhenToDig90.ViewModels
                     RaisePropertyChanged(() => Message);
                     return;
                 }
-                _jobs = item.Result;
+                Jobs = item.Result;
             }, _currentCallendarDate);
         }
 

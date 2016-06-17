@@ -18,14 +18,9 @@ namespace WhenToDig90.Views
             _weekDays = new[] { "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su" };
 
             BindingContext = App.Locator.Calendar;
+      
         }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            ShowCalendar();
-        }
-
+       
         public void CalendarClicked(object sender, EventArgs e)
         {
             var currentCallendarDate = ((CalendarViewModel)BindingContext).CurrentDate;
@@ -47,6 +42,18 @@ namespace WhenToDig90.Views
                     break;
             }
             ShowCalendar();
+        }
+
+        protected override void OnAppearing()
+        {
+            Context.OnAppearing();
+            ShowCalendar();
+            base.OnAppearing();
+        }
+
+        private IPageLifeCycleEvents Context
+        {
+            get { return (IPageLifeCycleEvents)BindingContext; }
         }
 
         private void ShowCalendar()
