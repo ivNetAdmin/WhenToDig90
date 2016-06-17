@@ -55,8 +55,7 @@ namespace WhenToDig90.ViewModels
                 _currentCallendarDate = DateTime.Now;
 
                 //DeleteAllJobs();
-                              
-             
+                             
             }catch(Exception ex)
             {
                 Message = ex.Message;
