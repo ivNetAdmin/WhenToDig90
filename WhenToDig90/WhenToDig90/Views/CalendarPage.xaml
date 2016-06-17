@@ -15,6 +15,9 @@
     <StackLayout Padding="10" Spacing="5">
       <StackLayout.Children>
         <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
           <Button Text="&lt;&lt;" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" Clicked="CalendarClicked"/>
           <Button Text="&lt;" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" Clicked="CalendarClicked"/>
           <Label Text="{Binding CurrentMonthYear}" Grid.Row="0" Grid.Column="2" 
@@ -23,6 +26,9 @@
           <Button Text="&gt;&gt;" Grid.Row="0" Grid.Column="6" HorizontalOptions="Center" Clicked="CalendarClicked"/>
         </Grid>
         <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
           <Label Text="Mo" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" TextColor="Aqua"/>
           <Label Text="Tu" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" TextColor="Aqua"/>
           <Label Text="We" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" TextColor="Aqua"/>
@@ -31,8 +37,11 @@
           <Label Text="Sa" Grid.Row="0" Grid.Column="5" HorizontalOptions="Center" TextColor="Aqua"/>
           <Label Text="Su" Grid.Row="0" Grid.Column="6" HorizontalOptions="Center"/>
         </Grid>
-        <Grid x:Name="CalendarGrid" Padding="0, 0, 0, 2"/>
+        <Grid x:Name="CalendarGrid" Padding="0, 0, 0, 2" />
         <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
           <Button Text="New" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" 
                   Command="{Binding NewJobCommand}"/>
           <Button Text="Edit" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End"  
@@ -57,7 +66,14 @@
             </DataTemplate>
           </ListView.ItemTemplate>
         </ListView>
-	      <Label TextColor ="Red" Text="{Binding Message}" HorizontalOptions="Center" VerticalOptions="Center"/>	
+	      <Label TextColor ="Red" Text="{Binding Message}" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+          <Button Image="frost.png" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" Clicked="CalendarClicked" />
+          <Button Image="location.png" Grid.Row="0" Grid.Column="6" HorizontalOptions="Center" Clicked="CalendarClicked" />
+        </Grid>
       </StackLayout.Children>
    </StackLayout>
   </ContentPage.Content>

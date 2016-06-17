@@ -153,7 +153,7 @@ namespace WhenToDig90.ViewModels
                     RaisePropertyChanged(() => Message);
                     return;
                 }
-                Jobs = item.Result;
+                _jobs = item.Result;
                 RaisePropertyChanged(() => Jobs);
             }, _currentCallendarDate);
         }
