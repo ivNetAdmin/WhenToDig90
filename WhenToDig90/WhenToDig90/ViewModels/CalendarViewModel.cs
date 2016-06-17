@@ -135,11 +135,7 @@ namespace WhenToDig90.ViewModels
 
         public void OnAppearing()
         {
-            //Messenger.Default.Register<EntityAdded<Job>>(this, (message) =>
-            //{
-                GetJobsByMonth();
-                //RaisePropertyChanged(() => Jobs);
-            //});
+           GetJobsByMonth();
         }
 
 

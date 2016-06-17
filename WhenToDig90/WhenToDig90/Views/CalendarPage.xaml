@@ -37,7 +37,7 @@
           <Label Text="Sa" Grid.Row="0" Grid.Column="5" HorizontalOptions="Center" TextColor="Aqua"/>
           <Label Text="Su" Grid.Row="0" Grid.Column="6" HorizontalOptions="Center"/>
         </Grid>
-        <Grid x:Name="CalendarGrid" Padding="0, 0, 0, 2" />
+        <Grid x:Name="CalendarGrid" />
         <Grid>
           <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
