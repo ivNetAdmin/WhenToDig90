@@ -47,6 +47,7 @@
     <Compile Include="Data\ISQLite.cs" />
     <Compile Include="Data\Repository.cs" />
     <Compile Include="Helpers\AsyncSemaphore.cs" />
+    <Compile Include="Helpers\DialogService.cs" />
     <Compile Include="Locator.cs" />
     <Compile Include="Messages\EntityAdded.cs" />
     <Compile Include="Messages\EntityEdit.cs" />
@@ -62,6 +63,9 @@
     <Compile Include="ViewModels\ReviewViewModel.cs" />
     <Compile Include="Views\CalendarPage.xaml.cs">
       <DependentUpon>CalendarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DialogPage.xaml.cs">
+      <DependentUpon>DialogPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EditJobPage.xaml.cs">
       <DependentUpon>EditJobPage.xaml</DependentUpon>
@@ -149,6 +153,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\EditJobPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\DialogPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

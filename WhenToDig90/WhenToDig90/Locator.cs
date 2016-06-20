@@ -1,5 +1,7 @@
 using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
+using WhenToDig90.Helpers;
 using WhenToDig90.ViewModels;
 
 namespace WhenToDig90
@@ -12,6 +14,8 @@ namespace WhenToDig90
         public Locator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+
+            //SimpleIoc.Default.Register<IDialogService, DialogService>();
 
             // ViewModels
             SimpleIoc.Default.Register<CalendarViewModel>();
@@ -98,5 +102,6 @@ namespace WhenToDig90
                 return ServiceLocator.Current.GetInstance<JobEditViewModel>();
             }
         }
+      
     }
 }

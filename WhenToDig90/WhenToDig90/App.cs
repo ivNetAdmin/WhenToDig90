@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using WhenToDig90.Data.Entities;
+using WhenToDig90.Helpers;
 using WhenToDig90.Messages;
 using WhenToDig90.Services;
 using WhenToDig90.Services.Interfaces;
@@ -24,7 +25,10 @@ namespace WhenToDig90
         {
 
             var js = new JobService();
-            SimpleIoc.Default.Register<IJobService>(() => js);  
+            SimpleIoc.Default.Register<IJobService>(() => js);
+
+            var ds = new DialogService();
+            SimpleIoc.Default.Register<IDialogService>(() => ds);
 
             var nav = new NavigationService();
             nav.Configure(Locator.CalendarPage, typeof(CalendarPage));

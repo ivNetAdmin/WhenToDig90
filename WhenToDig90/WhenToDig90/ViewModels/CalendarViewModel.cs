@@ -3,12 +3,15 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Views;
+using Microsoft.Practices.ServiceLocation;
 using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using WhenToDig90.Data.Entities;
+using WhenToDig90.Helpers;
 using WhenToDig90.Messages;
 using WhenToDig90.Services.Interfaces;
+using WhenToDig90.Views;
 using Xamarin.Forms;
 
 namespace WhenToDig90.ViewModels
@@ -16,12 +19,16 @@ namespace WhenToDig90.ViewModels
     public class CalendarViewModel : ViewModelBase, IPageLifeCycleEvents
     {
         private readonly INavigationService _navigationService;
+        private readonly IDialogService _dialogService;
         private readonly IJobService _jobService;
         private string[] _months = new [] { "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
         private IList<Job> _jobs;
         private Job _jobItemSelected;
 
-        public CalendarViewModel(INavigationService navigationService, IJobService jobService)
+        public CalendarViewModel(
+            INavigationService navigationService, 
+            IDialogService dialogService,
+            IJobService jobService)
         {
             try
             {              
@@ -30,6 +37,10 @@ namespace WhenToDig90.ViewModels
 
                 if (jobService == null) throw new ArgumentNullException("jobService");
                 _jobService = jobService;
+
+                if (dialogService == null) throw new ArgumentNullException("dialogService");
+                _dialogService = dialogService;
+               // _dialogService.Initialize(new DialogPage());
 
                 JobNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.JobPage); });
                 ReviewNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.ReviewPage); });
@@ -47,10 +58,21 @@ namespace WhenToDig90.ViewModels
                     _navigationService.NavigateTo(Locator.JobEditPage);
                 });
 
-                DeleteJobCommand = new RelayCommand<int>(id => {
-                    _jobService.Delete(id);
-                    GetJobsByMonth();
+                DeleteJobCommand = new RelayCommand<int>(async id => {
+                    // await _dialogService.ShowMessage("My Message", "My Title");
+
+                    //_jobService.Delete(id);
+                    //GetJobsByMonth();
                     //RaisePropertyChanged(() => Jobs);
+
+                    await _dialogService.ShowMessage("Do you want to delete this job?", "Delete", "Ok", "Cancel", (result) =>
+                     {
+                         if (result)
+                         {
+                             _jobService.Delete(id);
+                             GetJobsByMonth();
+                         }
+                     });
                 });
 
                 
@@ -133,11 +155,26 @@ namespace WhenToDig90.ViewModels
             }
         }
 
+        //public IDialogService DialogService
+        //{
+        //    get
+        //    {
+        //        return ServiceLocator.Current.GetInstance<DialogService>();
+        //    }
+        //}
+
         public void OnAppearing()
         {
            GetJobsByMonth();
         }
 
+        //public DialogService DialogService
+        //{
+        //    get
+        //    {
+        //        return ServiceLocator.Current.GetInstance<DialogService>();
+        //    }
+        //}
 
         private void GetJobsByMonth()
         {
