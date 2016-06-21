@@ -61,16 +61,14 @@ namespace WhenToDig90.ViewModels
                 DeleteJobCommand = new RelayCommand<int>(async id => {
                     // await _dialogService.ShowMessage("My Message", "My Title");
 
-                    //_jobService.Delete(id);
-                    //GetJobsByMonth();
-                    //RaisePropertyChanged(() => Jobs);
-
                     await _dialogService.ShowMessage("Do you want to delete this job?", "Delete", "Ok", "Cancel", (result) =>
                      {
                          if (result)
                          {
                              _jobService.Delete(id);
                              GetJobsByMonth();
+                             Messenger.Default.Send(new EntityAdded<Job>());
+                             return;
                          }
                      });
                 });
@@ -121,7 +119,6 @@ namespace WhenToDig90.ViewModels
                 RaisePropertyChanged (() => CurrentMonthYear);
 
                 GetJobsByMonth();
-                //RaisePropertyChanged(() => Jobs);
             }
         }
 
@@ -155,26 +152,10 @@ namespace WhenToDig90.ViewModels
             }
         }
 
-        //public IDialogService DialogService
-        //{
-        //    get
-        //    {
-        //        return ServiceLocator.Current.GetInstance<DialogService>();
-        //    }
-        //}
-
         public void OnAppearing()
         {
-           GetJobsByMonth();
+            GetJobsByMonth();
         }
-
-        //public DialogService DialogService
-        //{
-        //    get
-        //    {
-        //        return ServiceLocator.Current.GetInstance<DialogService>();
-        //    }
-        //}
 
         private void GetJobsByMonth()
         {
@@ -186,8 +167,9 @@ namespace WhenToDig90.ViewModels
                     RaisePropertyChanged(() => Message);
                     return;
                 }
-                _jobs = item.Result;
-                RaisePropertyChanged(() => Jobs);
+                Jobs = item.Result;
+                RaisePropertyChanged(() => Jobs);                
+
             }, _currentCallendarDate);
         }
 

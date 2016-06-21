@@ -1,7 +1,9 @@
 ﻿
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using WhenToDig90.Data.Entities;
+using WhenToDig90.Messages;
 using WhenToDig90.ViewModels;
 using Xamarin.Forms;
 
@@ -49,8 +51,16 @@ namespace WhenToDig90.Views
         protected override void OnAppearing()
         {
             Context.OnAppearing();
+            SubscribeToMessages();
             ShowCalendar();
             base.OnAppearing();
+        }
+
+        private void SubscribeToMessages()
+        {
+            Messenger.Default.Register<EntityAdded<Job>>(this, (message) => {
+                ShowCalendar();
+            });
         }
 
         private IPageLifeCycleEvents Context
@@ -61,14 +71,15 @@ namespace WhenToDig90.Views
         private void ShowCalendar()
         {
             var calendarGrid = this.FindByName<Grid>("CalendarGrid");
+            calendarGrid.RowDefinitions.Clear();
             calendarGrid.Children.Clear();
-        
-            var grid = BuildCalendar();
 
             for (var r = 0; r < _rowCount; r++)
             {
-                calendarGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });                
+                calendarGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
             }
+
+            var grid = BuildCalendar();
 
             foreach (var child in grid.Children)
             {
