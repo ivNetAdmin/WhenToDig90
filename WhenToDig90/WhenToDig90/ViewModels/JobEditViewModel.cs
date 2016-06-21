@@ -145,8 +145,7 @@ namespace WhenToDig90.ViewModels
         }
 
         public void OnAppearing()
-        {
-
+        {          
             _jobService.Get((item, error) =>
             {
                 if (error != null)

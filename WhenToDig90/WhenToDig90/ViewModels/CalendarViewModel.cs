@@ -89,7 +89,18 @@ namespace WhenToDig90.ViewModels
                 RaisePropertyChanged(() => Message);
             }
         }
-        
+
+        private Boolean _editEnabled;
+        public Boolean EditEnabled
+        {
+            get { return _editEnabled; }
+            set
+            {
+                _editEnabled = value;
+                RaisePropertyChanged(() => EditEnabled);
+            }
+        }
+
         private string _message;
         public string Message
         {
@@ -141,13 +152,14 @@ namespace WhenToDig90.ViewModels
         public Job JobItemSelected
         {
             get
-            {
+            {               
                 return _jobItemSelected;
             }
             set
             {
                 if (_jobItemSelected != value)
                 {
+                    EditEnabled = true;
                     _jobItemSelected = value;
                 }
             }
@@ -155,6 +167,7 @@ namespace WhenToDig90.ViewModels
 
         public void OnAppearing()
         {
+            EditEnabled = false;
             GetJobsByMonth();
         }
 
