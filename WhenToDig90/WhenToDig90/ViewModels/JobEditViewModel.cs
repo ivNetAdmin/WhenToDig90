@@ -28,6 +28,7 @@ namespace WhenToDig90.ViewModels
 
             CancelCommand = new RelayCommand(() => {
                 Message = string.Empty;
+                _currentJobId = 0;
                 _navigationService.GoBack();
             });
 
@@ -44,7 +45,7 @@ namespace WhenToDig90.ViewModels
                 else
                 {
                     _jobService.Save(_currentJobId, JobDate, JobType, Description, PlantName, Notes);
-                    //Messenger.Default.Send(new EntityAdded<Job>());
+                    _currentJobId = 0;
                     _navigationService.GoBack();
                 }
             });
@@ -171,6 +172,22 @@ namespace WhenToDig90.ViewModels
                     RaisePropertyChanged(() => JobDate);
 
                     Notes = currentJob.Notes;
+                    RaisePropertyChanged(() => Notes);
+                }else
+                {
+                    Description = string.Empty;
+                    RaisePropertyChanged(() => Description);
+
+                    PlantName = string.Empty;
+                    RaisePropertyChanged(() => PlantName);
+
+                    JobType = string.Empty;
+                    RaisePropertyChanged(() => JobType);
+
+                    JobDate = DateTime.Now;
+                    RaisePropertyChanged(() => JobDate);
+
+                    Notes = string.Empty;
                     RaisePropertyChanged(() => Notes);
                 }
 

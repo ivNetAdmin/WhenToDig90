@@ -11,11 +11,6 @@ namespace WhenToDig90.Views
         {
             InitializeComponent();
             BindingContext = App.Locator.JobEdit;
-
-            //var lifecycleHandler = (IPageLifeCycleEvents)this.BindingContext;
-            //base.Appearing += (object sender, EventArgs e) => {
-            //    lifecycleHandler.OnAppearing();
-            //};
         }
 
         protected override void OnAppearing()

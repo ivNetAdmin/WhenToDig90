@@ -47,6 +47,7 @@ namespace WhenToDig90.ViewModels
                 PlantNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.PlantPage); });
 
                 NewJobCommand = new RelayCommand(() => {
+                    EntityEdit<Job> editMessage = new EntityEdit<Job>();
                     _navigationService.NavigateTo(Locator.JobEditPage);
                 });
                 EditJobCommand = new RelayCommand(() => {
