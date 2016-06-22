@@ -61,14 +61,13 @@ namespace WhenToDig90.ViewModels
                 DeleteJobCommand = new RelayCommand<int>(async id => {
                     // await _dialogService.ShowMessage("My Message", "My Title");
 
-                    await _dialogService.ShowMessage("Do you want to delete this job?", "Delete", "Ok", "Cancel", (result) =>
+                    await _dialogService.ShowMessage("Do you want to delete this job?", "Delete", "Ok", "Cancel", async (result) =>
                      {
                          if (result)
                          {
-                             _jobService.Delete(id);
-                             Messenger.Default.Send(new EntityAdded<Job>());
+                             await _jobService.Delete(id);
                              GetJobsByMonth();
-                             
+                             Messenger.Default.Send(new EntityAdded<Job>());
                              return;
                          }
                      });

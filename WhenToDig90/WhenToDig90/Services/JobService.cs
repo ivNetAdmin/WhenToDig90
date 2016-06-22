@@ -1,10 +1,12 @@
 
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using WhenToDig90.Data;
 using WhenToDig90.Data.Entities;
 using WhenToDig90.Helpers;
+using WhenToDig90.Messages;
 using WhenToDig90.Services;
 using WhenToDig90.Services.Interfaces;
 using Xamarin.Forms;

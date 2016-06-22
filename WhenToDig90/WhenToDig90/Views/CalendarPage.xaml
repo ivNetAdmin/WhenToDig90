@@ -16,7 +16,7 @@
       <StackLayout.Children>
         <Grid VerticalOptions = "Start">
           <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="40"/>
           </Grid.RowDefinitions>
           <Button Text="&lt;&lt;" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" Clicked="CalendarClicked"/>
           <Button Text="&lt;" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" Clicked="CalendarClicked"/>
