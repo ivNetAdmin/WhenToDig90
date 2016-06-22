@@ -180,7 +180,7 @@ namespace WhenToDig90.ViewModels
                     PlantName = string.Empty;
                     RaisePropertyChanged(() => PlantName);
 
-                    JobType = string.Empty;
+                    JobType = "Cultivate";
                     RaisePropertyChanged(() => JobType);
 
                     JobDate = DateTime.Now;
@@ -188,7 +188,7 @@ namespace WhenToDig90.ViewModels
 
                     Notes = string.Empty;
                     RaisePropertyChanged(() => Notes);
-                }
+                }               
 
             }, _currentJobId);
         }

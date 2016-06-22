@@ -66,8 +66,9 @@ namespace WhenToDig90.ViewModels
                          if (result)
                          {
                              _jobService.Delete(id);
-                             GetJobsByMonth();
                              Messenger.Default.Send(new EntityAdded<Job>());
+                             GetJobsByMonth();
+                             
                              return;
                          }
                      });

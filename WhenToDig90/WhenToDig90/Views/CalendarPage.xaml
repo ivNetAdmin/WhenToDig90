@@ -4,7 +4,7 @@
              x:Class="WhenToDig90.Views.CalendarPage"
              x:Name ="CalendarPage">
   
-  <ContentPage.ToolbarItems>
+  <ContentPage.ToolbarItems  VerticalOptions = "Start">
     <ToolbarItem Icon="{Binding CalendarIcon}" />
     <ToolbarItem Icon="{Binding JobIcon}" Command="{Binding JobNavigationCommand}"/>
     <ToolbarItem Icon="{Binding ReviewIcon}" Command="{Binding ReviewNavigationCommand}"/>
@@ -12,9 +12,9 @@
   </ContentPage.ToolbarItems>
   
   <ContentPage.Content>
-    <StackLayout Padding="10" Spacing="5">
+    <StackLayout Padding="10" Spacing="5" VerticalOptions = "Start">
       <StackLayout.Children>
-        <Grid>
+        <Grid VerticalOptions = "Start">
           <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
           </Grid.RowDefinitions>
@@ -48,7 +48,7 @@
                   IsEnabled="{Binding Path=EditEnabled}" Command="{Binding EditJobCommand}"/>
         </Grid>
 
-        <ListView ItemsSource="{Binding Path=Jobs}" SelectedItem="{Binding Path=JobItemSelected}">
+        <ListView ItemsSource="{Binding Path=Jobs}" SelectedItem="{Binding Path=JobItemSelected}" VerticalOptions = "Start">
           <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
@@ -67,7 +67,7 @@
           </ListView.ItemTemplate>
         </ListView>
 	      <Label TextColor ="Red" Text="{Binding Message}" HorizontalOptions="Center" VerticalOptions="Center"/>
-        <Grid>
+        <Grid VerticalOptions = "End">
           <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
           </Grid.RowDefinitions>

@@ -3356,8 +3356,8 @@ namespace WhenToDig90.Droid
 			// aapt resource value: 0x7f020071
 			public const int none = 2130837617;
 			
-			// aapt resource value: 0x7f020078
-			public const int notification_template_icon_bg = 2130837624;
+			// aapt resource value: 0x7f020079
+			public const int notification_template_icon_bg = 2130837625;
 			
 			// aapt resource value: 0x7f020072
 			public const int plant = 2130837618;
@@ -3376,6 +3376,9 @@ namespace WhenToDig90.Droid
 			
 			// aapt resource value: 0x7f020077
 			public const int sow = 2130837623;
+			
+			// aapt resource value: 0x7f020078
+			public const int splash = 2130837624;
 			
 			static Drawable()
 			{
@@ -4812,6 +4815,9 @@ namespace WhenToDig90.Droid
 			
 			// aapt resource value: 0x7f070001
 			public const int Theme_MediaRouter_Light = 2131165185;
+			
+			// aapt resource value: 0x7f070144
+			public const int Theme_Splash = 2131165508;
 			
 			// aapt resource value: 0x7f0700ee
 			public const int ThemeOverlay_AppCompat = 2131165422;
