@@ -40,7 +40,6 @@ namespace WhenToDig90.ViewModels
 
                 if (dialogService == null) throw new ArgumentNullException("dialogService");
                 _dialogService = dialogService;
-               // _dialogService.Initialize(new DialogPage());
 
                 JobNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.JobPage); });
                 ReviewNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.ReviewPage); });

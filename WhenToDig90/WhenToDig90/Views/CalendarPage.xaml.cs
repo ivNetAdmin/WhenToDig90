@@ -74,12 +74,12 @@ namespace WhenToDig90.Views
             calendarGrid.RowDefinitions.Clear();
             calendarGrid.Children.Clear();
 
+            var grid = BuildCalendar();
+
             for (var r = 0; r < _rowCount; r++)
             {
                 calendarGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
             }
-
-            var grid = BuildCalendar();
 
             foreach (var child in grid.Children)
             {
@@ -182,18 +182,26 @@ namespace WhenToDig90.Views
 
                 grid.Children.Add(relativeLayout, wd, r);
 
-            }
+            }//
         }
 
         private FileImageSource GetJobImage(DateTime date, IList<Job> jobs)
         {
             var image = "none.png";
+
+            if (jobs.Count==0)
+                return new FileImageSource() { File = image };
+
+            if (new DateTime(jobs[0].Date.Year, jobs[0].Date.Month, jobs[0].Date.Day) > date)
+                return new FileImageSource() { File = image };
+
+            if (new DateTime(jobs[jobs.Count-1].Date.Year, jobs[jobs.Count-1].Date.Month, jobs[jobs.Count-1].Date.Day) < date)
+                return new FileImageSource() { File = image };
+
             var jobTypes = new List<string>();
             foreach (var job in jobs)
-            {
-                if (job.Date > date) break;
-
-                if (job.Date == date)
+            {               
+                if (job.Date.ToString("yyyyMMdd") == date.ToString("yyyyMMdd"))
                 {
                     if (!string.IsNullOrEmpty(job.Type))
                     {
