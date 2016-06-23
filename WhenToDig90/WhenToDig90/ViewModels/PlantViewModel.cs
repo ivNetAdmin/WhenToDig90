@@ -1,10 +1,12 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using WhenToDig90.Data.Entities;
+using WhenToDig90.Messages;
 using WhenToDig90.Services.Interfaces;
 using WhenToDig90.Views;
 using Xamarin.Forms;
@@ -209,12 +211,21 @@ namespace WhenToDig90.ViewModels
                     {                       
                         Text = variety.Name,                       
                         TextColor = textColor,
-                        FontSize = fontSize
+                        FontSize = fontSize,
+                        CommandParameter = variety.ID,
+                        Command =  new RelayCommand<int>(id => {
+
+                            EntityEdit<Variety> editMessage = new EntityEdit<Variety>();
+                            editMessage.Value = id;
+                            Messenger.Default.Send<EntityEdit<Variety>>(editMessage);
+
+                           // _navigationService.NavigateTo(Locator.EditVarietyPage);                        
+                        })
                     }, columnCounter, varietyButtonGrid.RowDefinitions.Count-1);
 
                 columnCounter++;
 
-                if (columnCounter == 3) columnCounter = 0;
+                    if (columnCounter == 3) columnCounter = 0;
                 textColor = Color.Aqua;
             }        
         }
