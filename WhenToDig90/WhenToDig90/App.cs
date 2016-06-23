@@ -26,6 +26,9 @@ namespace WhenToDig90
 
             var js = new JobService();
             SimpleIoc.Default.Register<IJobService>(() => js);
+            
+            var ps = new PlantService();
+            SimpleIoc.Default.Register<IPlantService>(() => ps);
 
             var ds = new DialogService();
             SimpleIoc.Default.Register<IDialogService>(() => ds);
