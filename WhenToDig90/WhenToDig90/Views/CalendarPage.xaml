@@ -12,6 +12,7 @@
   </ContentPage.ToolbarItems>
   
   <ContentPage.Content>
+    <ScrollView Orientation="Vertical" VerticalOptions="Start">
     <StackLayout Padding="10" Spacing="5" VerticalOptions = "Start">
       <StackLayout.Children>
         <Grid VerticalOptions = "Start">
@@ -76,5 +77,6 @@
         </Grid>
       </StackLayout.Children>
    </StackLayout>
+      </ScrollView>
   </ContentPage.Content>
 </ContentPage>

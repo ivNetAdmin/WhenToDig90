@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WhenToDig90.Views.PlantPage">
+             x:Class="WhenToDig90.Views.PlantPage"
+             xmlns:custom="clr-namespace:WhenToDig90.Controls;assembly=WhenToDig90">
 
-  <ContentPage.ToolbarItems>
+ <ContentPage.ToolbarItems>
     <ToolbarItem Icon="{Binding CalendarIcon}" Command="{Binding CalendarNavigationCommand}" />
     <ToolbarItem Icon="{Binding JobIcon}" Command="{Binding JobNavigationCommand}" />
     <ToolbarItem Icon="{Binding ReviewIcon}" Command="{Binding ReviewNavigationCommand}" />
@@ -11,7 +12,67 @@
   </ContentPage.ToolbarItems>
 
   <ContentPage.Content>
-    <Label Text="Plant" VerticalOptions="Center" HorizontalOptions="Center" />
-    <Label TextColor ="Red" Text="{Binding Message}" HorizontalOptions="Center" VerticalOptions="Center"/>	
+    <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+    <StackLayout Padding="10" Spacing="5" VerticalOptions = "Start">
+      <StackLayout.Children>
+        
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+          
+          <custom:BindablePicker
+          Grid.Row="0"
+          Grid.Column="0"
+          Grid.ColumnSpan="7"
+          ItemsSource="{Binding Plants}"
+          HorizontalOptions="FillAndExpand"
+          HeightRequest="34"
+          SelectedItem="{Binding Name}" />
+          
+          <!--<Label FontSize="Small" Text="Name" Grid.Row="0" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>-->
+          <Entry Placeholder="Enter Plant Name"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7"
+                 FontSize="Medium" Text="{Binding Name}"/>
+
+          <!--<Label FontSize="Small" Text="Type" Grid.Row="1" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>-->
+          <Entry Placeholder="Enter Plant Type (Early, Spring, etc)"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="7"
+                 FontSize="Medium" Text="{Binding Type}"/>
+
+          <!--<Label FontSize="Small" Text="Sow" Grid.Row="2" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>-->
+          <Entry Placeholder="Enter Sowing Details"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7"
+                FontSize="Medium" Text="{Binding Sow}"/>
+
+          <!--<Label FontSize="Small" Text="Harvest" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="End" VerticalOptions="Center"/>-->
+          <Entry Placeholder="Enter Harvest Details"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7"
+               FontSize="Medium" Text="{Binding Harvest}"/>
+
+          <Label FontSize="Small" Text="Notes" Grid.Row="5" Grid.Column="0" HorizontalOptions="End" VerticalOptions="End"/>
+          <Editor Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="6" Grid.RowSpan ="2" FontSize="Medium" Text="{Binding Notes}"/>                             
+        </Grid>
+        <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+        <Grid x:Name="VarietyButtonGrid" VerticalOptions = "Start" />
+        </ScrollView>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>          
+          </Grid.RowDefinitions>
+          <Button Text="Save" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" Command="{Binding SaveCommand}"/>
+          <Button Text="Cancel" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End" Command="{Binding CancelCommand}"/>
+        </Grid>
+          
+        <Label TextColor ="Red" Text="{Binding Message}" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+
+       
+      </StackLayout.Children>
+    </StackLayout>
+    </ScrollView>
+  
+    
   </ContentPage.Content>
+
 </ContentPage>

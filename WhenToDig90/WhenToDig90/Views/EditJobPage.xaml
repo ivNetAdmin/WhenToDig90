@@ -40,7 +40,7 @@
           HeightRequest="34"
           SelectedItem="{Binding PlantName}" />
 
-          <Label FontSize="Small" Text="Notes" Grid.Row="4" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>
+          <Label FontSize="Small" Text="Notes" Grid.Row="4" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Start"/>
         <Editor Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="6" Grid.RowSpan ="2" FontSize="Medium" Text="{Binding Notes}"/>
         
         </Grid>
