@@ -23,7 +23,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-          </Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>          
           
           <custom:BindablePicker
           Grid.Row="0"
@@ -51,7 +52,9 @@
                FontSize="Medium" Text="{Binding Harvest}"/>
 
           <Label FontSize="Small" Text="Notes" Grid.Row="5" Grid.Column="0" HorizontalOptions="End" VerticalOptions="End"/>
-          <Editor Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="6" Grid.RowSpan ="2" FontSize="Medium" Text="{Binding Notes}"/>                             
+          <Editor Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="6" Grid.RowSpan ="2" FontSize="Medium" Text="{Binding Notes}"/> 
+        
+         <Label TextColor ="Red" Text="{Binding Message}" HorizontalOptions="Center" VerticalOptions="Center"  Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="7"/>
         </Grid>
         <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
         <Grid x:Name="VarietyButtonGrid" VerticalOptions = "Start" />
@@ -60,11 +63,11 @@
           <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>          
           </Grid.RowDefinitions>
-          <Button Text="Save" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" Command="{Binding SaveCommand}"/>
-          <Button Text="Cancel" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End" Command="{Binding CancelCommand}"/>
+          <Button Text="New" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" Command="{Binding NewCommand}"/>
+          <Button Text="Save" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End" Command="{Binding SaveCommand}"/>
         </Grid>
           
-        <Label TextColor ="Red" Text="{Binding Message}" HorizontalOptions="Center" VerticalOptions="Center"/>
+       
 
 
        

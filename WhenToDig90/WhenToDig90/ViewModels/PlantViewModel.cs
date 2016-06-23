@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using WhenToDig90.Data.Entities;
+using WhenToDig90.Services.Interfaces;
 using WhenToDig90.Views;
 using Xamarin.Forms;
 
@@ -32,18 +33,24 @@ namespace WhenToDig90.ViewModels
                     Varieties.Add(new Variety { Name = "Long Intermediate and fish" });
                 }
 
-            CancelCommand = new RelayCommand(() => {
-                Message = string.Empty;
-                _currentPlantId = 0;
-                _navigationService.GoBack();
-            });
+                NewCommand = new RelayCommand(() =>
+                {
+                    Message = string.Empty;
+                    _currentPlantId = 0;
+                    Name = string.Empty;
+                    Type = string.Empty;
+                    Sow = string.Empty;
+                    Harvest = string.Empty;
+                    Notes = string.Empty;
+
+                });
 
             SaveCommand = new RelayCommand(() =>
             {
                 Message = string.Empty;
                 RaisePropertyChanged(() => Message);
 
-                if (string.IsNullOrEmpty(Name)
+                if (string.IsNullOrEmpty(Name))
                 {
                     Message = "You must enter a plant name...";
                     RaisePropertyChanged(() => Message);
@@ -76,7 +83,7 @@ namespace WhenToDig90.ViewModels
         public ICommand ReviewNavigationCommand { get; set; }
 
 
-        public ICommand CancelCommand { get; set; }
+        public ICommand NewCommand { get; set; }
         public ICommand SaveCommand { get; set; }
 
         private List<string> _plants;

@@ -7,6 +7,7 @@ namespace WhenToDig90.Data.Entities
         public string Type { get; set; }
         public string PlantingTime { get; set; }
         public string HarvestingTime { get; set; }
+        public string Notes { get; set; }
 
         public Plant() { }
     }

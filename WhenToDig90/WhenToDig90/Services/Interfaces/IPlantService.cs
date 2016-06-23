@@ -15,7 +15,7 @@ namespace WhenToDig90.Services.Interfaces
        // void GetJobsByMonth(Action<Task<List<Job>>, Exception> callback, DateTime date);
        // void Get(Action<Task<Job>, Exception> callback, int id);
 
-        Task<int> Save(int plantId, string name, string sow, string harvest, string notes);
+        Task<int> Save(int plantId, string name, string type, string sow, string harvest, string notes);
         
     }
 }

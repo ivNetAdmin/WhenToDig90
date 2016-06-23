@@ -10,6 +10,14 @@
       <StackLayout.Children>
         
         <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
           
           <Label  FontSize="Small" Text="Date" Grid.Row="0" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>
           <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding JobDate}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="6">
@@ -42,14 +50,16 @@
 
           <Label FontSize="Small" Text="Notes" Grid.Row="4" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Start"/>
         <Editor Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="6" Grid.RowSpan ="2" FontSize="Medium" Text="{Binding Notes}"/>
-        
+
+          <Label FontSize="Small" TextColor ="Red" Text="{Binding Message}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center"/>
+
         </Grid>
         <Grid>
           <Button Text="Save" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" Command="{Binding SaveCommand}"/>
           <Button Text="Cancel" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End" Command="{Binding CancelCommand}"/>
         </Grid>
 
-        <Label FontSize="Small" TextColor ="Red" Text="{Binding Message}" HorizontalOptions="Center" VerticalOptions="Center"/>	
+        
         
         </StackLayout.Children>
       </StackLayout>

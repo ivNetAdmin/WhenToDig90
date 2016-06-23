@@ -19,7 +19,7 @@ namespace WhenToDig90.Services
 
         private static readonly AsyncLock Locker = new AsyncLock();
 
-        public JobService()
+        public PlantService()
         {
             _repository = new Repository<Plant>();
         }
@@ -31,20 +31,20 @@ namespace WhenToDig90.Services
                 var plant = await _repository.Get(plantId);
                 plant.Name = name;
                 plant.Type = plantType;
-                plant.Sow = sow;
-                plant.Harvest = harvest;
+                plant.PlantingTime = sow;
+                plant.HarvestingTime = harvest;
                 plant.Notes = notes;
 
                 return await _repository.Update(plant);
             }
             else
             {
-                var job = new Job
+                var plant = new Plant
                 {
                     Name = name,
                     Type = plantType,
-                    Sow = sow,
-                    Harvest = harvest,
+                    PlantingTime = sow,
+                    HarvestingTime = harvest,
                     Notes = notes
                 };
 
