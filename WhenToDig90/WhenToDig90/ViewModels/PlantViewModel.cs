@@ -13,12 +13,17 @@ namespace WhenToDig90.ViewModels
     public class PlantViewModel : ViewModelBase, IPageLifeCycleEvents
     {
         private readonly INavigationService _navigationService;
+        private readonly IPlantService _plantService;
+        private int _currentPlantId;
 
-        public PlantViewModel(INavigationService navigationService)
+        public PlantViewModel(INavigationService navigationService, IPlantService plantService)
         {
             try{
-            if (navigationService == null) throw new ArgumentNullException("navigationService");
-            _navigationService = navigationService;
+                if (navigationService == null) throw new ArgumentNullException("navigationService");
+                _navigationService = navigationService;
+                
+                if (plantService == null) throw new ArgumentNullException("plantService");
+                _plantService = plantService;
 
                 Varieties = new List<Variety>();
                 Varieties.Add(new Variety { Name = "New" });
@@ -27,8 +32,31 @@ namespace WhenToDig90.ViewModels
                     Varieties.Add(new Variety { Name = "Long Intermediate and fish" });
                 }
 
+            CancelCommand = new RelayCommand(() => {
+                Message = string.Empty;
+                _currentPlantId = 0;
+                _navigationService.GoBack();
+            });
 
-                CalendarNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.CalendarPage); });
+            SaveCommand = new RelayCommand(() =>
+            {
+                Message = string.Empty;
+                RaisePropertyChanged(() => Message);
+
+                if (string.IsNullOrEmpty(Name)
+                {
+                    Message = "You must enter a plant name...";
+                    RaisePropertyChanged(() => Message);
+                }
+                else
+                {
+                    _plantService.Save(_currentPlantId, Name, Type, Sow, Harvest, Notes);
+                    _currentPlantId = 0;
+                    _navigationService.GoBack();
+                }
+            });
+            
+            CalendarNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.CalendarPage); });
             JobNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.JobPage); });
             ReviewNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.ReviewPage); });
             }catch(Exception ex)
