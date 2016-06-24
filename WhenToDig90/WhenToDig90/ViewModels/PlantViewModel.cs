@@ -219,7 +219,7 @@ namespace WhenToDig90.ViewModels
                             editMessage.Value = id;
                             Messenger.Default.Send<EntityEdit<Variety>>(editMessage);
 
-                           // _navigationService.NavigateTo(Locator.EditVarietyPage);                        
+                            _navigationService.NavigateTo(Locator.CalendarPage);                        
                         })
                     }, columnCounter, varietyButtonGrid.RowDefinitions.Count-1);
 
