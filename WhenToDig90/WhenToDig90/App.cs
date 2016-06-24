@@ -48,6 +48,11 @@ namespace WhenToDig90
                 JobEditViewModel.ReceiveMessage(message);
             });
 
+            Messenger.Default.Register<EntityEdit<Variety>>(this, (message) =>
+            {
+                VarietyEditViewModel.ReceiveMessage(message);
+            });
+            
             var firstPage = new NavigationPage(new PlantPage());
 
             nav.Initialize(firstPage);
