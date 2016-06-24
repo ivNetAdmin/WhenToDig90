@@ -13,6 +13,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
           </Grid.RowDefinitions>
           <Entry Placeholder="Enter Variety Name"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"
                  FontSize="Medium" Text="{Binding Name}"/>

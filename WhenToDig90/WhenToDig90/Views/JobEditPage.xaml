@@ -17,41 +17,42 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
           </Grid.RowDefinitions>
           
-          <Label  FontSize="Small" Text="Date" Grid.Row="0" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>
-          <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding JobDate}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="6">
+          <!--<Label  FontSize="Small" Text="Date" Grid.Row="0" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>-->
+          <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding JobDate}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7">
             <DatePicker.Format>dd MMM yyyy</DatePicker.Format>
           </DatePicker>
           
-          <Label FontSize="Small" Text="Job" Grid.Row="1" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>
-          <Entry Placeholder="Enter Job Description"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="6" 
+          <!--<Label FontSize="Small" Text="Job" Grid.Row="1" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>-->
+          <Entry Placeholder="Enter Job Description"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" 
                  FontSize="Medium" Text="{Binding Description}"/> 
           
-          <Label FontSize="Small" Text="Type" Grid.Row="2" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>
+          <!--<Label FontSize="Small" Text="Type" Grid.Row="2" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>-->
           <custom:BindablePicker
             Grid.Row="2"
-            Grid.Column="1"
-            Grid.ColumnSpan="6"
+            Grid.Column="0"
+            Grid.ColumnSpan="7"
             ItemsSource="{Binding JobTypes}"
             HorizontalOptions="FillAndExpand"
             HeightRequest="34"
             SelectedItem="{Binding JobType}" />
           
-        <Label FontSize="Small" Text="Plant" Grid.Row="3" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>
+        <!--<Label FontSize="Small" Text="Plant" Grid.Row="3" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center"/>-->
           <custom:BindablePicker        
           Grid.Row="3"
-          Grid.Column="1"
-          Grid.ColumnSpan="6"
+          Grid.Column="0"
+          Grid.ColumnSpan="7"
           ItemsSource="{Binding Plants}"
           HorizontalOptions="FillAndExpand"
           HeightRequest="34"
           SelectedItem="{Binding PlantName}" />
 
-          <Label FontSize="Small" Text="Notes" Grid.Row="4" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Start"/>
-        <Editor Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="6" Grid.RowSpan ="2" FontSize="Medium" Text="{Binding Notes}"/>
+          <Label FontSize="Small" Text="Notes" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="Start" VerticalOptions="Start"/>
+        <Editor Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan ="2" FontSize="Medium" Text="{Binding Notes}"/>
 
-          <Label FontSize="Small" TextColor ="Red" Text="{Binding Message}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center"/>
+          <Label FontSize="Small" TextColor ="Red" Text="{Binding Message}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center"/>
 
         </Grid>
         <Grid>

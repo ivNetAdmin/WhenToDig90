@@ -23,7 +23,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-          <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
           </Grid.RowDefinitions>          
           
           <custom:BindablePicker
@@ -51,10 +52,10 @@
           <Entry Placeholder="Enter Harvest Details"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7"
                FontSize="Medium" Text="{Binding Harvest}"/>
 
-          <Label FontSize="Small" Text="Notes" Grid.Row="5" Grid.Column="0" HorizontalOptions="End" VerticalOptions="End"/>
-          <Editor Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="6" Grid.RowSpan ="2" FontSize="Medium" Text="{Binding Notes}"/> 
+          <Label FontSize="Small" Text="Notes" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="Start" VerticalOptions="Start"/>
+          <Editor Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan ="2" FontSize="Medium" Text="{Binding Notes}"/> 
         
-         <Label TextColor ="Red" Text="{Binding Message}" HorizontalOptions="Center" VerticalOptions="Center"  Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="7"/>
+         <Label TextColor ="Red" Text="{Binding Message}" HorizontalOptions="Center" VerticalOptions="Center"  Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="7"/>
         </Grid>
         <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
         <Grid x:Name="VarietyButtonGrid" VerticalOptions = "Start" />
