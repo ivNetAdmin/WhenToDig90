@@ -12,6 +12,7 @@ namespace WhenToDig90.ViewModels
 {
     public class VarietyEditViewModel : ViewModelBase, IPageLifeCycleEvents
     {
+        private static int _currentPlantId;
         private static int _currentVarietyId;
 
         public VarietyEditViewModel()
@@ -101,7 +102,9 @@ namespace WhenToDig90.ViewModels
 
         public static void ReceiveMessage(EntityEdit<Variety> message)
         {
-            _currentVarietyId = message.Value;
+            var ids = message.value.Split(',');
+            _currentPlantId = Convert.ToInt32(ids[0]);
+            _currentVarietyId = Convert.ToInt32(ids[1]);
         }
 
         public void OnAppearing()
