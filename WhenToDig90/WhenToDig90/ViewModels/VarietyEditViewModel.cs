@@ -12,33 +12,40 @@ namespace WhenToDig90.ViewModels
 {
     public class VarietyEditViewModel : ViewModelBase, IPageLifeCycleEvents
     {
-    private static int _currentVarietyId;
-    
-    public VarietyEditViewModel()
-    {
-      try{
-      
-      }catch(Exception ex)
-      {
-        Message = ex.Message;
-        RaisePropertyChanged(() => Message);
-      }
-    }
-    
-    private string _message;
-    public string Message
-    {
-        get { return _message; }
-        set
+        private static int _currentVarietyId;
+
+        public VarietyEditViewModel()
         {
-            _message = value;
-            RaisePropertyChanged(() => Message);
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                Message = ex.Message;
+                RaisePropertyChanged(() => Message);
+            }
+        }
+
+        private string _message;
+        public string Message
+        {
+            get { return _message; }
+            set
+            {
+                _message = value;
+                RaisePropertyChanged(() => Message);
+            }
+        }
+
+        public static void ReceiveMessage(EntityEdit<Variety> message)
+        {
+            _currentVarietyId = message.Value;
+        }
+
+        public void OnAppearing()
+        {
+            //throw new NotImplementedException();
         }
     }
-    
-    public static void ReceiveMessage(EntityEdit<Variety> message)
-    {
-        _currentVarietyId = message.Value;
-    }
-
 }

@@ -40,7 +40,8 @@ namespace WhenToDig90
             nav.Configure(Locator.PlantPage, typeof(PlantPage));
 
             nav.Configure(Locator.JobEditPage, typeof(JobEditPage));
-      
+            nav.Configure(Locator.VarietyEditPage, typeof(VarietyEditPage));
+
             SimpleIoc.Default.Register<INavigationService>(() => nav);
 
             Messenger.Default.Register<EntityEdit<Job>>(this, (message) =>
