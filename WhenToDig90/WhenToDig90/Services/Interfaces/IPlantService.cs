@@ -16,6 +16,6 @@ namespace WhenToDig90.Services.Interfaces
        // void Get(Action<Task<Job>, Exception> callback, int id);
 
         Task<int> Save(int plantId, string name, string type, string sow, string harvest, string notes);
-        
+        Task<int> SaveVariety(string plant, int _varietyId, string name, string plantingNotes, string harvestingNotes);
     }
 }

@@ -12,13 +12,22 @@ namespace WhenToDig90.ViewModels
 {
     public class VarietyEditViewModel : ViewModelBase, IPageLifeCycleEvents
     {
-        private static int _currentPlantId;
+        private readonly INavigationService _navigationService;
+        private readonly IPlantService _plantService;
+
+        private static string _currentPlant;
         private static int _currentVarietyId;
 
-        public VarietyEditViewModel()
+        public VarietyEditViewModel(INavigationService navigationService, IPlantService plantService)
         {
             try
             {
+                if (navigationService == null) throw new ArgumentNullException("navigationService");
+                _navigationService = navigationService;
+
+                if (plantService == null) throw new ArgumentNullException("plantService");
+                _plantService = plantService;
+
                 SaveCommand = new RelayCommand(() =>
                 {
                     Message = string.Empty;
@@ -31,8 +40,8 @@ namespace WhenToDig90.ViewModels
                     }
                     else
                     {
-                        _plantService.SaveVariety(_currentPlantId, _currentVarietyId, Name, PlantingNotes, HarvestingNotes);
-                        _currentPlantId = 0;
+                        _plantService.SaveVariety(_currentPlant, _currentVarietyId, Name, PlantingNotes, HarvestingNotes);
+                        _currentPlant = string.Empty;
                         _currentVarietyId = 0;
                         _navigationService.GoBack();
                     }
@@ -103,7 +112,7 @@ namespace WhenToDig90.ViewModels
         public static void ReceiveMessage(EntityEdit<Variety> message)
         {
             var ids = message.ValueList.Split(',');
-            _currentPlantId = Convert.ToInt32(ids[0]);
+            _currentPlant = ids[0];
             _currentVarietyId = Convert.ToInt32(ids[1]);
         }
 
