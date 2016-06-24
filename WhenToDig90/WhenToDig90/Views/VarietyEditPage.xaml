@@ -2,5 +2,29 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WhenToDig90.Views.VarietyEditPage">
-  <Label Text="{Binding Message}" VerticalOptions="Center" HorizontalOptions="Center" />
+  
+  <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+    <StackLayout Padding="10" Spacing="5" VerticalOptions = "Start">
+      <StackLayout.Children>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+          <Entry Placeholder="Enter Variety Name"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"
+                 FontSize="Medium" Text="{Binding Name}"/>
+          <Label FontSize="Small" Text="Planting Notes" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" 
+            HorizontalOptions="Start" VerticalOptions="Start"/>
+          <Editor Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan ="2" FontSize="Medium" Text="{Binding PlantingNotes}"/> 
+          <Label FontSize="Small" Text="Harvesting Notes" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7" 
+            HorizontalOptions="Start" VerticalOptions="Start"/>
+           <Editor Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan ="2" FontSize="Medium" Text="{Binding HarvestingNotes}"/> 
+           <Label TextColor ="Red" Text="{Binding Message}" HorizontalOptions="Center" VerticalOptions="Center"  Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="7"/>
+        </Grid>
+      </StackLayout.Children>
+    </StackLayout>
+  </ScrollView>
 </ContentPage>
