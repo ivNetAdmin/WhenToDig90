@@ -102,7 +102,7 @@ namespace WhenToDig90.ViewModels
 
         public static void ReceiveMessage(EntityEdit<Variety> message)
         {
-            var ids = message.value.Split(',');
+            var ids = message.ValueList.Split(',');
             _currentPlantId = Convert.ToInt32(ids[0]);
             _currentVarietyId = Convert.ToInt32(ids[1]);
         }
