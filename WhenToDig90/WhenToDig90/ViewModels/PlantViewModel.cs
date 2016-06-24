@@ -215,7 +215,7 @@ namespace WhenToDig90.ViewModels
                         Command =  new RelayCommand<int>(id => {
 
                             EntityEdit<Variety> editMessage = new EntityEdit<Variety>();
-                            editMessage.Value = id;
+                            editMessage.ValueList = string.Format("{0},{1}",_currentPlantId, id);
                             Messenger.Default.Send<EntityEdit<Variety>>(editMessage);
 
                             _navigationService.NavigateTo(Locator.VarietyEditPage);                        
