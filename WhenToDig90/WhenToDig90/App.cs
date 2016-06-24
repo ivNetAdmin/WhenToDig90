@@ -43,10 +43,10 @@ namespace WhenToDig90
       
             SimpleIoc.Default.Register<INavigationService>(() => nav);
 
-            //Messenger.Default.Register<EntityEdit<Job>>(this, (message) =>
-            //{
-            //    JobEditViewModel.ReceiveMessage(message);
-            //});
+            Messenger.Default.Register<EntityEdit<Job>>(this, (message) =>
+            {
+                JobEditViewModel.ReceiveMessage(message);
+            });
 
             var firstPage = new NavigationPage(new PlantPage());
 

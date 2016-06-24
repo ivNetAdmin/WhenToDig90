@@ -53,8 +53,8 @@ namespace WhenToDig90.ViewModels
 
                     EntityEdit<Job> editMessage = new EntityEdit<Job>();
                     editMessage.Value = _jobItemSelected.ID;
+                                       
                     Messenger.Default.Send<EntityEdit<Job>>(editMessage);
-
                     _navigationService.NavigateTo(Locator.JobEditPage);
                 });
 

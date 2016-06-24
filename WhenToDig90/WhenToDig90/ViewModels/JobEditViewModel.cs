@@ -139,7 +139,7 @@ namespace WhenToDig90.ViewModels
             }
         }
 
-        internal static void ReceiveMessage(EntityEdit<Job> message)
+        public static void ReceiveMessage(EntityEdit<Job> message)
         {
             _currentJobId = message.Value;
         }
