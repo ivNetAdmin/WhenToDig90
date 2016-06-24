@@ -18,7 +18,32 @@ namespace WhenToDig90.ViewModels
         {
             try
             {
+                SaveCommand = new RelayCommand(() =>
+                {
+                    Message = string.Empty;
+                    RaisePropertyChanged(() => Message);
 
+                    if (string.IsNullOrEmpty(Name))
+                    {
+                        Message = "You must enter a category name...";
+                        RaisePropertyChanged(() => Message);
+                    }
+                    else
+                    {
+                        _plantService.SaveVariety(_currentPlantId, _currentVarietyId, Name, PlantingNotes, HarvestingNotes);
+                        _currentPlantId = 0;
+                        _currentVarietyId = 0;
+                        _navigationService.GoBack();
+                    }
+                });
+                
+                CancelCommand = new RelayCommand(() =>
+                {
+                    Message = string.Empty;
+                    RaisePropertyChanged(() => Message);
+
+                    _navigationService.GoBack();
+                });
             }
             catch (Exception ex)
             {
@@ -70,6 +95,9 @@ namespace WhenToDig90.ViewModels
                 RaisePropertyChanged(() => Message);
             }
         }
+    
+        public ICommand SaveCommand { get; set; }
+        public ICommand CancelCommand { get; set; }
 
         public static void ReceiveMessage(EntityEdit<Variety> message)
         {
