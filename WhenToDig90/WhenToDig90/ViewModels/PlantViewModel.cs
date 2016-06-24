@@ -84,7 +84,6 @@ namespace WhenToDig90.ViewModels
         public ICommand JobNavigationCommand { get; set; }
         public ICommand ReviewNavigationCommand { get; set; }
 
-
         public ICommand NewCommand { get; set; }
         public ICommand SaveCommand { get; set; }
 
@@ -219,7 +218,7 @@ namespace WhenToDig90.ViewModels
                             editMessage.Value = id;
                             Messenger.Default.Send<EntityEdit<Variety>>(editMessage);
 
-                            _navigationService.NavigateTo(Locator.CalendarPage);                        
+                            _navigationService.NavigateTo(Locator.VarietyEditPage);                        
                         })
                     }, columnCounter, varietyButtonGrid.RowDefinitions.Count-1);
 
