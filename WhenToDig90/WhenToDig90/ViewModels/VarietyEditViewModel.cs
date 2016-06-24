@@ -27,6 +27,39 @@ namespace WhenToDig90.ViewModels
             }
         }
 
+        private string _name;
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value;
+                RaisePropertyChanged(() => Name);
+            }
+        }
+
+        private string _plantingNotes;
+        public string PlantingNotes
+        {
+            get { return _plantingNotes; }
+            set
+            {
+                _plantingNotes = value;
+                RaisePropertyChanged(() => PlantingNotes);
+            }
+        }
+        
+        private string _harvestingNotes;
+        public string HarvestingNotes
+        {
+            get { return _harvestingNotes; }
+            set
+            {
+                _harvestingNotes = value;
+                RaisePropertyChanged(() => HarvestingNotes);
+            }
+        }
+
         private string _message;
         public string Message
         {
