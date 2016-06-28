@@ -18,7 +18,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
           </Grid.RowDefinitions>
-          <Label FontSize="Medium" Text="{Binding PlantName}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"
+          <Label FontSize="Medium" TextColor="Aqua" Text="{Binding PlantName}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"
             HorizontalOptions="Start" VerticalOptions="Start"/>
           <Entry Placeholder="Enter Variety Name"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7"
                  FontSize="Medium" Text="{Binding Name}"/>
