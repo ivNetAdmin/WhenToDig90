@@ -7,6 +7,7 @@ using System.Windows.Input;
 using WhenToDig90.Data.Entities;
 using WhenToDig90.Messages;
 using WhenToDig90.Services.Interfaces;
+using Xamarin.Forms;
 
 namespace WhenToDig90.ViewModels
 {
@@ -52,7 +53,12 @@ namespace WhenToDig90.ViewModels
                     Message = string.Empty;
                     RaisePropertyChanged(() => Message);
 
-                    _navigationService.GoBack();
+                   // var currentPageIndex = Application.Current.MainPage.Navigation.NavigationStack.Count - 1;
+                   // var currentPage = Application.Current.MainPage.Navigation.NavigationStack[currentPageIndex];
+                   // Application.Current.MainPage.Navigation.RemovePage(currentPage);
+
+
+                     _navigationService.GoBack();
                 });
 
                 SaveCommand = new RelayCommand(() =>

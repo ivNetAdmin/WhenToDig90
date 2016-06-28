@@ -31,10 +31,11 @@ namespace WhenToDig90.Services
                 }
             }
         }
-    
+
         public void GoBack()
         {
-            _navigation.PopAsync();
+            _navigation.PopToRootAsync();
+            //_navigation.PopAsync();
         }
     
         public void NavigateTo(string pageKey)
