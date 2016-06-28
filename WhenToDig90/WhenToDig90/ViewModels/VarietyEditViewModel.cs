@@ -16,7 +16,6 @@ namespace WhenToDig90.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IPlantService _plantService;
 
-        private static string _currentPlant;
         private static int _currentVarietyId;
 
         public VarietyEditViewModel(INavigationService navigationService, IPlantService plantService)
@@ -41,8 +40,8 @@ namespace WhenToDig90.ViewModels
                     }
                     else
                     {
-                        _plantService.SaveVariety(_currentPlant, _currentVarietyId, Name, PlantingNotes, HarvestingNotes);
-                        _currentPlant = string.Empty;
+                        _plantService.SaveVariety(PlantName, _currentVarietyId, Name, PlantingNotes, HarvestingNotes);
+                        PlantName = string.Empty;
                         _currentVarietyId = 0;
                         _navigationService.GoBack();
                     }
@@ -73,6 +72,17 @@ namespace WhenToDig90.ViewModels
             {
                 Message = ex.Message;
                 RaisePropertyChanged(() => Message);
+            }
+        }
+
+        private static string _plantName;
+        public string PlantName
+        {
+            get { return _plantName; }
+            set
+            {
+                _plantName = value;
+                RaisePropertyChanged(() => PlantName);
             }
         }
 
@@ -126,7 +136,7 @@ namespace WhenToDig90.ViewModels
         public static void ReceiveMessage(EntityEdit<Variety> message)
         {
             var ids = message.ValueList.Split(',');
-            _currentPlant = ids[0];
+            _plantName = ids[0];
             _currentVarietyId = Convert.ToInt32(ids[1]);
         }
 
