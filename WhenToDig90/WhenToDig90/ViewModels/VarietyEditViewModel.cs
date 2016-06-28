@@ -54,6 +54,14 @@ namespace WhenToDig90.ViewModels
 
                     _navigationService.GoBack();
                 });
+
+                SaveCommand = new RelayCommand(() =>
+                {
+                    Message = string.Empty;
+                    RaisePropertyChanged(() => Message);
+
+                    _navigationService.GoBack();
+                });
             }
             catch (Exception ex)
             {
