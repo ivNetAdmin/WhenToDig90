@@ -47,7 +47,8 @@
     <Compile Include="Data\ISQLite.cs" />
     <Compile Include="Data\Repository.cs" />
     <Compile Include="Helpers\AsyncSemaphore.cs" />
-    <Compile Include="Helpers\DialogService.cs" />
+    <Compile Include="Helpers\Strings.cs" />
+    <Compile Include="Services\DialogService.cs" />
     <Compile Include="Locator.cs" />
     <Compile Include="Messages\EntityAdded.cs" />
     <Compile Include="Messages\EntityEdit.cs" />

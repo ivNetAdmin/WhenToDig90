@@ -43,6 +43,7 @@ namespace WhenToDig90.ViewModels
                         _plantService.SaveVariety(PlantName, _currentVarietyId, Name, PlantingNotes, HarvestingNotes);
                         PlantName = string.Empty;
                         _currentVarietyId = 0;
+
                         _navigationService.GoBack();
                     }
                 });
@@ -56,14 +57,18 @@ namespace WhenToDig90.ViewModels
                    // var currentPage = Application.Current.MainPage.Navigation.NavigationStack[currentPageIndex];
                    // Application.Current.MainPage.Navigation.RemovePage(currentPage);
 
-
-                     _navigationService.GoBack();
+                    _navigationService.GoBack();
                 });
 
                 SaveCommand = new RelayCommand(() =>
                 {
                     Message = string.Empty;
                     RaisePropertyChanged(() => Message);
+
+                    EntityEdit<Plant> editMessage = new EntityEdit<Plant>();
+                    editMessage.ValueList = _name;
+                    Messenger.Default.Send<EntityEdit<Plant>>(editMessage);
+
 
                     _navigationService.GoBack();
                 });

@@ -17,5 +17,6 @@ namespace WhenToDig90.Services.Interfaces
 
         Task<int> Save(int plantId, string name, string type, string sow, string harvest, string notes);
         Task<int> SaveVariety(string plant, int _varietyId, string name, string plantingNotes, string harvestingNotes);
+        Task<List<Plant>> GetAll();
     }
 }

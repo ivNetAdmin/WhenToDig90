@@ -64,8 +64,8 @@
           <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>          
           </Grid.RowDefinitions>
-          <Button Text="New" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" Command="{Binding NewCommand}"/>
-          <Button Text="Save" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="End" Command="{Binding SaveCommand}"/>
+          <Button Text="New Plant" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Start" Command="{Binding NewCommand}"/>
+          <Button Text="Save" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="3" HorizontalOptions="End" Command="{Binding SaveCommand}"/>
         </Grid>
           
        

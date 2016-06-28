@@ -49,6 +49,11 @@ namespace WhenToDig90
                 JobEditViewModel.ReceiveMessage(message);
             });
 
+            Messenger.Default.Register<EntityEdit<Plant>>(this, (message) =>
+            {
+                PlantViewModel.ReceiveMessage(message);
+            });
+
             Messenger.Default.Register<EntityEdit<Variety>>(this, (message) =>
             {
                 VarietyEditViewModel.ReceiveMessage(message);

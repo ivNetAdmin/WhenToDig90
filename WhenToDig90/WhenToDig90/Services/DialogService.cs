@@ -1,19 +1,16 @@
 ﻿using GalaSoft.MvvmLight.Views;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using WhenToDig90.Views;
 using Xamarin.Forms;
 
-namespace WhenToDig90.Helpers
+namespace WhenToDig90.Services
 {
     public class DialogService : IDialogService
     {
         private Page _dialogPage;
 
-        public DialogService()
+        public 
+            DialogService()
         {
             _dialogPage = new Page();
         }

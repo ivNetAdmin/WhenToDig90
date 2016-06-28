@@ -21,19 +21,13 @@ namespace WhenToDig90.ViewModels
 
         public PlantViewModel(INavigationService navigationService, IPlantService plantService)
         {
-            try{
+            try
+            {
                 if (navigationService == null) throw new ArgumentNullException("navigationService");
                 _navigationService = navigationService;
-                
+
                 if (plantService == null) throw new ArgumentNullException("plantService");
                 _plantService = plantService;
-
-                Varieties = new List<Variety>();
-                Varieties.Add(new Variety { Name = "New" });
-                for (int i = 0; i < 10; i++)
-                {
-                    Varieties.Add(new Variety { Name = "Long Intermediate and fish" });
-                }
 
                 NewCommand = new RelayCommand(() =>
                 {
@@ -47,28 +41,29 @@ namespace WhenToDig90.ViewModels
 
                 });
 
-            SaveCommand = new RelayCommand(() =>
-            {
-                Message = string.Empty;
-                RaisePropertyChanged(() => Message);
-
-                if (string.IsNullOrEmpty(Name))
+                SaveCommand = new RelayCommand(() =>
                 {
-                    Message = "You must enter a plant name...";
+                    Message = string.Empty;
                     RaisePropertyChanged(() => Message);
-                }
-                else
-                {
-                    _plantService.Save(_currentPlantId, Name, Type, Sow, Harvest, Notes);
-                    _currentPlantId = 0;
-                    _navigationService.GoBack();
-                }
-            });
-            
-            CalendarNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.CalendarPage); });
-            JobNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.JobPage); });
-            ReviewNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.ReviewPage); });
-            }catch(Exception ex)
+
+                    if (string.IsNullOrEmpty(Name))
+                    {
+                        Message = "You must enter a plant name...";
+                        RaisePropertyChanged(() => Message);
+                    }
+                    else
+                    {
+                        _plantService.Save(_currentPlantId, Name, Type, Sow, Harvest, Notes);
+                        _currentPlantId = 0;
+                        _navigationService.GoBack();
+                    }
+                });
+
+                CalendarNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.CalendarPage); });
+                JobNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.JobPage); });
+                ReviewNavigationCommand = new RelayCommand(() => { _navigationService.NavigateTo(Locator.ReviewPage); });
+            }
+            catch (Exception ex)
             {
                 Message = ex.Message;
                 RaisePropertyChanged(() => Message);
@@ -164,7 +159,7 @@ namespace WhenToDig90.ViewModels
             }
         }
 
-        private List<Variety> _varieties;
+        private static List<Variety> _varieties;
         public List<Variety> Varieties
         {
             get { return _varieties; }
@@ -186,47 +181,74 @@ namespace WhenToDig90.ViewModels
             }
         }
 
+        public static void ReceiveMessage(EntityEdit<Plant> message)
+        {
+            var varieties = message.ValueList.Split(',');
+            _varieties.Add(new Variety { Name = varieties[0] });
+        }
+
         public void OnAppearing()
         {
+
+            GetPlantList();
+
+            Varieties = new List<Variety>();
+            Varieties.Add(new Variety { Name = "New Variety" });
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    Varieties.Add(new Variety { Name = "Long Intermediate and fish" });
+            //}
+
             var currentPageIndex = Application.Current.MainPage.Navigation.NavigationStack.Count - 1;
             var varietyButtonGrid = Application.Current.MainPage.Navigation.NavigationStack[currentPageIndex].FindByName<Grid>("VarietyButtonGrid");
+            varietyButtonGrid.Children.Clear();
 
             var columnCounter = 0;
             var textColor = Color.White;
 
             foreach (Variety variety in _varieties)
             {
-                var fontSize = variety.Name.Length > 12 
-                    ? Device.GetNamedSize(NamedSize.Micro, typeof(Button)) 
+                var fontSize = variety.Name.Length > 12
+                    ? Device.GetNamedSize(NamedSize.Micro, typeof(Button))
                     : Device.GetNamedSize(NamedSize.Small, typeof(Button));
 
                 if (columnCounter == 0)
                 {
-                    varietyButtonGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });                    
+                    varietyButtonGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                 }
 
                 varietyButtonGrid.Children.Add(
                     new Button
-                    {                       
-                        Text = variety.Name,                       
+                    {
+                        Text = variety.Name,
                         TextColor = textColor,
                         FontSize = fontSize,
                         CommandParameter = variety.ID,
-                        Command =  new RelayCommand<int>(id => {
+                        Command = new RelayCommand<int>(id =>
+                        {
 
                             EntityEdit<Variety> editMessage = new EntityEdit<Variety>();
-                            editMessage.ValueList = string.Format("{0},{1}",Name, id);
+                            editMessage.ValueList = string.Format("{0},{1}", String.Format("{0} {1}", Name, Type), id);
                             Messenger.Default.Send<EntityEdit<Variety>>(editMessage);
 
-                            _navigationService.NavigateTo(Locator.VarietyEditPage);                        
+                            _navigationService.NavigateTo(Locator.VarietyEditPage);
                         })
-                    }, columnCounter, varietyButtonGrid.RowDefinitions.Count-1);
+                    }, columnCounter, varietyButtonGrid.RowDefinitions.Count - 1);
 
                 columnCounter++;
 
-                    if (columnCounter == 3) columnCounter = 0;
+                if (columnCounter == 3) columnCounter = 0;
                 textColor = Color.Aqua;
-            }        
+            }
+        }
+
+        private void GetPlantList()
+        {
+            var plantList = _plantService.GetAll().Result;
+            foreach(var plant in plantList)
+            {
+                _plants.Add(string.Format("{0} ({1})", plant.Name, plant.Type));
+            }  
         }
     }
 }

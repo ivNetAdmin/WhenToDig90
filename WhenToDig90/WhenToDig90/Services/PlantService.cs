@@ -31,6 +31,7 @@ namespace WhenToDig90.Services
             if (plantId > 0)
             {
                 var plant = await _plantRepository.Get(plantId);
+                plant.PlantKey = Strings.BuildKey(new[] { name, plantType });
                 plant.Name = name;
                 plant.Type = plantType;
                 plant.PlantingTime = sow;
@@ -43,6 +44,7 @@ namespace WhenToDig90.Services
             {
                 var plant = new Plant
                 {
+                    PlantKey= Strings.BuildKey(new[] { name, plantType }),
                     Name = name,
                     Type = plantType,
                     PlantingTime = sow,
@@ -60,7 +62,7 @@ namespace WhenToDig90.Services
             {
                 var variety = await _varietyRepository.Get(varietyId);
                 variety.Name = name;
-                variety.PlantName = plant;
+                variety.PlantName = Strings.BuildKey(new[] { name });
                 variety.PlantingNotes = plantingNotes;
                 variety.HarvestingNotes = harvestingNotes;
                  
@@ -71,13 +73,18 @@ namespace WhenToDig90.Services
                 var variety = new Variety
                 {
                     Name = name,
-                    PlantName = plant,
+                    PlantName = Strings.BuildKey(new[] { name }),
                     PlantingNotes = plantingNotes,
                     HarvestingNotes = harvestingNotes
                 };
 
                 return await _varietyRepository.Insert(variety);
             }
+        }
+
+        public async Task<List<Plant>> GetAll()
+        {
+            return await _plantRepository.Get();
         }
     }
 }
